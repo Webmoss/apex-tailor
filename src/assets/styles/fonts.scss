@@ -1,0 +1,15 @@
+@font-face {
+  font-family: IBMPlexSans;
+  src: url(../fonts/IBMPlexSans/IBMPlexSans-Regular.ttf);
+}
+@font-face {
+  font-family: IBMPlexSansBold;
+  src: url(../fonts/IBMPlexSans/IBMPlexSans-Bold.ttf);
+}
+/* Declare a class which applies it */
+.IBMPlexSans {
+  font-family: 'IBMPlexSans';
+}
+.IBMPlexSansBold {
+  font-family: 'IBMPlexSansBold';
+}
