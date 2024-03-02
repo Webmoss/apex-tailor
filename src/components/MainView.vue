@@ -25,7 +25,7 @@
               v-model="apeId"
               name="apeId"
               type="text"
-              placeholder="Search by ID"
+              placeholder="Ape ID #"
             />
           </div>
         </div>
@@ -78,54 +78,29 @@
   @import "@/assets/styles/variables.scss";
   @import "@/assets/styles/mixins.scss";
 
-  // main {
-  //   width: 100%;
-  //   height: calc(100dvh - 280px);
-  //   display: flex;
-  //   flex-direction: column;
-  //   justify-content: flex-start;
-  //   align-content: flex-start;
-  //   align-items: center;
-  //   margin: 0;
-  //   padding: 0;
-  // }
-
-  // .main-container {
-  //   width: 100%;
-  //   max-width: $max-width;
-  //   height: 100%;
-  //   display: flex;
-  //   flex-direction: column;
-  //   justify-content: center;
-  //   align-content: center;
-  //   align-items: center;
-  //   margin: 0 auto;
-  //   padding: 0;
-  // }
-
   .container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-content: center;
     align-items: center;
-    height: 55rem;
+    height: 50rem;
     color: $black;
-    background: $grey-20;
+    // background: $grey-20;
     // background-image: url("../assets/images/large_blue_graphic.png"),
       // url("../assets/images/GreySwirlBG.png");
-    background-size: auto, contain;
-    background-repeat: no-repeat, no-repeat;
-    background-position: top 10em left -3em, right 0 top 0;
+    // background-size: auto, contain;
+    // background-repeat: no-repeat, no-repeat;
+    // background-position: top 10em left -3em, right 0 top 0;
     padding: 0;
 
     @include breakpoint($break-sm) {
       height: auto;
       flex-direction: column;
       // background-image: url("../assets/images/large_blue_graphic.png");
-      background-size: auto;
-      background-repeat: no-repeat;
-      background-position: top 5em left;
+      // background-size: auto;
+      // background-repeat: no-repeat;
+      // background-position: top 5em left;
       padding: 32px 30px 55px 30px;
     }
   }
@@ -142,6 +117,7 @@
     margin: 0 auto;
     padding: 10px;
     border-radius: 12px;
+
     @include breakpoint($break-sm) {
       width: 100%;
       flex-direction: column;
@@ -226,13 +202,13 @@
       height: 40px;
       color: $black;
       background-color: #fdfdfd;
-      border: 1px solid $apex-green;
+      border: 1px solid $apex-dark-grey;
       border-radius: 12px;
       letter-spacing: 1px;
       font-size: 16px;
       line-height: 22px;
       margin-bottom: 5px;
-      padding: 8px 10px;
+      padding: 6px 10px;
       text-align: left;
     }
   }
@@ -245,22 +221,22 @@
     justify-content: center;
     align-content: center;
     align-items: center;
-    color: $apex-dark-grey;
+    color: $white;
     background-color: $apex-green;
     font-size: 18px;
     font-weight: 600;
-    border: 0.5px solid $apex-green;
+    border: 0.5px solid $apex-dark-grey;
     border-radius: 12px;
     padding-left: 20px;
     padding-right: 20px;
-    transition: all 0.3s linear;
+    transition: all 0.2s linear;
     cursor: pointer;
 
     &:hover,
     &:focus
     &:focus-visible {
-      color: $apex-grey;
-      border: 0.5px solid $apex-grey;
+      color: $apex-dark-grey;
+      border: 1px solid $apex-dark-grey;
     }
     @include breakpoint($break-ssm) {
       margin: 15px auto;

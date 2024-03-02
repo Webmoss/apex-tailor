@@ -23,7 +23,7 @@
                 class="download-button"
                 @click="goBanners()"
               >
-                Banners
+                ApeScapes
               </button>
             </div>
           </div>
@@ -69,12 +69,12 @@
     top: 0;
     padding: 0;
     margin: 0 auto;
-    background-image: url("../assets/images/tiles/Tileable_Green.png");
+    background-image: url("../assets/images/tiles/Tileable_Grey.png");
     background-size: 300px;
     background-repeat: repeat;
     background-position: top right;
     transform-origin: left;
-
+    
     @include breakpoint($break-sm) {
       height: 85dvh;
       background-image: none;
@@ -92,7 +92,7 @@
   }
 
   .scroll-tracker {
-    background: $grey-20;
+    background: $apex-dark-grey;
     transform-origin: left;
     height: 100%;
     width: 50%;
@@ -168,18 +168,18 @@
   }
 
   .download-button {
-    width: 260px;
+    width: 300px;
     height: 40px;
     display: flex;
     flex-direction: row nowrap;
     justify-content: center;
     align-content: center;
     align-items: center;
-    color: $apex-dark-grey;
+    color: $white;
     background-color: $apex-green;
     font-size: 18px;
     font-weight: 600;
-    border: 0.5px solid $apex-green;
+    border: 0.5px solid $apex-dark-grey;
     border-radius: 12px;
     padding-left: 20px;
     padding-right: 20px;
@@ -190,7 +190,7 @@
     &:focus
     &:focus-visible {
       color: $apex-grey;
-      border: 0.5px solid $apex-grey;
+      border: 1px solid $apex-dark-grey;
     }
     @include breakpoint($break-ssm) {
       margin: 15px auto;

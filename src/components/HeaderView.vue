@@ -8,10 +8,10 @@
       <label class="menu-button-container" for="menu-toggle">
         <div class="menu-button-black menu-button"></div>
       </label>
-      <ul class="menu-black menu">
-        <li class="link-white" @click="navigateAndScroll('apewear')">ApeWear</li>
-        <li class="link-white" @click="navigateAndScroll('apescapes')">ApeScapes</li>
-        <li class="link-white" @click="navigateAndScroll('faqs')">DOX</li>
+      <ul class="menu-white menu">
+        <li class="link-black" @click="navigateAndScroll('apewear')">ApeWear</li>
+        <li class="link-black" @click="navigateAndScroll('apescapes')">ApeScapes</li>
+        <li class="link-black" @click="navigateAndScroll('faqs')">DOX</li>
       </ul>
     </nav>
   </header>
@@ -50,15 +50,22 @@
 <style lang="scss" scoped>
   @import "@/assets/styles/variables.scss";
   @import "@/assets/styles/mixins.scss";
-
+  header {
+    background-color: $apex-green;
+  }
   .top-nav {
-    max-width: $max-width;
+    // background-color: $apex-green;
+    // max-width: $max-width;
+    max-width: 900px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     padding: 1rem;
     margin: 0 auto;
+    border-bottom-right-radius: 12px;
+    border-bottom-left-radius: 12px;
+    
     @include breakpoint($break-sm) {
       padding: 5px 10px 0;
     }
@@ -73,12 +80,6 @@
     justify-content: center;
     align-content: center;
     align-items: center;
-    font-family: "TWKEverett";
-    color: $black;
-    font-size: 38px;
-    font-weight: 900;
-    text-decoration: none;
-    margin-bottom: -5px;
     margin-left: 20px;
     @include breakpoint($break-sm) {
       margin: -5px 0 0 0;
@@ -92,8 +93,8 @@
     margin: 0;
     padding: 0;
     z-index: 999999;
-    li.link-white {
-      color: $grey-20;
+    li.link-black {
+      color: $apex-dark-grey;
       cursor: pointer;
     }
   }

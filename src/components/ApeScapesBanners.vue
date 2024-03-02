@@ -21,9 +21,9 @@
             <div class="button-container-start">
               <button
                 class="download-button"
-                @click="goBanners()"
+                @click="goHome()"
               >
-                Banners
+                ApeWear
               </button>
             </div>
           </div>
@@ -40,8 +40,8 @@
 
   const router = useRouter();
 
-  function goBanners() {
-    router.push({ name: "apescapes" });
+  function goHome() {
+    router.push({ name: "apewear" });
   }
 
   onMounted(async () => {
@@ -69,7 +69,7 @@
     top: 0;
     padding: 0;
     margin: 0 auto;
-    background-image: url("../assets/images/tiles/Tileable_Green.png");
+    background-image: url("../assets/images/tiles/Tileable_Grey.png");
     background-size: 300px;
     background-repeat: repeat;
     background-position: top right;
@@ -92,7 +92,7 @@
   }
 
   .scroll-tracker {
-    background: $grey-20;
+    background: $apex-dark-grey;
     transform-origin: left;
     height: 100%;
     width: 50%;
@@ -102,7 +102,7 @@
   }
 
   .grey-div {
-    background-color: $white;
+    background: $apex-dark-grey;
     // background-image: url("../assets/images/tiles/Tileable_Grey.png");
     // background-size: 300px;
     // background-repeat: repeat;
@@ -127,7 +127,7 @@
     line-height: 86px;
     text-align: left;
     margin: 120px 0 0 50px;
-    color: $grey-100;
+    color: $white;
 
     @include breakpoint($break-sm) {
       font-weight: 400;
@@ -144,7 +144,7 @@
   }
   .slogan {
     max-width: 700px;
-    color: $grey-100;
+    color: $white;
     font-family: "TWKEverett";
     font-style: normal;
     font-weight: 400;
@@ -168,18 +168,18 @@
   }
 
   .download-button {
-    width: 260px;
+    width: 300px;
     height: 40px;
     display: flex;
     flex-direction: row nowrap;
     justify-content: center;
     align-content: center;
     align-items: center;
-    color: $apex-dark-grey;
+    color: $white;
     background-color: $apex-green;
     font-size: 18px;
     font-weight: 600;
-    border: 0.5px solid $apex-green;
+    border: 0.5px solid $apex-dark-grey;
     border-radius: 12px;
     padding-left: 20px;
     padding-right: 20px;
@@ -189,8 +189,8 @@
     &:hover,
     &:focus
     &:focus-visible {
-      color: $apex-grey;
-      border: 0.5px solid $apex-grey;
+      color: $apex-dark-grey;
+      border: 1px solid $apex-dark-grey;
     }
     @include breakpoint($break-ssm) {
       margin: 15px auto;

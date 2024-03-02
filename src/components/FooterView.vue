@@ -109,7 +109,7 @@
     letter-spacing: 0em;
     text-align: left;
     text-decoration: none;
-    background-color: $black;
+    background-color: $apex-green;
     color: $grey-20;
     a {
       color: $grey-20;
@@ -129,10 +129,11 @@
     font-weight: 400;
     font-size: 18px;
     line-height: 28px;
-    background-image: url("../assets/images/YellowCircle.png");
-    background-size: 200px;
-    background-repeat: no-repeat;
-    background-position: right 150px top 0;
+    
+    // background-image: url("../assets/images/YellowCircle.png");
+    // background-size: 200px;
+    // background-repeat: no-repeat;
+    // background-position: right 150px top 0;
     @include breakpoint($break-sm) {
       height: auto;
       flex-direction: column;
