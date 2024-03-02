@@ -6,10 +6,17 @@
   font-family: IBMPlexSansBold;
   src: url(../fonts/IBMPlexSans/IBMPlexSans-Bold.ttf);
 }
-/* Declare a class which applies it */
 .IBMPlexSans {
   font-family: 'IBMPlexSans';
 }
 .IBMPlexSansBold {
   font-family: 'IBMPlexSansBold';
+}
+
+@font-face {
+  font-family: TWKEverett;
+  src: url(../fonts/TWKEverett/TWKEverett-Regular-web.ttf);
+}
+.TWKEverett {
+  font-family: "TWKEverett";
 }

@@ -1,10 +1,12 @@
 <template>
   <Header />
-  <Main />
+  <MainView />
+  <ApeScapesView />
   <Footer />
 </template>
 <script setup lang="ts">
   import Header from "@/components/HeaderView.vue";
-  import Main from "@/components/MainView.vue";
+  import MainView from "@/components/MainView.vue";
+  import ApeScapesView from "@/components/ApeScapesView.vue";
   import Footer from "@/components/FooterView.vue";
 </script>

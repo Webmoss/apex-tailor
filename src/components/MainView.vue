@@ -1,64 +1,62 @@
 <template>
-  <main>
-    <div class="main-container">
-      <div class="tailor-container">
-        <div class="column">
-          <div class="one-quarter">
-            <div class="attribute-box">
-              <img src="../assets/images/apes/1.png" alt="ApeX" width="150px" />
-            </div>
-          </div>
-          <div class="one-quarter">
-            <div class="attribute-box">
-              <img src="../assets/images/apes/1.png" alt="ApeX" width="150px" />
-            </div>
-          </div>
-          <div class="one-quarter">
-            <div class="attribute-box">
-              <img src="../assets/images/apes/1.png" alt="ApeX" width="150px" />
-            </div>
+  <main id="apewear" class="container">
+    <div class="tailor-container">
+      <div class="column">
+        <div class="one-quarter">
+          <div class="attribute-box">
+            <img src="../assets/images/apes/1.png" alt="ApeX" width="150px" />
           </div>
         </div>
-        <div class="column">
-          <div class="two-quarter">
-            <div class="input-row">
-              <input
-                v-model="apeId"
-                name="apeId"
-                type="text"
-                placeholder="Search by ID"
-              />
-            </div>
-          </div>
-          <div class="two-quarter">
-            <div class="image-box">
-              <img src="../assets/images/apes/1.png" alt="ApeX" width="400" />          
-            </div>
-          </div>
-          <div class="two-quarter">
-            <button
-              class="download-button"
-              @click="download()"
-            >
-              Download
-            </button>
+        <div class="one-quarter">
+          <div class="attribute-box">
+            <img src="../assets/images/apes/1.png" alt="ApeX" width="150px" />
           </div>
         </div>
-        <div class="column">
-          <div class="one-quarter">
-            <div class="attribute-box">
-              <img src="../assets/images/apes/1.png" alt="ApeX" width="150px" />
-            </div>
+        <div class="one-quarter">
+          <div class="attribute-box">
+            <img src="../assets/images/apes/1.png" alt="ApeX" width="150px" />
           </div>
-          <div class="one-quarter">
-            <div class="attribute-box">
-              <img src="../assets/images/apes/1.png" alt="ApeX" width="150px" />
-            </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="two-quarter">
+          <div class="input-row">
+            <input
+              v-model="apeId"
+              name="apeId"
+              type="text"
+              placeholder="Search by ID"
+            />
           </div>
-          <div class="one-quarter">
-            <div class="attribute-box">
-              <img src="../assets/images/apes/1.png" alt="ApeX" width="150px" />
-            </div>
+        </div>
+        <div class="two-quarter">
+          <div class="image-box">
+            <img src="../assets/images/apes/1.png" alt="ApeX" width="400" />          
+          </div>
+        </div>
+        <div class="two-quarter">
+          <button
+            class="download-button"
+            @click="download()"
+          >
+            Download
+          </button>
+        </div>
+      </div>
+      <div class="column">
+        <div class="one-quarter">
+          <div class="attribute-box">
+            <img src="../assets/images/apes/1.png" alt="ApeX" width="150px" />
+          </div>
+        </div>
+        <div class="one-quarter">
+          <div class="attribute-box">
+            <img src="../assets/images/apes/1.png" alt="ApeX" width="150px" />
+          </div>
+        </div>
+        <div class="one-quarter">
+          <div class="attribute-box">
+            <img src="../assets/images/apes/1.png" alt="ApeX" width="150px" />
           </div>
         </div>
       </div>
@@ -80,29 +78,56 @@
   @import "@/assets/styles/variables.scss";
   @import "@/assets/styles/mixins.scss";
 
-  main {
-    width: 100%;
-    height: calc(100dvh - 280px);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-content: flex-start;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-  }
+  // main {
+  //   width: 100%;
+  //   height: calc(100dvh - 280px);
+  //   display: flex;
+  //   flex-direction: column;
+  //   justify-content: flex-start;
+  //   align-content: flex-start;
+  //   align-items: center;
+  //   margin: 0;
+  //   padding: 0;
+  // }
 
-  .main-container {
-    width: 100%;
-    max-width: $max-width;
-    height: 100%;
+  // .main-container {
+  //   width: 100%;
+  //   max-width: $max-width;
+  //   height: 100%;
+  //   display: flex;
+  //   flex-direction: column;
+  //   justify-content: center;
+  //   align-content: center;
+  //   align-items: center;
+  //   margin: 0 auto;
+  //   padding: 0;
+  // }
+
+  .container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-content: center;
     align-items: center;
-    margin: 0 auto;
+    height: 55rem;
+    color: $black;
+    background: $grey-20;
+    // background-image: url("../assets/images/large_blue_graphic.png"),
+      // url("../assets/images/GreySwirlBG.png");
+    background-size: auto, contain;
+    background-repeat: no-repeat, no-repeat;
+    background-position: top 10em left -3em, right 0 top 0;
     padding: 0;
+
+    @include breakpoint($break-sm) {
+      height: auto;
+      flex-direction: column;
+      // background-image: url("../assets/images/large_blue_graphic.png");
+      background-size: auto;
+      background-repeat: no-repeat;
+      background-position: top 5em left;
+      padding: 32px 30px 55px 30px;
+    }
   }
 
   .tailor-container {
@@ -117,6 +142,12 @@
     margin: 0 auto;
     padding: 10px;
     border-radius: 12px;
+    @include breakpoint($break-sm) {
+      width: 100%;
+      flex-direction: column;
+      padding-top: 50px;
+    }
+    
   }
 
   .column {
@@ -124,10 +155,14 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-content: flex-start;
+    align-content: center;
     align-items: center;
+    justify-content: center;
     margin: 0;
+
+    @include breakpoint($break-sm) {
+      width: 100%;
+    }
   }
 
   .one-quarter {

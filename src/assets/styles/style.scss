@@ -6,7 +6,7 @@
 :root {
   color: $apex-font;
   background-color: $apex-dark-grey;
-  font-family: Courier, monospace, 'IBMPlexSans', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'IBMPlexSans', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
   font-synthesis: none;
@@ -29,29 +29,23 @@
   height: 100dvh;
   margin: 0 auto;
   padding: 0;
+  text-align: center;
 }
 
 body {
-  min-width: 100%;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-content: flex-start;
-  align-items: center;
-  padding: 0;
   margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  @include breakpoint($break-ssm) {
+    width: 100%;
+    height: 100%;
+  }
 }
 
 .row {
   width: 100%;
-  height: 100%;
-  display: block;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-content: flex-start;
-  align-items: center;
 }
 
 /* ApeX Colour Classes */
@@ -109,4 +103,33 @@ a,
     text-decoration: line-through;
     cursor: pointer;
   }
+}
+
+.scroll-button {
+  color: $grey-80;
+  background-color: $white;
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 900;
+  border: 1px solid $white;
+  border-radius: 30px;
+  margin: 0;
+  cursor: pointer;
+  transition: border-color 0.6s;
+  
+  &:hover {
+    border-color: $apex-green;
+  }
+  &:focus,
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+button:disabled {
+  border: 1px solid $grey-80;
+  background: $grey-20;
+  color: #101010;
+  cursor: not-allowed;
+  transition: border-color 0.6s;
 }
