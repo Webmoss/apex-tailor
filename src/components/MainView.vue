@@ -23,12 +23,24 @@
       <div class="main-column">
         <div class="two-quarter">
           <div class="input-row">
+            <button
+              class="icon-button"
+              @click="resetApe()"
+            >
+              <IconRestart />
+            </button>
             <input
               v-model="apeId"
               name="apeId"
               type="text"
               placeholder="Ape ID #"
             />
+            <button
+              class="icon-button"
+              @click="searchApe()"
+            >
+              <IconPlay />
+            </button>
           </div>
         </div>
         <div class="two-quarter">
@@ -39,10 +51,10 @@
         <div class="two-quarter mobile-hidden">
           <button
             class="green-button"
-            @click="download()"
+            @click="downloadCanvas()"
           >
             Download
-          </button>
+          </button>          
         </div>
       </div>
       <div class="column mobile-hidden">
@@ -103,7 +115,7 @@
           <div class="two-quarter">
             <button
                 class="green-button"
-                @click="download()"
+                @click="downloadCanvas()"
               >
                 Download
             </button>
@@ -119,9 +131,18 @@
 <script setup lang="ts">
   import { ref } from "vue";
 
-  const apeId = ref(null);
+  import IconPlay from "../assets/svgs/icons/IconPlay.vue";
+  import IconRestart from "../assets/svgs/icons/IconRestart.vue";
 
-  function download() {
+  const apeId = ref(0);
+
+  function searchApe() {
+    console.log("Search Ape", this.apeId);
+  }
+  function resetApe() {
+    this.apeId = null;
+  }
+  function downloadCanvas() {
     console.log("Download Image");
   }
 </script>
@@ -311,7 +332,7 @@
   .input-row {
     width: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: roww;
     justify-content: center;
     align-content: center;
     align-items: center;
@@ -319,7 +340,7 @@
     input {
       width: 100%;
       max-width: 300px;
-      height: 50px;
+      height: 48px;
       color: $black;
       background-color: #fdfdfd;
       border: 1px solid $apex-dark-grey;
@@ -327,7 +348,7 @@
       letter-spacing: 1px;
       font-size: 16px;
       line-height: 22px;
-      margin-bottom: 5px;
+      margin: 0 8px;
       padding: 6px 10px;
       text-align: left;
 
