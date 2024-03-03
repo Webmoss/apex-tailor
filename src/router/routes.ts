@@ -4,7 +4,7 @@ const routes = [
     name: "apewear",
     meta: {
       guest: true,
-      title: "apewear",
+      title: "",
       description: "Welcome to ApeWear, we pimp out your nifties",
     },
     component: () => import("../views/HomePage.vue"),

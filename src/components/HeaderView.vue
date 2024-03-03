@@ -9,9 +9,8 @@
         <div class="menu-button-black menu-button"></div>
       </label>
       <ul class="menu-white menu">
-        <li class="link-black" @click="navigateAndScroll('apewear')">ApeWear</li>
-        <li class="link-black" @click="navigateAndScroll('apescapes')">ApeScapes</li>
-        <li class="link-black" @click="navigateAndScroll('faqs')">DOX</li>
+        <li class="link-white" @click="navigateAndScroll('apewear')">ApeWear</li>
+        <li class="link-white" @click="navigateAndScroll('faqs')">ApeScapes</li>
       </ul>
     </nav>
   </header>
@@ -54,23 +53,21 @@
     background-color: $apex-green;
   }
   .top-nav {
-    // background-color: $apex-green;
-    // max-width: $max-width;
-    max-width: 900px;
+    max-width: $max-width;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     padding: 1rem;
     margin: 0 auto;
-    border-bottom-right-radius: 12px;
-    border-bottom-left-radius: 12px;
-    
-    @include breakpoint($break-sm) {
+
+    @include breakpoint($break-ssm) {
       padding: 5px 10px 0;
     }
     @include breakpoint($break-md) {
-      // padding: 10px 20px 0;
+      max-width: 839px;
+      width: 100%;
+      padding: 5px 10px 0;
     }
   }
 
@@ -97,12 +94,20 @@
       color: $apex-dark-grey;
       cursor: pointer;
     }
+    li.link-white {
+      color: $white;
+      cursor: pointer;
+    }
   }
   .menu > li {
     margin: 0 1rem;
     overflow: hidden;
-    color: $grey-100;
     text-decoration: none;
+    font-family: "TWKEverett";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
   }
   .menu-button-container {
     display: none;
@@ -121,7 +126,7 @@
   .menu-button-black,
   .menu-button-black::before,
   .menu-button-black::after {
-    background-color: $grey-100;
+    background-color: $apex-dark-grey;
   }
 
   .menu-button,
@@ -165,14 +170,14 @@
     }
 
     .menu {
+      width: 100%;
       position: absolute;
       top: 0;
-      margin-top: 74px;
       left: 0;
       flex-direction: column;
-      width: 100%;
       justify-content: center;
       align-items: center;
+      margin-top: 54px;
     }
 
     #menu-toggle ~ .menu li {
@@ -186,18 +191,18 @@
     #menu-toggle:checked ~ .menu li {
       display: flex;
       align-items: center;
-      height: 2.5em;
+      height: 3em;
       padding: 0.5em;
       transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
     }
 
-    #menu-toggle:checked ~ .menu-white li {
-      border-top: 1px solid $grey-100;
-    }
+    // #menu-toggle:checked ~ .menu-white li {
+    //   border-top: 1px solid $grey-20;
+    // }
 
-    #menu-toggle:checked ~ .menu-black li {
-      border-top: 1px solid $black;
-    }
+    // #menu-toggle:checked ~ .menu-black li {
+    //   border-top: 1px solid $black;
+    // }
 
     .menu > li {
       display: flex;
@@ -208,8 +213,12 @@
     }
 
     .menu-black {
-      background-color: $grey-20;
-      border-bottom: 1px solid $black;
+      background-color:$apex-dark-grey;
+      // border-bottom: 1px solid $black;
+    }
+    .menu-white {
+      background-color: $apex-dark-grey;
+      // border-bottom: 1px solid $white;
     }
   }
 </style>

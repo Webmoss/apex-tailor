@@ -6,35 +6,27 @@
     </div>
     <div class="row">
       <div class="container">
-        <div>
-          <div class="title">
-            Apes<br />
-            Gone<br />
-            Wild
-          </div>
+        <div class="title">
+          Apes<br />
+          Gone<br />
+          Wild
         </div>
-        <div>
-          <div class="slogan">
-            Create and download custom<br> banners for your Apes
-            <br>
-            <br>
-            <div class="button-container-start">
-              <button
-                class="download-button"
-                @click="goHome()"
-              >
-                ApeWear
-              </button>
-            </div>
-          </div>
+        <div class="slogan">
+          Create custom banners<br class="mobile-hidden"> for your Ape NFTs
+        </div>        
+        <div class="button-container-start">
+          <button
+            class="green-button"
+            @click="goHome()"
+          >
+            ApeWear
+          </button>
         </div>
-        <div>
-      </div>
       </div>
     </div>
   </div>
 </template>
-<script lang="ts" setup>
+<script setup>
   import { onMounted } from "vue";
   import { useRouter } from "vue-router";
 
@@ -49,7 +41,7 @@
     const scrollTrackingTimeline = new ScrollTimeline({
       source: document.scrollingElement,
       orientation: "block",
-      scrollOffsets: [CSS.percent(0), CSS.px(700)],
+      scrollOffsets: [CSS.percent(0), CSS.px(900)],
     });
     if (scrollTracker) {
       scrollTracker.animate(
@@ -62,10 +54,11 @@
 <style lang="scss" scoped>
   @import "@/assets/styles/variables.scss";
   @import "@/assets/styles/mixins.scss";
+
   .main-container {
     position: relative;
     width: 100%;
-    height: 45rem;
+    height: calc(100% - 88px);
     top: 0;
     padding: 0;
     margin: 0 auto;
@@ -76,11 +69,9 @@
     transform-origin: left;
 
     @include breakpoint($break-sm) {
-      height: 85dvh;
+      height: 60%;
+      min-height: 380px;
       background-image: none;
-    }
-    @include breakpoint($break-md) {
-      height: 95dvh;
     }
   }
 
@@ -95,7 +86,7 @@
     background: $apex-dark-grey;
     transform-origin: left;
     height: 100%;
-    width: 50%;
+    width: 60%;
     @include breakpoint($break-sm) {
       display: none;
     }
@@ -106,8 +97,8 @@
     // background-image: url("../assets/images/tiles/Tileable_Grey.png");
     // background-size: 300px;
     // background-repeat: repeat;
-    background-position: left 0 top 51%;
-    width: 55%;
+    // background-position: left 0 top 51%;
+    width: 45%;
     @include breakpoint($break-sm) {
       width: 100%;
     }
@@ -119,21 +110,21 @@
   }
 
   .title {
+    width: 100%;
+    color: $white;
     font-family: "TWKEverett";
     font-style: normal;
     text-align: left;
-    max-width: 900px;
-    font-size: 84px;
-    line-height: 86px;
+    font-size: 120px;
+    line-height: 120px;
     text-align: left;
-    margin: 120px 0 0 50px;
-    color: $white;
+    margin: 20% 0 0 20%;
 
     @include breakpoint($break-sm) {
       font-weight: 400;
-      font-size: 34px;
-      line-height: 40px;
-      margin: 50px 0 0 10px;
+      font-size: 40px;
+      line-height: 44px;
+      margin: 30px 0 20px 20px;
     }
 
     @include breakpoint($break-md) {
@@ -143,57 +134,22 @@
     }
   }
   .slogan {
-    max-width: 700px;
+    width: 100%;
     color: $white;
-    font-family: "TWKEverett";
+    
+    // font-family: "TWKEverett";
     font-style: normal;
     font-weight: 400;
-    font-size: 34px;
-    line-height: 42px;
+    font-size: 42px;
+    line-height: 48px;
     text-align: left;
-    margin: 50px 50px 196px 50px;
+    margin: 6% 0 5% 20%;
 
     @include breakpoint($break-sm) {
       font-size: 20px;
       line-height: 28px;
-      margin: 15px 0 0 0;
-    }
-
-    @include breakpoint($break-md) {
-      font-size: 30px;
-      line-height: 36px;
-      max-width: 550px;
-      margin: 30px 10px 0 10px;
-    }
-  }
-
-  .download-button {
-    width: 300px;
-    height: 40px;
-    display: flex;
-    flex-direction: row nowrap;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-    color: $white;
-    background-color: $apex-green;
-    font-size: 18px;
-    font-weight: 600;
-    border: 0.5px solid $apex-dark-grey;
-    border-radius: 12px;
-    padding-left: 20px;
-    padding-right: 20px;
-    transition: all 0.3s linear;
-    cursor: pointer;
-
-    &:hover,
-    &:focus
-    &:focus-visible {
-      color: $apex-dark-grey;
-      border: 1px solid $apex-dark-grey;
-    }
-    @include breakpoint($break-ssm) {
-      margin: 15px auto;
+      margin: 10px 0;
+      padding-left: 20px;
     }
   }
 
@@ -204,6 +160,19 @@
     align-content: center;
     align-items: center;
     justify-content: space-between;
+  }
+  .button-container-start {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    justify-content: flex-start;
+    margin-left: 20%;
+    @include breakpoint($break-sm) {
+      margin: 0;
+      padding: 0;
+    }
   }
   .button-container-center {
     width: 100%;

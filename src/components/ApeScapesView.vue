@@ -15,12 +15,12 @@
         </div>
         <div>
           <div class="slogan">
-            Create and download custom<br> banners for your Apes
+            Create custom banners<br class="mobile-hidden"> for your Ape NFTs
             <br>
             <br>
             <div class="button-container-start">
               <button
-                class="download-button"
+                class="green-button"
                 @click="goBanners()"
               >
                 ApeScapes
@@ -49,7 +49,7 @@
     const scrollTrackingTimeline = new ScrollTimeline({
       source: document.scrollingElement,
       orientation: "block",
-      scrollOffsets: [CSS.percent(0), CSS.px(700)],
+      scrollOffsets: [CSS.percent(0), CSS.px(900)],
     });
     if (scrollTracker) {
       scrollTracker.animate(
@@ -69,7 +69,7 @@
     top: 0;
     padding: 0;
     margin: 0 auto;
-    background-image: url("../assets/images/tiles/Tileable_Grey.png");
+    background-image: url("../assets/images/tiles/Tileable_Green.png");
     background-size: 300px;
     background-repeat: repeat;
     background-position: top right;
@@ -80,7 +80,7 @@
       background-image: none;
     }
     @include breakpoint($break-md) {
-      height: 95dvh;
+      height: 85dvh;
     }
   }
 
@@ -95,18 +95,18 @@
     background: $apex-dark-grey;
     transform-origin: left;
     height: 100%;
-    width: 50%;
+    width: 80%;
     @include breakpoint($break-sm) {
       display: none;
     }
   }
 
   .grey-div {
-    background-color: $white;
+    background: $white;
     // background-image: url("../assets/images/tiles/Tileable_Grey.png");
     // background-size: 300px;
     // background-repeat: repeat;
-    background-position: left 0 top 51%;
+    // background-position: left 0 top 51%;
     width: 55%;
     @include breakpoint($break-sm) {
       width: 100%;
@@ -126,14 +126,14 @@
     font-size: 84px;
     line-height: 86px;
     text-align: left;
-    margin: 120px 0 0 50px;
+    margin: 120px 0 0 60px;
     color: $grey-100;
 
     @include breakpoint($break-sm) {
       font-weight: 400;
       font-size: 34px;
       line-height: 40px;
-      margin: 50px 0 0 10px;
+      margin: 40px 0 0 10px;
     }
 
     @include breakpoint($break-md) {

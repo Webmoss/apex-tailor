@@ -13,19 +13,22 @@
           <div class="footer-right">
             <ul class="social-links">
               <li>
-                <a href="https://twitter.com/webmoss" alt="Twitter" target="_blank">Twitter →</a>
+                <a href="https://discord.gg/apescriptions" alt="Discord" target="_blank">Discord →</a>
               </li>
               <li>
-                <a
-                  href="https://ethglobal.com/showcase/apepay-vr5js"
-                  alt="EthGlobal Showcase"
-                  target="_blank"
-                  >Showcase →</a
+                <a href="https://twitter.com/apescriptions" alt="Twitter" target="_blank">Twitter →</a>
+              </li>
+              <li>
+                <a href="https://ordex.io/collection/eth/apescriptions" alt="Ordex" target="_blank"
+                  >Ordex →</a
                 >
               </li>
               <li>
-                <a href="https://github.com/Webmoss/ape-pay" alt="Github" target="_blank"
-                  >Github →</a
+                <a
+                  href="https://www.apescriptions.xyz/"
+                  alt="Apescriptions"
+                  target="_blank"
+                  >Website →</a
                 >
               </li>
             </ul>
@@ -110,9 +113,9 @@
     text-align: left;
     text-decoration: none;
     background-color: $apex-green;
-    color: $grey-20;
+    color: $white;
     a {
-      color: $grey-20;
+      color: $white;
       text-decoration: none;
     }
   }
@@ -143,9 +146,6 @@
       flex-direction: row;
       padding: 20px;
     }
-    @include breakpoint($break-lg) {
-      padding: 4rem 100px;
-    }
   }
   .footer-left {
     p {
@@ -164,27 +164,6 @@
   .footer-right {
     display: flex;
     flex-direction: column;
-  }
-
-  .social-links {
-    padding-left: 30px;
-    list-style: none;
-    font-family: "TWKEverett";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 28px;
-    text-decoration-line: underline;
-    text-underline-offset: 3px;
-  }
-  .social-links li {
-    padding-bottom: 0.5rem;
-    @include breakpoint($break-md) {
-      padding-right: 20px;
-    }
-    @include breakpoint($break-lg) {
-      padding-right: 0;
-    }
   }
 
   .container {
@@ -220,6 +199,27 @@
     }
   }
 
+  .social-links {
+    padding-left: 30px;
+    list-style: none;
+    font-family: "TWKEverett";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+    cursor: pointer;
+  }
+
+  .social-links li {
+    padding-bottom: 0.5rem;
+    @include breakpoint($break-md) {
+      padding-right: 20px;
+    }
+    @include breakpoint($break-lg) {
+      padding-right: 0;
+    }
+  }
+
   .site-links {
     list-style: none;
     font-family: "TWKEverett";
@@ -227,12 +227,16 @@
     font-weight: 400;
     font-size: 18px;
     line-height: 28px;
-    text-decoration-line: underline;
-    text-underline-offset: 3px;
     cursor: pointer;
   }
   .site-links li {
     padding-bottom: 0.5rem;
+    @include breakpoint($break-md) {
+      padding-right: 20px;
+    }
+    @include breakpoint($break-lg) {
+      padding-right: 0;
+    }
   }
 
   .footer .scroll-to-top {
@@ -241,8 +245,11 @@
     height: 60px;
     border-radius: 8px;
     padding: 20px;
+    border: 1px solid $grey-20;
 
-    &:hover {
+    &:hover 
+    &:focus
+    &:focus-visible {
       border-color: $apex-green;
     }
   }
@@ -252,13 +259,13 @@
   .scroll-to-top {
     margin-left: unset;
     display: flex;
+    cursor: pointer;
     @include breakpoint($break-sm) {
       display: none;
       border: none;
-      height: 60px;
-      width: 60px;
+      height: 50px;
+      width: 50px;
       border-radius: 4px;
-      cursor: pointer;
       margin-left: auto;
       align-items: center;
       justify-content: center;

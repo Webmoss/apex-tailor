@@ -89,19 +89,50 @@ a,
 .link {
   font-family: "TWKEverett";
   font-style: normal;
-  font-size: 22px;
+  font-size: 20px;
   line-height: 26px;
   font-weight: 400;
   text-align: left;
-  text-decoration-line: none;
-  color: $grey-100;
+  // text-decoration-line: none;
+  color: $white;
   padding-bottom: 0.3rem;
   transition: transform 600ms cubic-bezier(0.23, 1, 0.32, 1);
   &:hover,
   &:active,
   &:focus {
-    text-decoration: line-through;
+    // text-decoration: line-through;
     cursor: pointer;
+  }
+}
+
+.green-button {
+  width: 300px;
+  height: 50px;
+  display: flex;
+  flex-direction: row nowrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  color: $white;
+  
+  background-color: $apex-green;
+  font-size: 18px;
+  font-weight: 600;
+  border: 1px solid $apex-dark-grey;
+  border-radius: 8px;
+  padding-left: 20px;
+  padding-right: 20px;
+  transition: all 0.2s linear;
+  cursor: pointer;
+
+  &:hover,
+  &:focus
+  &:focus-visible {
+    color: $apex-dark-grey;
+    border: 1px solid $white;
+  }
+  @include breakpoint($break-ssm) {
+    margin: 0 auto;
   }
 }
 
@@ -132,4 +163,23 @@ button:disabled {
   color: #101010;
   cursor: not-allowed;
   transition: border-color 0.6s;
+}
+
+
+.mobile-hidden {
+  display: block;
+  @include breakpoint($break-ssm) {
+    display: none !important;
+  }
+  @include breakpoint($break-sm) {
+    display: none !important
+  }
+}
+
+.mobile-show {
+  display: none;
+  @include breakpoint($break-sm) {
+    display: block;
+  }
+
 }
