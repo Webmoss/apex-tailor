@@ -2,7 +2,19 @@
   <div id="banners" class="container">
     <div class="intro">
       <div class="left-side">
-        <div id="banners" class="card">
+        <div class="card">
+          <div class="banner-image">
+            <img src="../assets/images/banners/banner0.png" alt="Banner" />
+          </div>
+          <div class="banner-image">
+            <img src="../assets/images/banners/banner1.png" alt="Banner" />
+          </div>
+          <div class="banner-image">
+            <img src="../assets/images/banners/banner2.png" alt="Banner" />
+          </div>
+          <div class="banner-image">
+            <img src="../assets/images/banners/banner3.png" alt="Banner" />
+          </div>
         </div>
       </div>
       <div class="right-side">
@@ -77,14 +89,14 @@
     }
 
     .card {
-      width: calc(100% - 4rem);
+      width: calc(80% - 4rem);
       height: 800px;
       display: flex;
       flex-direction: column;
       align-content: center;
       align-items: center;
       justify-content: flex-start;
-      padding: 2em 2em 0;
+      padding: 20px 0;
       border-radius: 14px;
       border: 0.5px solid $apex-green;
       color: $white;
@@ -96,6 +108,47 @@
         align-items: center;
         justify-content: flex-start;
       }
+
+      .banner-image {
+        width: 660px;
+        height: 400px;
+        background: #f4f4f4;
+        border: 2px solid #f4f4f4;
+        border-radius: 12px;
+        margin: 0 0 20px 0;
+        padding: 0;
+        transition: all 0.5s linear;
+        overflow: hidden;
+        cursor: pointer;
+
+        img {
+          display: block;
+          object-fit: cover;
+          width: 660px;
+          height: 100%;
+        }
+
+        @include breakpoint($break-sm) {
+          width: 100%;
+          height: auto;
+          img {
+            display: block;
+            width: 100%;
+            height: auto;
+          }
+        }
+
+        @include breakpoint($break-ssm) {
+          width: 100%;
+          height: auto;
+          img {
+            display: block;
+            width: 100%;
+            height: auto;
+          }
+        }
+      }
+      
     }
   }
 
