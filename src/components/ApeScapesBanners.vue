@@ -6,63 +6,69 @@
     </div>
     <div class="row">
       <div class="container">
-        <div class="title">
-          Apes<br />
-          Gone<br />
-          Wild
+        <div class="row">
+          <div class="column">
+            <div class="title">
+              Apes<br />
+              Gone<br />
+              Wild
+            </div>
+          </div>
+          <div class="column">
+            <div class="promo-ape">
+              <img src="../assets/images/promos/PromoApe.png" alt="Hoodie Gang" />
+            </div>
+          </div>
         </div>
         <div class="slogan">
-          Create custom banners<br class="mobile-hidden"> for your Ape NFTs
-        </div>        
+          Create custom banners<br class="mobile-hidden" />
+          for your Ape NFTs
+        </div>
         <div class="button-container-start">
-          <button
-            class="green-button"
-            @click="goHome()"
-          >
-            ApeWear
-          </button>
+          <button class="green-button" @click="goHome()">ApeWear</button>
         </div>
       </div>
     </div>
   </div>
 </template>
 <script setup>
-  import { onMounted } from "vue";
-  import { useRouter } from "vue-router";
+  import { onMounted } from 'vue';
+  import { useRouter } from 'vue-router';
 
   const router = useRouter();
 
   function goHome() {
-    router.push({ name: "apewear" });
+    router.push({ name: 'apewear' });
   }
 
   onMounted(async () => {
-    const scrollTracker = document.querySelector(".scroll-tracker");
+    const scrollTracker = document.querySelector('.scroll-tracker');
     const scrollTrackingTimeline = new ScrollTimeline({
       source: document.scrollingElement,
-      orientation: "block",
-      scrollOffsets: [CSS.percent(0), CSS.px(900)],
+      orientation: 'block',
+      scrollOffsets: [CSS.percent(0), CSS.px(900)]
     });
     if (scrollTracker) {
       scrollTracker.animate(
-        { transform: ["scaleX(0)", "scaleX(1)"] },
+        { transform: ['scaleX(0)', 'scaleX(1)'] },
         { duration: 1, timeline: scrollTrackingTimeline }
       );
     }
   });
 </script>
 <style lang="scss" scoped>
-  @import "@/assets/styles/variables.scss";
-  @import "@/assets/styles/mixins.scss";
+  @import '@/assets/styles/variables.scss';
+  @import '@/assets/styles/mixins.scss';
 
   .main-container {
     position: relative;
     width: 100%;
-    height: calc(100% - 88px);
+    // height: calc(100dvh - 88px);
+    height: 50rem; 
     top: 0;
     padding: 0;
     margin: 0 auto;
-    background-image: url("../assets/images/tiles/Tileable_Grey.png");
+    background-image: url('../assets/images/tiles/Tileable_Grey.png');
     background-size: 300px;
     background-repeat: repeat;
     background-position: top right;
@@ -83,7 +89,7 @@
   }
 
   .scroll-tracker {
-    background: $apex-dark-grey;
+    background: $apex-grey;
     transform-origin: left;
     height: 100%;
     width: 60%;
@@ -93,12 +99,12 @@
   }
 
   .grey-div {
-    background: $apex-dark-grey;
+    background: $apex-grey;
     // background-image: url("../assets/images/tiles/Tileable_Grey.png");
     // background-size: 300px;
     // background-repeat: repeat;
     // background-position: left 0 top 51%;
-    width: 45%;
+    width: 60%;
     @include breakpoint($break-sm) {
       width: 100%;
     }
@@ -109,22 +115,64 @@
     top: 0;
   }
 
-  .title {
+  .row {
     width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .column {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .promo-ape{
+    width: 240px;
+    height: auto;
+
+    border-radius: 12px;
+    overflow: hidden;
+
+    margin: 120px 0 0 80px;
+
+    @include breakpoint($break-sm) {
+      width: 180px;
+      margin: 40px 0 0 40px;
+    }
+
+    @include breakpoint($break-md) {
+      width: 220px;
+    }
+    
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .title {
     color: $white;
-    font-family: "TWKEverett";
+    font-family: 'TWKEverett';
     font-style: normal;
     text-align: left;
-    font-size: 120px;
-    line-height: 120px;
+    font-size: 84px;
+    line-height: 84px;
     text-align: left;
-    margin: 20% 0 0 20%;
+    // margin: 20% 0 0 20%;
+    margin: 120px 0 0 60px;
 
     @include breakpoint($break-sm) {
       font-weight: 400;
-      font-size: 40px;
-      line-height: 44px;
-      margin: 30px 0 20px 20px;
+      font-size: 34px;
+      line-height: 40px;
+      margin: 40px 0 0 10px;
     }
 
     @include breakpoint($break-md) {
@@ -133,23 +181,30 @@
       max-width: 650px;
     }
   }
+
   .slogan {
     width: 100%;
     color: $white;
-    
-    // font-family: "TWKEverett";
+    font-family: "TWKEverett";
     font-style: normal;
     font-weight: 400;
     font-size: 42px;
     line-height: 48px;
     text-align: left;
-    margin: 6% 0 5% 20%;
+    // margin: 6% 0 5% 20%;
+    margin: 50px 50px 40px 50px;
 
     @include breakpoint($break-sm) {
       font-size: 20px;
       line-height: 28px;
-      margin: 10px 0;
-      padding-left: 20px;
+      margin: 15px 0 0 0;
+    }
+
+    @include breakpoint($break-md) {
+      font-size: 30px;
+      line-height: 36px;
+      max-width: 550px;
+      margin: 30px 10px 0 10px;
     }
   }
 

@@ -1,7 +1,6 @@
 <template>
   <main id="apewear" class="container">
     <div class="tailor-container">
-
       <div class="column mobile-hidden">
         <div class="one-quarter">
           <div class="attribute-box">
@@ -23,38 +22,22 @@
       <div class="main-column">
         <div class="two-quarter">
           <div class="input-row">
-            <button
-              class="icon-button"
-              @click="resetApe()"
-            >
+            <button class="icon-button" @click="resetApe()">
               <IconRestart />
             </button>
-            <input
-              v-model="apeId"
-              name="apeId"
-              type="text"
-              placeholder="Ape ID #"
-            />
-            <button
-              class="icon-button"
-              @click="searchApe()"
-            >
+            <input v-model="apeId" name="apeId" type="text" placeholder="Ape ID #" />
+            <button class="icon-button" @click="searchApe()">
               <IconPlay />
             </button>
           </div>
         </div>
         <div class="two-quarter">
           <div class="image-box">
-            <img src="../assets/images/apes/0.png" alt="ApeX" />          
+            <img src="../assets/images/apes/0.png" alt="ApeX" />
           </div>
         </div>
         <div class="two-quarter mobile-hidden">
-          <button
-            class="green-button"
-            @click="downloadCanvas()"
-          >
-            Download
-          </button>          
+          <button class="green-button" @click="downloadCanvas()">Download</button>
         </div>
       </div>
       <div class="column mobile-hidden">
@@ -113,43 +96,38 @@
         </div>
         <div class="column">
           <div class="two-quarter">
-            <button
-                class="green-button"
-                @click="downloadCanvas()"
-              >
-                Download
-            </button>
+            <button class="green-button" @click="downloadCanvas()">Download</button>
           </div>
         </div>
       </div>
     </div>
     <!-- END Mobile Versions -->
-
   </main>
 </template>
 
 <script setup lang="ts">
-  import { ref } from "vue";
+  import { ref } from 'vue';
 
-  import IconPlay from "../assets/svgs/icons/IconPlay.vue";
-  import IconRestart from "../assets/svgs/icons/IconRestart.vue";
+  import IconPlay from '../assets/svgs/icons/IconPlay.vue';
+  import IconRestart from '../assets/svgs/icons/IconRestart.vue';
 
-  const apeId = ref(0);
+  const apeId = ref(null);
 
   function searchApe() {
-    console.log("Search Ape", this.apeId);
+    console.log('Search Ape', this.apeId);
   }
   function resetApe() {
+    console.log("Ape ID:", this.apeId);
     this.apeId = null;
   }
   function downloadCanvas() {
-    console.log("Download Image");
+    console.log('Download Image');
   }
 </script>
 
 <style lang="scss" scoped>
-  @import "@/assets/styles/variables.scss";
-  @import "@/assets/styles/mixins.scss";
+  @import '@/assets/styles/variables.scss';
+  @import '@/assets/styles/mixins.scss';
 
   .container {
     display: flex;
@@ -161,7 +139,7 @@
     color: $black;
     // background: $grey-20;
     // background-image: url("../assets/images/large_blue_graphic.png"),
-      // url("../assets/images/GreySwirlBG.png");
+    // url("../assets/images/GreySwirlBG.png");
     // background-size: auto, contain;
     // background-repeat: no-repeat, no-repeat;
     // background-position: top 10em left -3em, right 0 top 0;
@@ -175,14 +153,11 @@
       // background-repeat: no-repeat;
       // background-position: top 5em left;
       // padding: 32px 30px 55px 30px;
-      padding: 0
+      padding: 0;
     }
   }
 
   .tailor-container {
-    background-color: $apex-grey;
-    width: auto;
-    height: auto;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -191,12 +166,14 @@
     margin: 0 auto;
     padding: 10px;
     border-radius: 12px;
+    background-color: $apex-dark-grey;
+    // border: 0.5px solid $apex-green;
 
     @include breakpoint($break-ssm) {
       width: 100%;
       padding: 4px;
       flex-direction: column;
-    }    
+    }
   }
 
   .column {
@@ -242,7 +219,7 @@
 
     @include breakpoint($break-sm) {
       width: 100%;
-      padding: 10px;
+      padding: 10px 0;
     }
   }
 
@@ -294,7 +271,7 @@
     width: 160px;
     height: 160px;
     background: #f4f4f4;
-    border: 2px solid #f4f4f4;
+    // border: 1px solid #f4f4f4;
     border-radius: 12px;
     margin: 0;
     padding: 0;
@@ -304,28 +281,23 @@
 
     img {
       display: block;
-      width: 160px;
-      height: 160px;
+      width: 100%;
+      height: 100%;
+    }
+
+    @include breakpoint($break-md) {
+      width: 120px;
+      height: 120px;
     }
 
     @include breakpoint($break-sm) {
-      width: 84px;
-      height: 84px;
-      img {
-        display: block;
-        width: 84px;
-        height: 84px;
-      }
+      width: 105px;
+      height: 105px;
     }
 
     @include breakpoint($break-ssm) {
-      width: 70px;
-      height: 70px;
-      img {
-        display: block;
-        width: 70px;
-        height: 70px;
-      }
+      width: 90px;
+      height: 90px;
     }
   }
 
@@ -368,7 +340,7 @@
       letter-spacing: 1px;
       cursor: not-allowed;
     }
-    
+
     input:focus {
       border: 1px solid $apex-green;
       outline: none;

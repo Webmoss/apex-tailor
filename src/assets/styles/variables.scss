@@ -3,7 +3,7 @@ $apex-green: #c1d82d;
 $apex-grey: #2e2e2e;
 $apex-dark-grey: #242424;
 
-$apex-font: #C9C9C9;
+$apex-font: #c9c9c9;
 $apex-bg: rgb(17, 16, 16);
 
 /* Greys, Blacks & Whites */
@@ -21,14 +21,12 @@ $white: #ffffff;
 $cream: #ece5e1;
 
 /* Responsive Breakpoints */
-$break-xxs: 360px !default;
-$break-xs: 479px !default;
-$break-ssm: 769px !default;
-$break-sm: 839px !default;
-$break-md: 959px !default;
-$break-lg: 1023px !default;
-$break-xl: 1279px !default;
-$break-xxl: 1439px !default;
+$break-ssm: 360px !default;
+$break-sm: 479px !default;
+$break-md: 769px !default;
+$break-lg: 839px !default;
+$break-xl: 959px !default;
+$break-xxl: 1279px !default;
 $break-xxxl: 2872px !default;
 
 /* Display Settings */

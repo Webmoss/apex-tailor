@@ -1,18 +1,18 @@
-import { nextTick } from "vue";
-import { createRouter, createWebHistory } from "vue-router";
+import { nextTick } from 'vue';
+import { createRouter, createWebHistory } from 'vue-router';
 
-import { authGuard } from "./guards";
-import routes from "./routes";
+import { authGuard } from './guards';
+import routes from './routes';
 
-const baseURL = "";
-const baseTitle = "ApeWear";
+const baseURL = '';
+const baseTitle = 'ApeWear';
 
 const router = createRouter({
   history: createWebHistory(baseURL),
   scrollBehavior(to, from, savedPosition) {
     return savedPosition || { top: 0, left: 0 };
   },
-  routes,
+  routes
 });
 
 router.beforeEach((to, from, next) => {

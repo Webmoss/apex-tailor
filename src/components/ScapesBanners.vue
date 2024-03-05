@@ -24,12 +24,10 @@
             1. Connect your wallet<br />
             2. Select your X banner<br />
             3. Use ApeCoin for transactions<br />
-            4. Share on social media  →
+            4. Share on social media →
           </p>
           <p>
-            <a class="link" href="#" target="_blank" alt="Share Banner"
-              >Share
-            </a>
+            <a class="link" href="#" target="_blank" alt="Share Banner">Share </a>
             <br />
           </p>
         </div>
@@ -37,12 +35,10 @@
     </div>
   </div>
 </template>
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 <style lang="scss" scoped>
-  @import "@/assets/styles/variables.scss";
-  @import "@/assets/styles/mixins.scss";
+  @import '@/assets/styles/variables.scss';
+  @import '@/assets/styles/mixins.scss';
   .container {
     display: flex;
     flex-direction: column;
@@ -101,7 +97,7 @@
       border: 0.5px solid $apex-green;
       color: $white;
       background: $apex-grey;
-      
+
       @include breakpoint($break-sm) {
         width: calc(100% - 1rem);
         align-content: flex-start;
@@ -148,7 +144,6 @@
           }
         }
       }
-      
     }
   }
 
@@ -162,7 +157,7 @@
 
     @include breakpoint($break-sm) {
       width: 100%;
-    } 
+    }
   }
 
   .description {
@@ -174,7 +169,7 @@
     }
 
     h2 {
-      font-family: "TWKEverett";
+      font-family: 'TWKEverett';
       font-style: normal;
       font-weight: 400;
       font-size: 34px;
@@ -203,7 +198,7 @@
         font-size: 16px;
         line-height: 20px;
         margin: 0 0 10px 0;
-      }      
-    } 
+      }
+    }
   }
 </style>

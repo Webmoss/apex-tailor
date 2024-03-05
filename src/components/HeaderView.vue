@@ -16,26 +16,26 @@
   </header>
 </template>
 <script setup lang="ts">
-  import { reactive } from "vue";
-  import { useRoute } from "vue-router";
+  import { reactive } from 'vue';
+  import { useRoute } from 'vue-router';
 
   const route = useRoute();
 
   const state = reactive({
-    toggleMenu: false,
+    toggleMenu: false
   });
 
   function scrollPageToTop() {
     window.scrollTo({
       top: 0,
       left: 0,
-      behavior: "smooth",
+      behavior: 'smooth'
     });
   }
 
   function scrolltoId(to: string) {
     const access = document.getElementById(to);
-    if (access) access.scrollIntoView({ block: "start", behavior: "smooth" });
+    if (access) access.scrollIntoView({ block: 'start', behavior: 'smooth' });
   }
 
   function navigateAndScroll(to: string) {
@@ -47,12 +47,16 @@
   }
 </script>
 <style lang="scss" scoped>
-  @import "@/assets/styles/variables.scss";
-  @import "@/assets/styles/mixins.scss";
+  @import '@/assets/styles/variables.scss';
+  @import '@/assets/styles/mixins.scss';
   header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
     background-color: $apex-green;
   }
   .top-nav {
+    width: 100%;
     max-width: $max-width;
     display: flex;
     flex-direction: row;
@@ -103,7 +107,7 @@
     margin: 0 1rem;
     overflow: hidden;
     text-decoration: none;
-    font-family: "TWKEverett";
+    font-family: 'TWKEverett';
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
@@ -141,12 +145,12 @@
   }
 
   .menu-button::before {
-    content: "";
+    content: '';
     margin-top: -8px;
   }
 
   .menu-button::after {
-    content: "";
+    content: '';
     margin-top: 8px;
   }
 
@@ -213,7 +217,7 @@
     }
 
     .menu-black {
-      background-color:$apex-dark-grey;
+      background-color: $apex-dark-grey;
       // border-bottom: 1px solid $black;
     }
     .menu-white {

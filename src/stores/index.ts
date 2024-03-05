@@ -1,17 +1,17 @@
-import { defineStore } from "pinia";
-import { type apeObject } from "@/models/ape";
+import { defineStore } from 'pinia';
+import { type apeObject } from '@/models/ape';
 
 export const useStore = defineStore({
-  id: "store",
+  id: 'store',
   state: () => ({
     loading: false,
-    chainId: "",
-    account: "",
-    ethBalance: "",
+    chainId: '',
+    account: '',
+    ethBalance: '',
     apes: [] as apeObject[],
     tailorApe: <apeObject>{},
-    searchApeId: "all",
-    searchResults: [] as apeObject[],
+    searchApeId: 'all',
+    searchResults: [] as apeObject[]
   }),
   getters: {
     getLoading(state) {
@@ -37,7 +37,7 @@ export const useStore = defineStore({
     },
     getSearchResults(state) {
       return state.searchResults;
-    },
+    }
   },
   actions: {
     setLoading(value: boolean) {
@@ -65,8 +65,8 @@ export const useStore = defineStore({
       this.searchResults = apes;
     },
     clearSearchResults() {
-      this.searchApeId = "all";
+      this.searchApeId = 'all';
       this.searchResults = [];
-    },
-  },
+    }
+  }
 });

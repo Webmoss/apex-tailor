@@ -1,5 +1,5 @@
-import type { NavigationGuardNext, RouteLocationNormalized } from "vue-router";
-import { useStore } from "@/stores";
+import type { NavigationGuardNext, RouteLocationNormalized } from 'vue-router';
+import { useStore } from '@/stores';
 
 export const authGuard = async (to: RouteLocationNormalized, next: NavigationGuardNext) => {
   const store = useStore();
@@ -10,7 +10,7 @@ export const authGuard = async (to: RouteLocationNormalized, next: NavigationGua
     }
     return next();
   } catch (error) {
-    return next({ name: "apewear" });
+    return next({ name: 'apewear' });
   } finally {
     store.setLoading(false);
   }

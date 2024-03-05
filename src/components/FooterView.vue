@@ -13,10 +13,14 @@
           <div class="footer-right">
             <ul class="social-links">
               <li>
-                <a href="https://discord.gg/apescriptions" alt="Discord" target="_blank">Discord →</a>
+                <a href="https://discord.gg/apescriptions" alt="Discord" target="_blank"
+                  >Discord →</a
+                >
               </li>
               <li>
-                <a href="https://twitter.com/apescriptions" alt="Twitter" target="_blank">Twitter →</a>
+                <a href="https://twitter.com/apescriptions" alt="Twitter" target="_blank"
+                  >Twitter →</a
+                >
               </li>
               <li>
                 <a href="https://ordex.io/collection/eth/apescriptions" alt="Ordex" target="_blank"
@@ -24,10 +28,7 @@
                 >
               </li>
               <li>
-                <a
-                  href="https://www.apescriptions.xyz/"
-                  alt="Apescriptions"
-                  target="_blank"
+                <a href="https://www.apescriptions.xyz/" alt="Apescriptions" target="_blank"
                   >Website →</a
                 >
               </li>
@@ -74,7 +75,7 @@
 </template>
 
 <script setup lang="ts">
-  import { useRoute } from "vue-router";
+  import { useRoute } from 'vue-router';
 
   const route = useRoute();
 
@@ -88,24 +89,25 @@
 
   const scrolltoId = (to: string) => {
     const access = document.getElementById(to);
-    if (access) access.scrollIntoView({ behavior: "smooth" });
+    if (access) access.scrollIntoView({ behavior: 'smooth' });
   };
 
   const scrollPageToTop = () => {
     window.scrollTo({
       top: 0,
       left: 0,
-      behavior: "smooth",
+      behavior: 'smooth'
     });
   };
 </script>
 
 <style lang="scss" scoped>
-  @import "@/assets/styles/variables.scss";
-  @import "@/assets/styles/mixins.scss";
+  @import '@/assets/styles/variables.scss';
+  @import '@/assets/styles/mixins.scss';
 
   .footer {
-    font-family: "TWKEverett";
+    height: auto;
+    font-family: 'TWKEverett';
     font-size: 18px;
     font-weight: 400;
     line-height: 28px;
@@ -132,7 +134,7 @@
     font-weight: 400;
     font-size: 18px;
     line-height: 28px;
-    
+
     // background-image: url("../assets/images/YellowCircle.png");
     // background-size: 200px;
     // background-repeat: no-repeat;
@@ -149,7 +151,7 @@
   }
   .footer-left {
     p {
-      font-family: "TWKEverett";
+      font-family: 'TWKEverett';
       font-style: normal;
       font-weight: 400;
       font-size: 18px;
@@ -202,7 +204,7 @@
   .social-links {
     padding-left: 30px;
     list-style: none;
-    font-family: "TWKEverett";
+    font-family: 'TWKEverett';
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
@@ -222,7 +224,7 @@
 
   .site-links {
     list-style: none;
-    font-family: "TWKEverett";
+    font-family: 'TWKEverett';
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
@@ -247,9 +249,7 @@
     padding: 20px;
     border: 1px solid $grey-20;
 
-    &:hover 
-    &:focus
-    &:focus-visible {
+    &:hover &:focus &:focus-visible {
       border-color: $apex-green;
     }
   }

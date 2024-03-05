@@ -6,13 +6,13 @@
 </template>
 
 <script setup lang="ts">
-  import { RouterView } from 'vue-router'
-  import { onMounted } from "vue";
-  import { storeToRefs } from "pinia";
-  import { useStore } from "@/stores";
+  import { RouterView } from 'vue-router';
+  import { onMounted } from 'vue';
+  import { storeToRefs } from 'pinia';
+  import { useStore } from '@/stores';
 
   /* Factories & Services */
-  import authNFT from "@/services/authNFT";
+  import authNFT from '@/services/authNFT';
 
   /* Store */
   const store = useStore();
@@ -21,8 +21,8 @@
   /**
    * Check if our Wallet is Connected to 🦊 Metamask and Get ETH Balance
    */
-   async function checkIfWalletIsConnected() {
-    if (account.value === "") {
+  async function checkIfWalletIsConnected() {
+    if (account.value === '') {
       const authAccount = new authNFT();
       await authAccount.checkIfWalletIsConnected();
     }
@@ -33,7 +33,7 @@
     window.scrollTo({
       top: 0,
       left: 0,
-      behavior: "smooth",
+      behavior: 'smooth'
     });
   });
 </script>
