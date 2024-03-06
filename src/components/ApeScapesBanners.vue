@@ -21,7 +21,7 @@
           </div>
         </div>
         <div class="slogan">
-          Create custom banners<br class="mobile-hidden" />
+          Create custom banners<br />
           for your Ape NFTs
         </div>
         <div class="button-container-start">
@@ -76,7 +76,7 @@
 
     @include breakpoint($break-sm) {
       height: 60%;
-      min-height: 380px;
+      min-height: 850px;
       background-image: none;
     }
   }
@@ -122,6 +122,10 @@
     align-content: center;
     align-items: center;
     justify-content: flex-start;
+
+    @include breakpoint($break-sm) {
+      flex-direction: column;
+    }
   }
 
   .column {
@@ -165,20 +169,17 @@
     font-size: 84px;
     line-height: 84px;
     text-align: left;
-    // margin: 20% 0 0 20%;
     margin: 120px 0 0 60px;
 
     @include breakpoint($break-sm) {
-      font-weight: 400;
       font-size: 34px;
       line-height: 40px;
       margin: 40px 0 0 10px;
     }
 
     @include breakpoint($break-md) {
-      font-size: 48px;
-      line-height: 54px;
-      max-width: 650px;
+      font-size: 70px;
+      line-height: 70px;
     }
   }
 
@@ -204,7 +205,7 @@
       font-size: 30px;
       line-height: 36px;
       max-width: 550px;
-      margin: 30px 10px 0 10px;
+      margin: 40px 10px 0 20px;
     }
   }
 
@@ -225,7 +226,7 @@
     justify-content: flex-start;
     margin-left: 20%;
     @include breakpoint($break-sm) {
-      margin: 0;
+      margin: 40px auto 0;
       padding: 0;
     }
   }
