@@ -4,25 +4,25 @@
       <div class="left-side">
         <div class="card">
           <div class="banner-image">
-            <button class="download-icon-button" @click="resetApe()">
+            <button class="download-icon-button" @click="download(1)">
               <IconDownload />
             </button>
             <img src="../assets/images/banners/banner0.png" alt="Banner" />
           </div>
           <div class="banner-image">
-            <button class="download-icon-button" @click="resetApe()">
+            <button class="download-icon-button" @click="download(2)">
               <IconDownload />
             </button>
             <img src="../assets/images/banners/banner1.png" alt="Banner" />
           </div>
           <div class="banner-image">
-            <button class="download-icon-button" @click="resetApe()">
+            <button class="download-icon-button" @click="download(3)">
               <IconDownload />
             </button>
             <img src="../assets/images/banners/banner2.png" alt="Banner" />
           </div>
           <div class="banner-image">
-            <button class="download-icon-button" @click="resetApe()">
+            <button class="download-icon-button" @click="download(4)">
               <IconDownload />
             </button>
             <img src="../assets/images/banners/banner3.png" alt="Banner" />
@@ -48,7 +48,15 @@
   </div>
 </template>
 <script setup lang="ts">
+  import { ref } from 'vue';
+
   import IconDownload from '../assets/svgs/icons/IconDownload.vue';
+
+  const downloadId = ref(null);
+
+  function download() {
+    console.log('Download Image',downloadId);
+  }
 </script>
 <style lang="scss" scoped>
 @import "@/assets/styles/variables.scss";
