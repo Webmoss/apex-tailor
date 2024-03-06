@@ -53,7 +53,7 @@
     width: 100%;
     display: flex;
     flex-direction: row;
-    background-color: $apex-dark-grey;
+    background: $apex-dark-grey;
   }
   .top-nav {
     width: 100%;
@@ -64,6 +64,7 @@
     justify-content: space-between;
     padding: 1rem;
     margin: 0 auto;
+    
 
     @include breakpoint($break-ssm) {
       padding: 5px 10px 0;
@@ -130,7 +131,7 @@
   .menu-button-black,
   .menu-button-black::before,
   .menu-button-black::after {
-    background-color: $apex-dark-grey;
+    background-color: $white;
   }
 
   .menu-button,

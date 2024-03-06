@@ -169,9 +169,10 @@
     background-color: $apex-dark-grey;
     // border: 0.5px solid $apex-green;
 
-    @include breakpoint($break-ssm) {
+    @include breakpoint($break-sm) {
       width: 100%;
       padding: 4px;
+      border-radius: 0;
       flex-direction: column;
     }
   }

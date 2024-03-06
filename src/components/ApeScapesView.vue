@@ -6,7 +6,7 @@
     </div>
     <div class="row">
       <div class="container">
-        <div class="row">
+        <div class="intro-row">
           <div class="column">
             <div class="title">
               Apes<br />
@@ -122,7 +122,7 @@
     top: 0;
   }
 
-  .row {
+  .intro-row {
     width: 100%;
     display: flex;
     flex-direction: row;

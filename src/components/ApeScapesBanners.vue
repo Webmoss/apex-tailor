@@ -6,7 +6,7 @@
     </div>
     <div class="row">
       <div class="container">
-        <div class="row">
+        <div class="intro-row">
           <div class="column">
             <div class="title">
               Apes<br />
@@ -79,6 +79,11 @@
       min-height: 850px;
       background-image: none;
     }
+    @include breakpoint($break-md) {
+      height: 50%;
+      min-height: 550px;
+      background-image: none;
+    }
   }
 
   .scroll-container {
@@ -115,7 +120,7 @@
     top: 0;
   }
 
-  .row {
+  .intro-row {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -125,6 +130,9 @@
 
     @include breakpoint($break-sm) {
       flex-direction: column;
+    }
+    @include breakpoint($break-md) {
+      flex-direction: row;
     }
   }
 
@@ -227,6 +235,11 @@
     margin-left: 20%;
     @include breakpoint($break-sm) {
       margin: 40px auto 0;
+      padding: 0;
+    }
+
+    @include breakpoint($break-sm) {
+      margin: 40px 0 0 30px;
       padding: 0;
     }
   }

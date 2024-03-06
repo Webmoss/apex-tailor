@@ -140,7 +140,7 @@
     // background-repeat: no-repeat;
     // background-position: right 150px top 0;
     @include breakpoint($break-sm) {
-      height: auto;
+      min-height: 280px;
       flex-direction: column;
       padding: 20px;
     }
