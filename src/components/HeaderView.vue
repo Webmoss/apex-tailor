@@ -53,7 +53,7 @@
     width: 100%;
     display: flex;
     flex-direction: row;
-    background-color: $apex-green;
+    background-color: $apex-dark-grey;
   }
   .top-nav {
     width: 100%;

@@ -114,7 +114,7 @@
     letter-spacing: 0em;
     text-align: left;
     text-decoration: none;
-    background-color: $apex-green;
+    background-color: $apex-dark-grey;
     color: $white;
     a {
       color: $white;
