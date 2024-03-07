@@ -1,5 +1,5 @@
 <template>
-  <div id="apescapes" class="main-container">
+  <div id="apescapes" class="banner-container">
     <div class="scroll-container">
       <div class="grey-div"></div>
       <div class="scroll-tracker"></div>
@@ -23,20 +23,17 @@
         <div class="row">
           <div class="slogan">
             Create custom banners<br class="mobile-hidden" />
-            for your Ape NFTs
-            <br />
-            <br />
-            <div class="button-container-start">
+            for<br class="mobile-show" /> your Ape NFTs
+          </div>
+          <div class="button-container-start">
               <button class="green-button" @click="goBanners()">ApeScapes</button>
             </div>
           </div>
         </div>
-        <div></div>
-      </div>
     </div>
   </div>
 </template>
-<script lang="ts" setup>
+<script setup>
   import { onMounted } from 'vue';
   import { useRouter } from 'vue-router';
 
@@ -51,7 +48,7 @@
     const scrollTrackingTimeline = new ScrollTimeline({
       source: document.scrollingElement,
       orientation: 'block',
-      scrollOffsets: [CSS.percent(0), CSS.px(900)]
+      scrollOffsets: [CSS.percent(0), CSS.px(800)]
     });
     if (scrollTracker) {
       scrollTracker.animate(
@@ -61,16 +58,18 @@
     }
   });
 </script>
+
 <style lang="scss" scoped>
   @import '@/assets/styles/variables.scss';
   @import '@/assets/styles/mixins.scss';
-  .main-container {
+  .banner-container {
     position: relative;
     width: 100%;
-    height: 45rem;
+    height: 50rem; 
     top: 0;
     padding: 0;
     margin: 0 auto;
+    background-color: $white;
     background-image: url('../assets/images/tiles/Tileable_Green.png');
     background-size: 300px;
     background-repeat: repeat;
@@ -78,11 +77,14 @@
     transform-origin: left;
 
     @include breakpoint($break-sm) {
-      height: 85dvh;
+      height: 60%;
+      min-height: 850px;
       background-image: none;
     }
     @include breakpoint($break-md) {
-      height: 85dvh;
+      height: 100%;
+      min-height: 760px;
+      background-image: none;
     }
   }
 
@@ -117,6 +119,7 @@
   
 
   .container {
+    width: 100%;
     justify-content: space-evenly;
     position: absolute;
     top: 0;
@@ -129,6 +132,15 @@
     align-content: center;
     align-items: center;
     justify-content: flex-start;
+
+    @include breakpoint($break-md) {
+      width: 100%;
+      flex-direction: row;
+    }
+    @include breakpoint($break-sm) {
+      width: 100%;
+      flex-direction: column;
+    }
   }
 
   .column {
@@ -142,19 +154,16 @@
   .promo-ape{
     width: 240px;
     height: auto;
-
     border-radius: 12px;
     overflow: hidden;
-
     margin: 120px 0 0 80px;
-
-    @include breakpoint($break-sm) {
-      width: 180px;
-      margin: 40px 0 0 40px;
-    }
 
     @include breakpoint($break-md) {
       width: 220px;
+    }
+    @include breakpoint($break-sm) {
+      width: 180px;
+      margin: 10px auto 0;
     }
     
     img {
@@ -165,32 +174,28 @@
   }
 
   .title {
+    color: $grey-100;
     font-family: 'TWKEverett';
     font-style: normal;
     text-align: left;
-    // max-width: 900px;
     font-size: 84px;
-    line-height: 86px;
+    line-height: 84px;
     text-align: left;
     margin: 120px 0 0 60px;
-    color: $grey-100;
-
+    
     @include breakpoint($break-sm) {
-      font-weight: 400;
       font-size: 34px;
       line-height: 40px;
       margin: 40px 0 0 10px;
     }
 
     @include breakpoint($break-md) {
-      font-size: 48px;
-      line-height: 54px;
-      max-width: 650px;
+      font-size: 70px;
+      line-height: 70px;
     }
   }
 
   .slogan {
-    max-width: 700px;
     color: $grey-100;
     font-family: 'TWKEverett';
     font-style: normal;
@@ -203,75 +208,42 @@
     @include breakpoint($break-sm) {
       font-size: 20px;
       line-height: 28px;
-      margin: 15px 0 0 0;
+      margin: 10px 0 0 0;
     }
 
     @include breakpoint($break-md) {
       font-size: 30px;
       line-height: 36px;
       max-width: 550px;
-      margin: 30px 10px 0 10px;
+      margin: 40px 10px 0 20px;
     }
   }
 
-  .download-button {
-    width: 300px;
-    height: 40px;
-    display: flex;
-    flex-direction: row nowrap;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-    color: $white;
-    background-color: $apex-green;
-    font-size: 18px;
-    font-weight: 600;
-    border: 0.5px solid $apex-dark-grey;
-    border-radius: 12px;
-    padding-left: 20px;
-    padding-right: 20px;
-    transition: all 0.3s linear;
-    cursor: pointer;
-
-    &:hover,
-    &:focus &:focus-visible {
-      color: $apex-grey;
-      border: 1px solid $apex-dark-grey;
-    }
-    @include breakpoint($break-ssm) {
-      margin: 15px auto;
-    }
-  }
-
-  .button-container {
+  .button-container-start {
     width: 100%;
     display: flex;
     flex-direction: row;
     align-content: center;
     align-items: center;
-    justify-content: space-between;
-  }
-  .button-container-center {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-content: center;
-    align-items: center;
-    justify-content: center;
-  }
-  .button-container-end {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-content: center;
-    align-items: center;
-    justify-content: flex-end;
+    justify-content: flex-start;
+    margin-left: 20%;
+
+    @include breakpoint($break-sm) {
+      margin: 40px auto 0;
+      padding: 0;
+    }
   }
 
-  .mobile-hidden {
+  .mobile-br-hidden {
     display: block;
     @include breakpoint($break-sm) {
       display: none;
+    }
+  }
+  .mobile-br-show {
+    display: none;
+    @include breakpoint($break-sm) {
+      display: block;
     }
   }
 </style>

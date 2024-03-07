@@ -2,7 +2,7 @@
   <header id="header">
     <nav class="top-nav">
       <router-link to="/" class="logo-link" @click="state.toggleMenu = false">
-        <img src="../assets/images/logos/ApeX_Green_Logo.png" alt="ApeX" height="50" />
+        <img src="../assets/images/logos/ApeX_Green_Logo.png" alt="ApeX" />
       </router-link>
       <input id="menu-toggle" v-model="state.toggleMenu" type="checkbox" />
       <label class="menu-button-container" for="menu-toggle">
@@ -51,6 +51,7 @@
   @import '@/assets/styles/mixins.scss';
   header {
     width: 100%;
+    height: 56px;
     display: flex;
     flex-direction: row;
     background: $apex-dark-grey;
@@ -58,6 +59,7 @@
   .top-nav {
     width: 100%;
     max-width: $max-width;
+    height: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -83,8 +85,19 @@
     align-content: center;
     align-items: center;
     margin-left: 20px;
+
     @include breakpoint($break-sm) {
       margin: -5px 0 0 0;
+    }
+
+    img {
+      display: block;
+      width: auto;
+      height: 50px;
+      @include breakpoint($break-sm) {
+        height: 40px;
+        margin: 5px;
+      }
     }
   }
 
@@ -202,12 +215,16 @@
     }
 
     // #menu-toggle:checked ~ .menu-white li {
-    //   border-top: 1px solid $grey-20;
+    //   border-bottom: 1px solid $grey-20;
     // }
 
     // #menu-toggle:checked ~ .menu-black li {
-    //   border-top: 1px solid $black;
+    //   border-bottom: 1px solid $black;
     // }
+
+    #menu-toggle:checked ~ .menu-white {
+      border-bottom: 1px solid $white;
+    }
 
     .menu > li {
       display: flex;
@@ -219,11 +236,9 @@
 
     .menu-black {
       background-color: $apex-dark-grey;
-      // border-bottom: 1px solid $black;
     }
     .menu-white {
       background-color: $apex-dark-grey;
-      // border-bottom: 1px solid $white;
     }
   }
 </style>

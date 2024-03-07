@@ -1,23 +1,44 @@
 <template>
   <main id="apewear" class="container">
     <div class="tailor-container">
+
+      <!-- Attributes Row #1 -->
       <div class="column mobile-hidden">
         <div class="one-quarter">
           <div class="attribute-box">
-            <img src="../assets/images/apes/1.png" alt="ApeX" />
+            <button class="icon-button-left" @click="previousApeAttr('clothes')">
+              <IconLeft />
+            </button>
+            <img src="../assets/images/apes/1.png" alt="ApeX" @click="nextApeAttr('clothes')" />
+            <button class="icon-button-right" @click="nextApeAttr('clothes')">
+              <IconRight />
+            </button>
           </div>
         </div>
         <div class="one-quarter">
           <div class="attribute-box">
-            <img src="../assets/images/apes/1.png" alt="ApeX" />
+            <button class="icon-button-left" @click="previousApeAttr('eyes')">
+              <IconLeft />
+            </button>
+            <img src="../assets/images/apes/1.png" alt="ApeX" @click="nextApeAttr('eyes')" />
+            <button class="icon-button-right" @click="nextApeAttr('eyes')">
+              <IconRight />
+            </button>
           </div>
         </div>
         <div class="one-quarter">
           <div class="attribute-box">
-            <img src="../assets/images/apes/1.png" alt="ApeX" />
+            <button class="icon-button-left" @click="previousApeAttr('glasses')">
+              <IconLeft />
+            </button>
+            <img src="../assets/images/apes/1.png" alt="ApeX" @click="nextApeAttr('glasses')" />
+            <button class="icon-button-right" @click="nextApeAttr('glasses')">
+              <IconRight />
+            </button>
           </div>
         </div>
       </div>
+      <!-- END Attributes Row #1 -->
 
       <div class="main-column">
         <div class="two-quarter">
@@ -40,65 +61,129 @@
           <button class="green-button" @click="downloadCanvas()">Download</button>
         </div>
       </div>
+
+      <!-- Attributes Row #2 -->
       <div class="column mobile-hidden">
         <div class="one-quarter">
           <div class="attribute-box">
-            <img src="../assets/images/apes/1.png" alt="ApeX" />
+            <button class="icon-button-left" @click="previousApeAttr('hat')">
+              <IconLeft />
+            </button>
+            <img src="../assets/images/apes/1.png" alt="ApeX" @click="nextApeAttr('hat')" />
+            <button class="icon-button-right" @click="nextApeAttr('hat')">
+              <IconRight />
+            </button>
           </div>
         </div>
         <div class="one-quarter">
           <div class="attribute-box">
-            <img src="../assets/images/apes/1.png" alt="ApeX" />
+            <button class="icon-button-left" @click="previousApeAttr('mouth')">
+              <IconLeft />
+            </button>
+            <img src="../assets/images/apes/1.png" alt="ApeX" @click="nextApeAttr('mouth')" />
+            <button class="icon-button-right" @click="nextApeAttr('mouth')">
+              <IconRight />
+            </button>
           </div>
         </div>
         <div class="one-quarter">
           <div class="attribute-box">
-            <img src="../assets/images/apes/1.png" alt="ApeX" />
+            <button class="icon-button-left" @click="previousApeAttr('piercing')">
+              <IconLeft />
+            </button>
+            <img src="../assets/images/apes/1.png" alt="ApeX" @click="nextApeAttr('piercing')" />
+            <button class="icon-button-right" @click="nextApeAttr('piercing')">
+              <IconRight />
+            </button>
           </div>
         </div>
       </div>
+      <!-- END Attributes Row #1 -->
 
       <!-- Mobile Versions -->
       <div class="mobile-show">
+
+        <!-- Attributes Row #1 -->
         <div class="column">
           <div class="one-quarter">
             <div class="attribute-box">
-              <img src="../assets/images/apes/1.png" alt="ApeX" />
+              <button class="icon-button-left" @click="previousApeAttr('clothes')">
+                <IconLeft />
+              </button>
+              <img src="../assets/images/apes/1.png" alt="ApeX" @click="nextApeAttr('clothes')" />
+              <button class="icon-button-right" @click="nextApeAttr('clothes')">
+                <IconRight />
+              </button>
             </div>
           </div>
           <div class="one-quarter">
             <div class="attribute-box">
-              <img src="../assets/images/apes/1.png" alt="ApeX" />
+              <button class="icon-button-left" @click="previousApeAttr('eyes')">
+                <IconLeft />
+              </button>
+              <img src="../assets/images/apes/1.png" alt="ApeX" @click="nextApeAttr('eyes')" />
+              <button class="icon-button-right" @click="nextApeAttr('eyes')">
+                <IconRight />
+              </button>
             </div>
           </div>
           <div class="one-quarter">
             <div class="attribute-box">
-              <img src="../assets/images/apes/1.png" alt="ApeX" />
+              <button class="icon-button-left" @click="previousApeAttr('glasses')">
+                <IconLeft />
+              </button>
+              <img src="../assets/images/apes/1.png" alt="ApeX" @click="nextApeAttr('glasses')" />
+              <button class="icon-button-right" @click="nextApeAttr('glasses')">
+                <IconRight />
+              </button>
             </div>
           </div>
         </div>
+        <!-- END Attributes Row #1 -->
+        <!-- Attributes Row #2 -->
         <div class="column">
           <div class="one-quarter">
             <div class="attribute-box">
-              <img src="../assets/images/apes/1.png" alt="ApeX" />
+              <button class="icon-button-left" @click="previousApeAttr('hat')">
+                <IconLeft />
+              </button>
+              <img src="../assets/images/apes/1.png" alt="ApeX" @click="nextApeAttr('hat')" />
+              <button class="icon-button-right" @click="nextApeAttr('hat')">
+                <IconRight />
+              </button>
             </div>
           </div>
           <div class="one-quarter">
             <div class="attribute-box">
-              <img src="../assets/images/apes/1.png" alt="ApeX" />
+              <button class="icon-button-left" @click="previousApeAttr('mouth')">
+                <IconLeft />
+              </button>
+              <img src="../assets/images/apes/1.png" alt="ApeX" @click="nextApeAttr('mouth')" />
+              <button class="icon-button-right" @click="nextApeAttr('mouth')">
+                <IconRight />
+              </button>
             </div>
           </div>
           <div class="one-quarter">
             <div class="attribute-box">
-              <img src="../assets/images/apes/1.png" alt="ApeX" />
+              <button class="icon-button-left" @click="previousApeAttr('piercing')">
+                <IconLeft />
+              </button>
+              <img src="../assets/images/apes/1.png" alt="ApeX" @click="nextApeAttr('piercing')" />
+              <button class="icon-button-right" @click="nextApeAttr('piercing')">
+                <IconRight />
+              </button>
             </div>
           </div>
         </div>
+        <!-- END Attributes Row #2 -->
+
         <div class="column">
           <div class="two-quarter">
             <button class="green-button" @click="downloadCanvas()">Download</button>
           </div>
         </div>
+
       </div>
     </div>
     <!-- END Mobile Versions -->
@@ -110,16 +195,28 @@
 
   import IconPlay from '../assets/svgs/icons/IconPlay.vue';
   import IconRestart from '../assets/svgs/icons/IconRestart.vue';
+  import IconLeft from '../assets/svgs/icons/IconLeft.vue';
+  import IconRight from '../assets/svgs/icons/IconRight.vue';
 
   const apeId = ref(null);
 
   function searchApe() {
     console.log('Search Ape', this.apeId);
   }
+
   function resetApe() {
     console.log("Ape ID:", this.apeId);
     this.apeId = null;
   }
+  
+  function previousApeAttr( attr: string ) {
+    console.log("Previous Attr:", attr);
+  }
+
+  function nextApeAttr( attr: string ) {
+    console.log("Next Attr:", attr);
+  }
+  
   function downloadCanvas() {
     console.log('Download Image');
   }
@@ -269,6 +366,7 @@
   }
 
   .attribute-box {
+    position: relative;
     width: 160px;
     height: 160px;
     background: #f4f4f4;
@@ -299,6 +397,60 @@
     @include breakpoint($break-ssm) {
       width: 90px;
       height: 90px;
+    }
+
+    .icon-button-left {
+      position: absolute;
+      top: 0;
+      left: 0;
+      color: $white;
+      background-color: transparent;
+      border: none;
+      width: 20px;
+      height: inherit;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-content: center;
+      align-items: center;
+      transition: transform 600ms cubic-bezier(0.23, 1, 0.32, 1);
+      cursor: pointer;
+
+      &:hover {
+        color: $apex-green;
+      }
+      &:focus,
+      &:focus-visible {
+        outline: none;
+      }
+    }
+
+    .icon-button-right {
+      position: absolute;
+      top: 0;
+      right: 0;
+      color: $white;
+      background-color: transparent;
+      border: none;
+      width: 20px;
+      height: inherit;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-content: center;
+      align-items: center;
+      transition: transform 600ms cubic-bezier(0.23, 1, 0.32, 1);
+      cursor: pointer;
+
+      &:hover {
+        color: $apex-green;
+      }
+      &:focus,
+      &:focus-visible {
+        outline: none;
+      }
     }
   }
 

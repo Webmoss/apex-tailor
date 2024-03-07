@@ -286,8 +286,9 @@
   .mobile-button {
     display: none;
     margin-left: unset;
+    
     @include breakpoint($break-sm) {
-      background-color: $grey-30;
+      background-color: $white;
       display: flex;
       align-items: center;
       justify-content: center;

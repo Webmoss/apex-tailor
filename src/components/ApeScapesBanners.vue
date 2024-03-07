@@ -21,8 +21,8 @@
           </div>
         </div>
         <div class="slogan">
-          Create custom banners<br />
-          for your Ape NFTs
+          Create custom banners<br class="mobile-br-hidden" />
+          for<br class="mobile-br-show" /> your Ape NFTs
         </div>
         <div class="button-container-start">
           <button class="green-button" @click="goHome()">ApeWear</button>
@@ -46,7 +46,7 @@
     const scrollTrackingTimeline = new ScrollTimeline({
       source: document.scrollingElement,
       orientation: 'block',
-      scrollOffsets: [CSS.percent(0), CSS.px(900)]
+      scrollOffsets: [CSS.percent(0), CSS.px(800)]
     });
     if (scrollTracker) {
       scrollTracker.animate(
@@ -56,6 +56,7 @@
     }
   });
 </script>
+
 <style lang="scss" scoped>
   @import '@/assets/styles/variables.scss';
   @import '@/assets/styles/mixins.scss';
@@ -63,7 +64,6 @@
   .main-container {
     position: relative;
     width: 100%;
-    // height: calc(100dvh - 88px);
     height: 50rem; 
     top: 0;
     padding: 0;
@@ -81,7 +81,7 @@
     }
     @include breakpoint($break-md) {
       height: 50%;
-      min-height: 550px;
+      min-height: 700px;
       background-image: none;
     }
   }
@@ -115,6 +115,7 @@
     }
   }
   .container {
+    width: 100%;
     justify-content: space-evenly;
     position: absolute;
     top: 0;
@@ -127,12 +128,14 @@
     align-content: center;
     align-items: center;
     justify-content: flex-start;
-
-    @include breakpoint($break-sm) {
-      flex-direction: column;
-    }
+    
     @include breakpoint($break-md) {
+      width: 100%;
       flex-direction: row;
+    }
+    @include breakpoint($break-sm) {
+      width: 100%;
+      flex-direction: column;
     }
   }
 
@@ -147,19 +150,16 @@
   .promo-ape{
     width: 240px;
     height: auto;
-
     border-radius: 12px;
     overflow: hidden;
-
     margin: 120px 0 0 80px;
-
-    @include breakpoint($break-sm) {
-      width: 180px;
-      margin: 40px 0 0 40px;
-    }
 
     @include breakpoint($break-md) {
       width: 220px;
+    }
+    @include breakpoint($break-sm) {
+      width: 180px;
+      margin: 10px auto 0;
     }
     
     img {
@@ -200,13 +200,12 @@
     font-size: 42px;
     line-height: 48px;
     text-align: left;
-    // margin: 6% 0 5% 20%;
     margin: 50px 50px 40px 50px;
 
     @include breakpoint($break-sm) {
       font-size: 20px;
       line-height: 28px;
-      margin: 15px 0 0 0;
+      margin: 10px 0 0 0;
     }
 
     @include breakpoint($break-md) {
@@ -217,14 +216,6 @@
     }
   }
 
-  .button-container {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-content: center;
-    align-items: center;
-    justify-content: space-between;
-  }
   .button-container-start {
     width: 100%;
     display: flex;
@@ -233,37 +224,23 @@
     align-items: center;
     justify-content: flex-start;
     margin-left: 20%;
+    
     @include breakpoint($break-sm) {
       margin: 40px auto 0;
       padding: 0;
     }
-
-    @include breakpoint($break-sm) {
-      margin: 40px 0 0 30px;
-      padding: 0;
-    }
-  }
-  .button-container-center {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-content: center;
-    align-items: center;
-    justify-content: center;
-  }
-  .button-container-end {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-content: center;
-    align-items: center;
-    justify-content: flex-end;
   }
 
-  .mobile-hidden {
+  .mobile-br-hidden {
     display: block;
     @include breakpoint($break-sm) {
       display: none;
+    }
+  }
+  .mobile-br-show {
+    display: none;
+    @include breakpoint($break-sm) {
+      display: block;
     }
   }
 </style>

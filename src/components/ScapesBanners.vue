@@ -117,7 +117,9 @@
     background: $apex-grey;
 
     @include breakpoint($break-sm) {
-      width: calc(100% - 1rem);
+      width: calc(100% - 40px);
+      padding: 10px;
+      height: 54vh;
       align-content: flex-start;
       align-items: center;
       justify-content: flex-start;
@@ -143,6 +145,7 @@
       @include breakpoint($break-sm) {
         width: 100%;
         height: auto;
+        margin: 0 0 10px 0;
         img {
           display: block;
           width: 100%;
