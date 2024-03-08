@@ -23,7 +23,7 @@
         <div class="row">
           <div class="slogan">
             Create custom banners<br class="mobile-hidden" />
-            for<br class="mobile-show" /> your Ape NFTs
+            for your Ape NFTs
           </div>
           <div class="button-container-start">
               <button class="green-button" @click="goBanners()">ApeScapes</button>
