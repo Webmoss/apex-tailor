@@ -75,15 +75,21 @@
     background-repeat: repeat;
     background-position: top right;
     transform-origin: left;
+    overflow: hidden;
 
-    @include breakpoint($break-sm) {
-      height: 60%;
-      min-height: 850px;
-      background-image: none;
-    }
     @include breakpoint($break-md) {
       height: 100%;
-      min-height: 760px;
+      min-height: 700px;
+      background-image: none;
+    }
+    @include breakpoint($break-sm) {
+      height: 60%;
+      min-height: 400px;
+      background-image: none;
+    }
+    @include breakpoint($break-ssm) {
+      height: 60%;
+      min-height: 650px;
       background-image: none;
     }
   }
@@ -139,6 +145,10 @@
     }
     @include breakpoint($break-sm) {
       width: 100%;
+      flex-direction: row;
+    }
+    @include breakpoint($break-ssm) {
+      width: 100%;
       flex-direction: column;
     }
   }
@@ -165,6 +175,10 @@
       width: 180px;
       margin: 10px auto 0;
     }
+    @include breakpoint($break-ssm) {
+      width: 200px;
+      margin: 10px auto 0;
+    }
     
     img {
       display: block;
@@ -183,15 +197,19 @@
     text-align: left;
     margin: 120px 0 0 60px;
     
-    @include breakpoint($break-sm) {
-      font-size: 34px;
-      line-height: 40px;
-      margin: 40px 0 0 10px;
-    }
-
     @include breakpoint($break-md) {
       font-size: 70px;
       line-height: 70px;
+    }
+    @include breakpoint($break-sm) {
+      font-size: 60px;
+      line-height: 60px;
+      margin: 40px 30px 0 30px;
+    }
+    @include breakpoint($break-ssm) {
+      font-size: 60px;
+      line-height: 60px;
+      margin: 40px 20px 0 20px;
     }
   }
 
@@ -205,17 +223,20 @@
     text-align: left;
     margin: 50px 50px 40px 50px;
 
-    @include breakpoint($break-sm) {
-      font-size: 20px;
-      line-height: 28px;
-      margin: 10px 0 0 0;
-    }
-
     @include breakpoint($break-md) {
       font-size: 30px;
       line-height: 36px;
-      max-width: 550px;
-      margin: 40px 10px 0 20px;
+      margin: 40px 10px 0 30px;
+    }
+    @include breakpoint($break-sm) {
+      font-size: 30px;
+      line-height: 36px;
+      margin: 10px 0 0 30px;
+    }
+    @include breakpoint($break-ssm) {
+      font-size: 30px;
+      line-height: 36px;
+      margin: 10px 0 0 55px;
     }
   }
 
@@ -226,10 +247,18 @@
     align-content: center;
     align-items: center;
     justify-content: flex-start;
-    margin-left: 20%;
+    margin: 0 0 20px 50px;
 
+    @include breakpoint($break-md) {
+      margin: 40px 0 20px 30px;
+      padding: 0;
+    }
     @include breakpoint($break-sm) {
-      margin: 40px auto 0;
+      margin: 20px 0 20px 30px;
+      padding: 0;
+    }
+    @include breakpoint($break-ssm) {
+      margin: 20px auto 0;
       padding: 0;
     }
   }

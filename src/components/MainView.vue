@@ -317,7 +317,11 @@
 
     @include breakpoint($break-sm) {
       width: 100%;
-      padding: 10px 0;
+      padding: 10px;
+    }
+    @include breakpoint($break-ssm) {
+      width: 100%;
+      padding: 5px;
     }
   }
 

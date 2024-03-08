@@ -4,9 +4,7 @@
       <div class="row">
         <div class="footer-card">
           <div class="footer-left">
-            <p>
-              <img src="../assets/images/logos/ApeX_Green_Logo.png" alt="Ape[x]" height="80" />
-            </p>
+            <img src="../assets/images/logos/ApeX_Green_Logo.png" alt="Ape[x]" height="80" />
           </div>
         </div>
         <div class="footer-card">
@@ -150,14 +148,10 @@
     }
   }
   .footer-left {
-    p {
-      font-family: 'TWKEverett';
-      font-style: normal;
-      font-weight: 400;
-      font-size: 18px;
-      line-height: 28px;
-      text-align: left;
-      margin: 0 0 20px;
+    margin: 0 0 20px 30px;
+    img {
+      display: block;
+      height: 50px;
     }
   }
   ul {

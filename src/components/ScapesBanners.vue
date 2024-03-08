@@ -73,6 +73,7 @@
   // background-repeat: no-repeat, no-repeat;
   // background-position: top 10em left -3em, right 0 top 0;
   padding: 5% 0 0 0;
+  overflow: hidden;
 
   @include breakpoint($break-sm) {
     height: auto;
