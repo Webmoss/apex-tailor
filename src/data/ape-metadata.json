@@ -2,14 +2,146 @@
   "apes": [
     {
       "id": "1",
-      "body": "",
-      "clothes": "",
-      "eyes": "",
-      "glasses": "",
-      "hat": "",
-      "mouth": "",
-      "piercing": "",
+      "body": "Pink",
+      "clothes": "None",
+      "eyes": "Laser",
+      "glasses": "None",
+      "hat": "None",
+      "mouth": "Teeth",
+      "piercing": "None",
       "image": "1.png"
+    },
+    {
+      "id": "2",
+      "body": "Robot",
+      "clothes": "None",
+      "eyes": "Bored",
+      "glasses": "None",
+      "hat": "None",
+      "mouth": "Grin",
+      "piercing": "None",
+      "image": "2.png"
+    },
+    {
+      "id": "3",
+      "body": "Siberian",
+      "clothes": "None",
+      "eyes": "Laser",
+      "glasses": "None",
+      "hat": "None",
+      "mouth": "Tongue",
+      "piercing": "None",
+      "image": "3.png"
+    },
+    {
+      "id": "4",
+      "body": "Black",
+      "clothes": "None",
+      "eyes": "Bored",
+      "glasses": "None",
+      "hat": "None",
+      "mouth": "Vuh",
+      "piercing": "None",
+      "image": "4.png"
+    },
+    {
+      "id": "5",
+      "body": "Dark Brown",
+      "clothes": "Tshirt Bones",
+      "eyes": "Angry",
+      "glasses": "None",
+      "hat": "None",
+      "mouth": "Oh",
+      "piercing": "None",
+      "image": "5.png"
+    },
+    {
+      "id": "6",
+      "body": "Grey",
+      "clothes": "None",
+      "eyes": "Angry",
+      "glasses": "None",
+      "hat": "None",
+      "mouth": "Ooh",
+      "piercing": "None",
+      "image": "6.png"
+    },
+    {
+      "id": "7",
+      "body": "Brown",
+      "clothes": "None",
+      "eyes": "Angry",
+      "glasses": "None",
+      "hat": "None",
+      "mouth": "Wah",
+      "piercing": "None",
+      "image": "7.png"
+    },
+    {
+      "id": "8",
+      "body": "Brown",
+      "clothes": "None",
+      "eyes": "Beams",
+      "glasses": "None",
+      "hat": "None",
+      "mouth": "Diamond Grillz",
+      "piercing": "None",
+      "image": "8.png"
+    },
+    {
+      "id": "9",
+      "body": "White",
+      "clothes": "None",
+      "eyes": "Bored",
+      "glasses": "Shades",
+      "hat": "None",
+      "mouth": "Gold Grillz",
+      "piercing": "None",
+      "image": "9.png"
+    },
+    {
+      "id": "10",
+      "body": "Siberian",
+      "clothes": "None",
+      "eyes": "Tired",
+      "glasses": "None",
+      "hat": "None",
+      "mouth": "Gold Grillz",
+      "piercing": "None",
+      "image": "10.png"
+    },
+    {
+      "id": "11",
+      "body": "Brown",
+      "clothes": "None",
+      "eyes": "Undead",
+      "glasses": "Horn-Rimmed",
+      "hat": "None",
+      "mouth": "Grin",
+      "piercing": "Silver Stud",
+      "image": "11.png"
+    },
+    {
+      "id": "12",
+      "body": "DMT",
+      "clothes": "None",
+      "eyes": "Tired",
+      "glasses": "None",
+      "hat": "Horns",
+      "mouth": "Jovial",
+      "piercing": "None",
+      "image": "12.png"
+    },
+    {
+      "id": "13",
+      "body": "DMT",
+      "clothes": "None",
+      "eyes": "Tired",
+      "glasses": "None",
+      "hat": "Horns",
+      "mouth": "Jovial",
+      "piercing": "None",
+      "image": "13.png"
     }
   ]
 }

@@ -264,7 +264,6 @@
     padding: 10px;
     border-radius: 12px;
     background-color: $apex-dark-grey;
-    // border: 0.5px solid $apex-green;
 
     @include breakpoint($break-sm) {
       width: 100%;
@@ -374,7 +373,6 @@
     width: 160px;
     height: 160px;
     background: #f4f4f4;
-    // border: 1px solid #f4f4f4;
     border-radius: 12px;
     margin: 0;
     padding: 0;
@@ -485,19 +483,16 @@
         margin-bottom: 0;
       }
     }
-
     input::placeholder {
       color: $black;
       letter-spacing: 1px;
     }
-
     input:read-only {
       color: #1a1a1a;
       border: 1px dashed #e0e0e0;
       letter-spacing: 1px;
       cursor: not-allowed;
     }
-
     input:focus {
       border: 1px solid $apex-green;
       outline: none;
