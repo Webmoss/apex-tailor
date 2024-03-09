@@ -3,6 +3,7 @@
     {
       "id": "1",
       "body": "Pink",
+      "skin": "Medium",
       "clothes": "None",
       "eyes": "Laser",
       "glasses": "None",
@@ -14,6 +15,7 @@
     {
       "id": "2",
       "body": "Robot",
+      "skin": "Medium",
       "clothes": "None",
       "eyes": "Bored",
       "glasses": "None",
@@ -25,6 +27,7 @@
     {
       "id": "3",
       "body": "Siberian",
+      "skin": "Dark",
       "clothes": "None",
       "eyes": "Laser",
       "glasses": "None",
@@ -36,6 +39,7 @@
     {
       "id": "4",
       "body": "Black",
+      "skin": "Dark",
       "clothes": "None",
       "eyes": "Bored",
       "glasses": "None",
@@ -47,6 +51,7 @@
     {
       "id": "5",
       "body": "Dark Brown",
+      "skin": "Light",
       "clothes": "Tshirt Bones",
       "eyes": "Angry",
       "glasses": "None",
@@ -58,6 +63,7 @@
     {
       "id": "6",
       "body": "Grey",
+      "skin": "Light",
       "clothes": "None",
       "eyes": "Angry",
       "glasses": "None",
@@ -69,6 +75,7 @@
     {
       "id": "7",
       "body": "Brown",
+      "skin": "Dark",
       "clothes": "None",
       "eyes": "Angry",
       "glasses": "None",
@@ -80,6 +87,7 @@
     {
       "id": "8",
       "body": "Brown",
+      "skin": "Medium",
       "clothes": "None",
       "eyes": "Beams",
       "glasses": "None",
@@ -91,6 +99,7 @@
     {
       "id": "9",
       "body": "White",
+      "skin": "Dark",
       "clothes": "None",
       "eyes": "Bored",
       "glasses": "Shades",
@@ -102,6 +111,7 @@
     {
       "id": "10",
       "body": "Siberian",
+      "skin": "Medium",
       "clothes": "None",
       "eyes": "Tired",
       "glasses": "None",
@@ -113,6 +123,7 @@
     {
       "id": "11",
       "body": "Brown",
+      "skin": "Medium",
       "clothes": "None",
       "eyes": "Undead",
       "glasses": "Horn-Rimmed",
@@ -124,6 +135,7 @@
     {
       "id": "12",
       "body": "DMT",
+      "skin": "Medium",
       "clothes": "None",
       "eyes": "Tired",
       "glasses": "None",
@@ -135,6 +147,7 @@
     {
       "id": "13",
       "body": "DMT",
+      "skin": "Medium",
       "clothes": "None",
       "eyes": "Tired",
       "glasses": "None",

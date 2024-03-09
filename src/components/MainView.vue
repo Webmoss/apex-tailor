@@ -9,7 +9,7 @@
             <button class="icon-button-left" @click="previousApeAttr('clothes')">
               <IconLeft />
             </button>
-            <img src="../assets/images/apes/1.png" alt="ApeX" @click="nextApeAttr('clothes')" />
+            <img src="/apes/1.png" alt="ApeX" @click="nextApeAttr('clothes')" />
             <button class="icon-button-right" @click="nextApeAttr('clothes')">
               <IconRight />
             </button>
@@ -20,7 +20,7 @@
             <button class="icon-button-left" @click="previousApeAttr('eyes')">
               <IconLeft />
             </button>
-            <img src="../assets/images/apes/1.png" alt="ApeX" @click="nextApeAttr('eyes')" />
+            <img src="/apes/1.png" alt="ApeX" @click="nextApeAttr('eyes')" />
             <button class="icon-button-right" @click="nextApeAttr('eyes')">
               <IconRight />
             </button>
@@ -31,7 +31,7 @@
             <button class="icon-button-left" @click="previousApeAttr('glasses')">
               <IconLeft />
             </button>
-            <img src="../assets/images/apes/1.png" alt="ApeX" @click="nextApeAttr('glasses')" />
+            <img src="/apes/1.png" alt="ApeX" @click="nextApeAttr('glasses')" />
             <button class="icon-button-right" @click="nextApeAttr('glasses')">
               <IconRight />
             </button>
@@ -47,18 +47,27 @@
               <IconRestart />
             </button>
             <input v-model="apeId" name="apeId" type="text" placeholder="Ape ID #" />
-            <button class="icon-button" @click="searchApe()">
+            <button class="icon-button" @click="searchApe(apeId)">
               <IconPlay />
             </button>
           </div>
         </div>
         <div class="two-quarter">
-          <div class="image-box">
-            <img src="../assets/images/apes/0.png" alt="ApeX" />
+          <div v-if="tailorApe.image" class="image-box">
+            <img :src="`./apes/${tailorApe.image}`" alt="ApeX" />
+            <img v-if="gmApe" class="gm-image-overlay" :src="`./skins/${tailorApe.skin}-Skin/GM_${tailorApe.skin}_${tailorApe.body}.png`" alt="ApeX" />
+          </div>
+          <div v-else class="image-box">
+            <img src="/apes/0.png" alt="ApeX" />
           </div>
         </div>
         <div class="two-quarter mobile-hidden">
-          <button class="green-button" @click="downloadCanvas()">Download</button>
+          <div class="input-row">
+            <button class="icon-button-round" @click="setGmApe()">
+              GM
+            </button>
+            <button class="green-button" @click="downloadCanvas()">Download</button>
+          </div>
         </div>
       </div>
 
@@ -69,7 +78,7 @@
             <button class="icon-button-left" @click="previousApeAttr('hat')">
               <IconLeft />
             </button>
-            <img src="../assets/images/apes/1.png" alt="ApeX" @click="nextApeAttr('hat')" />
+            <img src="/apes/1.png" alt="ApeX" @click="nextApeAttr('hat')" />
             <button class="icon-button-right" @click="nextApeAttr('hat')">
               <IconRight />
             </button>
@@ -80,7 +89,7 @@
             <button class="icon-button-left" @click="previousApeAttr('mouth')">
               <IconLeft />
             </button>
-            <img src="../assets/images/apes/1.png" alt="ApeX" @click="nextApeAttr('mouth')" />
+            <img src="/apes/1.png" alt="ApeX" @click="nextApeAttr('mouth')" />
             <button class="icon-button-right" @click="nextApeAttr('mouth')">
               <IconRight />
             </button>
@@ -91,7 +100,7 @@
             <button class="icon-button-left" @click="previousApeAttr('piercing')">
               <IconLeft />
             </button>
-            <img src="../assets/images/apes/1.png" alt="ApeX" @click="nextApeAttr('piercing')" />
+            <img src="/apes/1.png" alt="ApeX" @click="nextApeAttr('piercing')" />
             <button class="icon-button-right" @click="nextApeAttr('piercing')">
               <IconRight />
             </button>
@@ -110,7 +119,7 @@
               <button class="icon-button-left" @click="previousApeAttr('clothes')">
                 <IconLeft />
               </button>
-              <img src="../assets/images/apes/1.png" alt="ApeX" @click="nextApeAttr('clothes')" />
+              <img src="/apes/1.png" alt="ApeX" @click="nextApeAttr('clothes')" />
               <button class="icon-button-right" @click="nextApeAttr('clothes')">
                 <IconRight />
               </button>
@@ -121,7 +130,7 @@
               <button class="icon-button-left" @click="previousApeAttr('eyes')">
                 <IconLeft />
               </button>
-              <img src="../assets/images/apes/1.png" alt="ApeX" @click="nextApeAttr('eyes')" />
+              <img src="/apes/1.png" alt="ApeX" @click="nextApeAttr('eyes')" />
               <button class="icon-button-right" @click="nextApeAttr('eyes')">
                 <IconRight />
               </button>
@@ -132,7 +141,7 @@
               <button class="icon-button-left" @click="previousApeAttr('glasses')">
                 <IconLeft />
               </button>
-              <img src="../assets/images/apes/1.png" alt="ApeX" @click="nextApeAttr('glasses')" />
+              <img src="/apes/1.png" alt="ApeX" @click="nextApeAttr('glasses')" />
               <button class="icon-button-right" @click="nextApeAttr('glasses')">
                 <IconRight />
               </button>
@@ -147,7 +156,7 @@
               <button class="icon-button-left" @click="previousApeAttr('hat')">
                 <IconLeft />
               </button>
-              <img src="../assets/images/apes/1.png" alt="ApeX" @click="nextApeAttr('hat')" />
+              <img src="/apes/1.png" alt="ApeX" @click="nextApeAttr('hat')" />
               <button class="icon-button-right" @click="nextApeAttr('hat')">
                 <IconRight />
               </button>
@@ -158,7 +167,7 @@
               <button class="icon-button-left" @click="previousApeAttr('mouth')">
                 <IconLeft />
               </button>
-              <img src="../assets/images/apes/1.png" alt="ApeX" @click="nextApeAttr('mouth')" />
+              <img src="/apes/1.png" alt="ApeX" @click="nextApeAttr('mouth')" />
               <button class="icon-button-right" @click="nextApeAttr('mouth')">
                 <IconRight />
               </button>
@@ -169,7 +178,7 @@
               <button class="icon-button-left" @click="previousApeAttr('piercing')">
                 <IconLeft />
               </button>
-              <img src="../assets/images/apes/1.png" alt="ApeX" @click="nextApeAttr('piercing')" />
+              <img src="/apes/1.png" alt="ApeX" @click="nextApeAttr('piercing')" />
               <button class="icon-button-right" @click="nextApeAttr('piercing')">
                 <IconRight />
               </button>
@@ -180,7 +189,12 @@
 
         <div class="column">
           <div class="two-quarter">
-            <button class="green-button" @click="downloadCanvas()">Download</button>
+            <div class="input-row">
+              <button class="icon-button-round" @click="setGmApe()">
+                GM
+              </button>
+              <button class="green-button" @click="downloadCanvas()">Download</button>
+            </div>
           </div>
         </div>
 
@@ -191,23 +205,56 @@
 </template>
 
 <script setup lang="ts">
-  import { ref } from 'vue';
+  import { ref, onMounted } from "vue";
+  import { storeToRefs } from "pinia";
+  import { useStore } from "@/stores";
 
   import IconPlay from '../assets/svgs/icons/IconPlay.vue';
   import IconRestart from '../assets/svgs/icons/IconRestart.vue';
   import IconLeft from '../assets/svgs/icons/IconLeft.vue';
   import IconRight from '../assets/svgs/icons/IconRight.vue';
 
-  const apeId = ref(null);
+  import data from '../data/ape-metadata.json';
 
-  function searchApe() {
-    console.log('Search Ape', this.apeId);
+  /* Init Pinia Store Values and Methods */
+  const store = useStore();
+  const { apes, tailorApe } = storeToRefs(store);
+
+  const apeId = ref(null);
+  const gmApe = ref(null);
+
+  async function searchApe(apeId : string) {
+    console.log('Search Ape', apeId);
+
+    let ape = apes.value.filter(a => a.id === apeId)
+
+    console.log('Foundnd Ape', ape[0]);
+    console.log('Ape Id', ape[0].id);
+    console.log('Ape Body', ape[0].body);
+    console.log('Ape Skin', ape[0].skin);
+    console.log('Ape Clothes', ape[0].clothes);
+    console.log('Ape Eyes', ape[0].eyes);
+    console.log('Ape Glasses', ape[0].glasses);
+    console.log('Ape Hat', ape[0].hat);
+    console.log('Ape Mouth', ape[0].mouth);
+    console.log('Ape Piercing', ape[0].piercing);
+    console.log('Ape Image', ape[0].image);
+
+    await store.setTailorApe(ape[0]);
   }
 
-  function resetApe() {
+  async function resetApe() {
     console.log("Ape ID:", this.apeId);
     this.apeId = null;
+    await store.setTailorApe({});
   }
+
+ 
+  function setGmApe() {
+    console.log("GM Ape:");
+    gmApe.value = !gmApe.value;
+  }
+
   
   function previousApeAttr( attr: string ) {
     console.log("Previous Attr:", attr);
@@ -220,6 +267,19 @@
   function downloadCanvas() {
     console.log('Download Image');
   }
+
+  /* Get Apes JSON Data */
+  async function fetchApes() {
+    try {
+      await store.setApes(data.apes);
+    } catch (error) {
+      console.log("Error :", error);
+    }
+  }
+
+  onMounted(async () => {
+    await fetchApes();
+  });
 </script>
 
 <style lang="scss" scoped>
@@ -340,6 +400,7 @@
     }
 
     .image-box {
+      position: relative;
       display: block;
       width: 400px;
       height: 400px;
@@ -366,6 +427,39 @@
         }
       }
     }
+
+    .gm-image-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 999999;
+      display: block;
+      width: 400px;
+      height: 400px;
+      // background: #f4f4f4;
+      border-radius: 12px;
+      margin: 0;
+      padding: 0;
+      // transition: all 0.5s linear;
+      // overflow: hidden;
+
+      img {
+        width: 400px;
+        height: 400px;
+      }
+
+      @include breakpoint($break-sm) {
+        width: 100%;
+        height: auto;
+
+        img {
+          display: block;
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+
   }
 
   .attribute-box {
@@ -495,6 +589,31 @@
     }
     input:focus {
       border: 1px solid $apex-green;
+      outline: none;
+    }
+  }
+
+  .icon-button-round {
+    color: $white;
+    background-color: $apex-green;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    transition: transform 600ms cubic-bezier(0.23, 1, 0.32, 1);
+    margin-right: 20px;
+    cursor: pointer;
+
+    &:hover {
+      color: $black;
+    }
+    &:focus,
+    &:focus-visible {
       outline: none;
     }
   }
