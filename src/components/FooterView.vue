@@ -1,10 +1,10 @@
 <template>
   <footer id="faqs" class="footer">
     <div class="footer-container">
-      <div class="row">
+      <div class="footer-row">
         <div class="footer-card">
           <div class="footer-left">
-            <img src="../assets/images/logos/ApeX_Green_Logo.png" alt="Ape[x]" height="80" />
+            <img src="../assets/images/logos/ApeX_Grey_Logo.png" alt="Ape[x]" />
           </div>
         </div>
         <div class="footer-card">
@@ -35,8 +35,10 @@
         </div>
         <div class="footer-card">
           <ul class="site-links mobile-hidden">
-            <li @click="navigateAndScroll('apewear')">ApeWear →</li>
-            <li @click="navigateAndScroll('about')">ApeScapes →</li>
+            <li v-if="$route.name ==='apewear'" @click="navigateAndScroll('apewear')">ApeWear →</li>
+            <li v-else @click="goHome()">ApeWear →</li>
+            <li v-if="$route.name ==='apewear'" @click="goBanners()">ApeScapes →</li>
+            <li v-else @click="navigateAndScroll('banners')">ApeScapes →</li>
           </ul>
         </div>
         <div class="footer-card">
@@ -73,9 +75,10 @@
 </template>
 
 <script setup lang="ts">
-  import { useRoute } from 'vue-router';
+  import { useRoute, useRouter } from 'vue-router';
 
   const route = useRoute();
+  const router = useRouter();
 
   const navigateAndScroll = (to: string) => {
     if (route.name === to) {
@@ -85,9 +88,17 @@
     }
   };
 
+  function goHome() {
+    router.push({ name: 'apewear' });
+  }
+
+  function goBanners() {
+    router.push({ name: 'apescapes' });
+  }
+
   const scrolltoId = (to: string) => {
     const access = document.getElementById(to);
-    if (access) access.scrollIntoView({ behavior: 'smooth' });
+    if (access) access.scrollIntoView({ block: 'start', behavior: 'smooth' });
   };
 
   const scrollPageToTop = () => {
@@ -132,26 +143,33 @@
     font-weight: 400;
     font-size: 18px;
     line-height: 28px;
-
     // background-image: url("../assets/images/YellowCircle.png");
     // background-size: 200px;
     // background-repeat: no-repeat;
     // background-position: right 150px top 0;
-    @include breakpoint($break-sm) {
-      min-height: 280px;
-      flex-direction: column;
-      padding: 20px;
-    }
     @include breakpoint($break-md) {
       flex-direction: row;
       padding: 20px;
     }
+    @include breakpoint($break-sm) {
+      min-height: 255px;
+      flex-direction: column;
+      padding: 20px 20px 0 20px;
+    }
   }
   .footer-left {
     margin: 0 0 20px 30px;
+    @include breakpoint($break-sm) {
+      margin: 0 0 10px 10px;
+    }
+    
     img {
       display: block;
-      height: 50px;
+      height: 80px;
+      @include breakpoint($break-sm) {
+        height: 60px;
+        margin: 0 0 0 10px;
+      }
     }
   }
   ul {
@@ -167,18 +185,12 @@
     background: $white;
     margin: 0 auto;
     padding: 0 100px 50px;
-
     @include breakpoint($break-md) {
       padding: 0 30px 30px 30px;
     }
-    @include breakpoint($break-lg) {
-      padding: 0 100px 55px;
-    }
-    @include breakpoint($break-xl) {
-      padding: 0 0 50px;
-    }
   }
-  .row {
+
+  .footer-row {
     display: flex;
     width: 100%;
     margin: 0;
@@ -187,7 +199,7 @@
       display: block;
     }
   }
-  .row .footer-card {
+  .footer-row .footer-card {
     text-align: left;
     width: 20%;
     @include breakpoint($break-sm) {
@@ -196,16 +208,15 @@
   }
 
   .social-links {
-    padding-left: 30px;
     list-style: none;
     font-family: 'TWKEverett';
     font-style: normal;
-    font-weight: 400;
     font-size: 18px;
     line-height: 28px;
+    font-weight: 400;
+    padding-left: 30px;
     cursor: pointer;
   }
-
   .social-links li {
     padding-bottom: 0.5rem;
     @include breakpoint($break-md) {
@@ -220,9 +231,9 @@
     list-style: none;
     font-family: 'TWKEverett';
     font-style: normal;
-    font-weight: 400;
     font-size: 18px;
     line-height: 28px;
+    font-weight: 400;
     cursor: pointer;
   }
   .site-links li {
@@ -243,7 +254,9 @@
     padding: 20px;
     border: 1px solid $grey-20;
 
-    &:hover &:focus &:focus-visible {
+    &:hover, 
+    &:focus,
+    &:focus-visible {
       border-color: $apex-green;
     }
   }
@@ -254,6 +267,7 @@
     margin-left: unset;
     display: flex;
     cursor: pointer;
+
     @include breakpoint($break-sm) {
       display: none;
       border: none;
@@ -290,7 +304,7 @@
       height: 60px;
       width: 60px;
       border-radius: 4px;
-      margin: -85px 0 0 auto;
+      margin: -75px 20px 0 auto;
       cursor: pointer;
     }
   }

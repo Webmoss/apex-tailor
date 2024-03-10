@@ -2,28 +2,40 @@
   <header id="header">
     <nav class="top-nav">
       <router-link to="/" class="logo-link" @click="state.toggleMenu = false">
-        <img src="../assets/images/logos/ApeX_Green_Logo.png" alt="ApeX" />
+        <img src="../assets/images/logos/ApeX_Grey_Logo.png" alt="Ape[x]" />
       </router-link>
       <input id="menu-toggle" v-model="state.toggleMenu" type="checkbox" />
       <label class="menu-button-container" for="menu-toggle">
         <div class="menu-button-black menu-button"></div>
       </label>
       <ul class="menu-white menu">
-        <li class="link-white" @click="navigateAndScroll('apewear')">ApeWear</li>
-        <li class="link-white" @click="navigateAndScroll('faqs')">ApeScapes</li>
+        <li v-if="$route.name ==='apewear'" class="link-white" @click="navigateAndScroll('apewear')">ApeWear</li>
+        <li v-else class="link-white" @click="goHome()">ApeWear</li>
+        <li v-if="$route.name ==='apewear'" class="link-white" @click="goBanners()">ApeScapes</li>
+        <li v-else class="link-white" @click="navigateAndScroll('banners')">ApeScapes</li>
       </ul>
     </nav>
   </header>
 </template>
 <script setup lang="ts">
   import { reactive } from 'vue';
-  import { useRoute } from 'vue-router';
+  import { useRoute, useRouter } from 'vue-router';
 
   const route = useRoute();
+  const router = useRouter();
 
   const state = reactive({
     toggleMenu: false
   });
+
+  
+  function goHome() {
+    router.push({ name: 'apewear' });
+  }
+
+  function goBanners() {
+    router.push({ name: 'apescapes' });
+  }
 
   function scrollPageToTop() {
     window.scrollTo({
@@ -93,10 +105,10 @@
     img {
       display: block;
       width: auto;
-      height: 50px;
+      height: 55px;
       @include breakpoint($break-sm) {
-        height: 40px;
-        margin: 5px;
+        height: 50px;
+        margin: 0;
       }
     }
   }

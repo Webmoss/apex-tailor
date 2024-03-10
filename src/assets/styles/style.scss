@@ -101,16 +101,22 @@ a,
   color: $white;
   padding-bottom: 0.3rem;
   transition: transform 600ms cubic-bezier(0.23, 1, 0.32, 1);
+  
   &:hover,
   &:active,
-  &:focus {
+  &:focus,
+  &:focus-visible {
     // text-decoration: line-through;
     cursor: pointer;
   }
 }
+.link-active, .router-link-active{
+  // border-color: rgb(69, 73, 77);
+  cursor: pointer;
+}
 
 .green-button {
-  width: 300px;
+  width: 280px;
   height: 50px;
   display: flex;
   flex-direction: row nowrap;
@@ -118,21 +124,20 @@ a,
   align-content: center;
   align-items: center;
   color: $white;
-
   background-color: $apex-green;
   font-size: 18px;
   font-weight: 600;
-  border: 1px solid $apex-dark-grey;
+  border: 1px solid $apex-green;
   border-radius: 8px;
-  padding-left: 20px;
-  padding-right: 20px;
-  transition: all 0.2s linear;
+  padding-left: 10px;
+  padding-right: 10px;
+  transition: all 0.3s linear;
   cursor: pointer;
 
   &:hover,
   &:focus &:focus-visible {
     color: $apex-dark-grey;
-    border: 1px solid $white;
+    border: 1px solid $apex-green;
   }
   @include breakpoint($break-ssm) {
     margin: 0 auto;
@@ -181,16 +186,19 @@ a,
   &:focus,
   &:focus-visible {
     outline: none;
-  }
+  } 
+}
+.icon-button:disabled {
+  cursor: not-allowed;
 }
 
-button:disabled {
-  border: 1px solid $grey-80;
-  background: $grey-20;
-  color: #101010;
-  cursor: not-allowed;
-  transition: border-color 0.6s;
-}
+// button:disabled {
+//   border: 1px solid $grey-80;
+//   background: $grey-20;
+//   color: #101010;
+//   cursor: not-allowed;
+//   transition: border-color 0.6s;
+// }
 
 .mobile-hidden {
   display: block;

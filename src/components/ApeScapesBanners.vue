@@ -1,5 +1,5 @@
 <template>
-  <div id="apescapes" class="main-container">
+  <div id="apescapesBanners" class="main-container">
     <div class="scroll-container">
       <div class="grey-div"></div>
       <div class="scroll-tracker"></div>

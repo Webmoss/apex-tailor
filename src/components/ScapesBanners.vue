@@ -52,10 +52,12 @@
 
   import IconDownload from '../assets/svgs/icons/IconDownload.vue';
 
-  const downloadId = ref(null);
+  const downloadId = ref();
 
-  function download() {
-    console.log('Download Image',downloadId);
+  function download( bannerId: Number ) {
+    console.log('Download Image', bannerId);
+
+    downloadId.value = bannerId;
   }
 </script>
 <style lang="scss" scoped>

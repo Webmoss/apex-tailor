@@ -46,27 +46,37 @@
             <button class="icon-button" @click="resetApe()">
               <IconRestart />
             </button>
-            <input v-model="apeId" name="apeId" type="text" placeholder="Ape ID #" />
-            <button class="icon-button" @click="searchApe(apeId)">
+            <input 
+              v-model="apeId" 
+              name="apeId" 
+              type="text" 
+              placeholder="Ape ID #" 
+              @keyup.enter="searchApe(apeId)"
+            />
+            <button class="icon-button" @click="searchApe(apeId)" :disabled="!apeId">
               <IconPlay />
             </button>
           </div>
         </div>
         <div class="two-quarter">
-          <div v-if="tailorApe.image" class="image-box">
+          <!-- <div v-if="tailorApe.image" class="image-box">
             <img :src="`./apes/${tailorApe.image}`" alt="ApeX" />
             <img v-if="gmApe" class="gm-image-overlay" :src="`./skins/${tailorApe.skin}-Skin/GM_${tailorApe.skin}_${tailorApe.body}.png`" alt="ApeX" />
           </div>
           <div v-else class="image-box">
             <img src="/apes/0.png" alt="ApeX" />
-          </div>
+          </div> -->
+          <canvas id="apeTailor" ref="canvasBox" />
         </div>
         <div class="two-quarter mobile-hidden">
           <div class="input-row">
-            <button class="icon-button-round" @click="setGmApe()">
-              GM
-            </button>
-            <button class="green-button" @click="downloadCanvas()">Download</button>
+              <button :disabled="!tailorApe.image" class="icon-button-round" @click="setGmApe()">
+                GM
+              </button>
+              <button class="green-button" @click="downloadCanvas()">Download</button>
+              <button :disabled="!tailorApe.image" class="icon-button-round" @click="setJayApe()">
+                J
+              </button>
           </div>
         </div>
       </div>
@@ -190,10 +200,13 @@
         <div class="column">
           <div class="two-quarter">
             <div class="input-row">
-              <button class="icon-button-round" @click="setGmApe()">
+              <button :disabled="!tailorApe.image" class="icon-button-round" @click="setGmApe()">
                 GM
               </button>
               <button class="green-button" @click="downloadCanvas()">Download</button>
+              <button :disabled="!tailorApe.image" class="icon-button-round" @click="setJayApe()">
+                J
+              </button>
             </div>
           </div>
         </div>
@@ -205,7 +218,7 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, onMounted } from "vue";
+  import { ref, reactive, onMounted } from "vue";
   import { storeToRefs } from "pinia";
   import { useStore } from "@/stores";
 
@@ -214,21 +227,130 @@
   import IconLeft from '../assets/svgs/icons/IconLeft.vue';
   import IconRight from '../assets/svgs/icons/IconRight.vue';
 
+  import apexApe from "/apes/0.png";
+
   import data from '../data/ape-metadata.json';
 
   /* Init Pinia Store Values and Methods */
   const store = useStore();
   const { apes, tailorApe } = storeToRefs(store);
 
-  const apeId = ref(null);
-  const gmApe = ref(null);
+  const canvasBox = ref();
+  const apeId = ref();
+  
+  const state = reactive({
+    gmApe: false,
+    jayApe: false
+  });
 
-  async function searchApe(apeId : string) {
+  function previousApeAttr( attr: string ) {
+    console.log("Previous Attr:", attr);
+  }
+
+  function nextApeAttr( attr: string ) {
+    console.log("Next Attr:", attr);
+  }
+  
+  function downloadCanvas() {
+    
+    const canvasElement = document.getElementById('apeTailor') as HTMLCanvasElement | null;
+
+    if(canvasElement != null) {
+      let MIME_TYPE = "image/png";
+      let imgURL = canvasElement.toDataURL(MIME_TYPE, 1.0) 
+      
+      let dlLink = document.createElement('a');
+      dlLink.download = `ApeWear-Ape${tailorApe.value.id}`;
+      dlLink.href = imgURL;
+      dlLink.dataset.downloadurl = [MIME_TYPE, dlLink.download, dlLink.href].join(':');
+
+      document.body.appendChild(dlLink);
+      dlLink.click();
+      document.body.removeChild(dlLink);
+    }
+  }
+
+  function setGmApe() {
+    console.log("jayApe.value Before", state.jayApe);
+    console.log("gmApe.value Before", state.gmApe);
+    
+    state.jayApe = !state.jayApe;
+    state.gmApe = !state.gmApe;
+    
+    console.log("jayApe.value Before", state.jayApe);
+    console.log("gmApe.value After", state.gmApe);
+
+    drawApe(`/apes/${tailorApe.value.image}`, 5);
+  }
+
+  function setJayApe() {
+    console.log("gmApe.value Before", state.gmApe);
+    console.log("jayApe.value Before", state.jayApe);  
+    
+    state.gmApe = !state.gmApe;  
+    state.jayApe = !state.jayApe;    
+    
+    console.log("gmApe.value After", state.gmApe);
+    console.log("jayApe.value After", state.jayApe);
+    
+    drawApe(`/apes/${tailorApe.value.image}`, 5);
+  }  
+
+  function drawApe( src: string, scale: number ) {
+
+    const displayWidth = 400;
+    const displayHeight = 400;
+    const cvn = canvasBox.value;
+
+    cvn.fillStyle = "#2e2e2e";
+    cvn.style.width = displayWidth + 'px';
+    cvn.style.height = displayHeight + 'px';
+    cvn.width = displayWidth * scale;
+    cvn.height = displayHeight * scale;
+
+    let ctx = cvn.getContext("2d");  
+    let bg = new Image();
+    // let bgBody = new Image();
+    // let bgClothes = new Image();
+    // let bgEyes = new Image();
+    // let bgGlasses = new Image();
+    // let bgHat = new Image();
+    // let bgMouth = new Image();
+    // let bgPiercing = new Image();
+    let bgGM = new Image();
+    // let bgJay = new Image();
+
+    bg.src = src;
+    // bgBody.src = tailorApe.value.body ? `./body/${tailorApe.value.skin}-Skin/GM_${tailorApe.value.skin}_${tailorApe.value.body}.png`: '';
+    // bgClothes.src = tailorApe.value.clothes ? `./clothes/${tailorApe.value.skin}-Skin/GM_${tailorApe.value.skin}_${tailorApe.value.clothes}.png`: '';
+    // bgEyes.src = tailorApe.value.eyes ? `./eyes/${tailorApe.value.skin}-Skin/GM_${tailorApe.value.skin}_${tailorApe.value.eyes}.png`: '';
+    // bgGlasses.src = tailorApe.value.glasses ? `./glasses/${tailorApe.value.skin}-Skin/GM_${tailorApe.value.skin}_${tailorApe.value.glasses}.png`: '';
+    // bgHat.src = tailorApe.value.hat ? `./hats/${tailorApe.value.skin}-Skin/GM_${tailorApe.value.skin}_${tailorApe.value.hat}.png`: '';
+    // bgMouth.src = tailorApe.value.mouth ? `./mouthes/${tailorApe.value.skin}-Skin/GM_${tailorApe.value.skin}_${tailorApe.value.mouth}.png`: '';
+    // bgPiercing.src = tailorApe.value.piercing ? `./piercings/${tailorApe.value.skin}-Skin/GM_${tailorApe.value.skin}_${tailorApe.value.piercing}.png`: '';
+    bgGM.src = state.gmApe === true ? `./gmSkins/${tailorApe.value.skin}-Skin/GM_${tailorApe.value.skin}_${tailorApe.value.body}.png`: '';
+    // bgJay.src = state.jayApe === true ? `./jays/${tailorApe.value.skin}-Skin/GM_${tailorApe.value.skin}_${tailorApe.value.body}.png`: '';
+
+    bg.onload = function() {
+      ctx.drawImage(bg, 0 , 0);
+      // ctx.drawImage(bgBody, 0 , 0);
+      // ctx.drawImage(bgClothes, 0 , 0);
+      // ctx.drawImage(bgEyes, 0 , 0);
+      // ctx.drawImage(bgGlasses, 0 , 0);
+      // ctx.drawImage(bgHat, 0 , 0);
+      // ctx.drawImage(bgMouth, 0 , 0);
+      // ctx.drawImage(bgPiercing, 0 , 0);
+      ctx.drawImage(bgGM, 0 , 0);
+      // ctx.drawImage(bgJay, 0 , 0);
+    }
+  }
+
+  async function searchApe( apeId: string ) {
     console.log('Search Ape', apeId);
 
     let ape = apes.value.filter(a => a.id === apeId)
 
-    console.log('Foundnd Ape', ape[0]);
+    console.log('Found Ape', ape[0]);
     console.log('Ape Id', ape[0].id);
     console.log('Ape Body', ape[0].body);
     console.log('Ape Skin', ape[0].skin);
@@ -241,31 +363,28 @@
     console.log('Ape Image', ape[0].image);
 
     await store.setTailorApe(ape[0]);
+    drawApe(`/apes/${tailorApe.value.image}`, 5);
   }
 
-  async function resetApe() {
-    console.log("Ape ID:", this.apeId);
-    this.apeId = null;
-    await store.setTailorApe({});
+  function resetApe() {
+    apeId.value = null;
+    store.setTailorApe({
+      id: "",
+      body: "",
+      skin: "",
+      clothes: "",
+      eyes: "",
+      glasses: "",
+      hat: "",
+      mouth: "",
+      piercing: "",
+      image: "",
+    });
+    setDefaultApe();
   }
 
- 
-  function setGmApe() {
-    console.log("GM Ape:");
-    gmApe.value = !gmApe.value;
-  }
-
-  
-  function previousApeAttr( attr: string ) {
-    console.log("Previous Attr:", attr);
-  }
-
-  function nextApeAttr( attr: string ) {
-    console.log("Next Attr:", attr);
-  }
-  
-  function downloadCanvas() {
-    console.log('Download Image');
+  function setDefaultApe() {
+    drawApe(apexApe, 1.5);
   }
 
   /* Get Apes JSON Data */
@@ -279,6 +398,7 @@
 
   onMounted(async () => {
     await fetchApes();
+    setDefaultApe();
   });
 </script>
 
@@ -327,7 +447,8 @@
 
     @include breakpoint($break-sm) {
       width: 100%;
-      padding: 4px;
+      margin: 0;
+      padding: 0 0 20px 0;
       border-radius: 0;
       flex-direction: column;
     }
@@ -396,7 +517,7 @@
 
     @include breakpoint($break-sm) {
       width: 100%;
-      padding: 10px;
+      padding: 10px 0 0 0;
     }
 
     .image-box {
@@ -428,14 +549,23 @@
       }
     }
 
+    #apeTailor {
+      background: #f4f4f4;
+      border-radius: 12px;
+      margin: 0;
+      padding: 0;
+      transition: all 0.5s linear;
+      overflow: hidden;
+    }
+
     .gm-image-overlay {
       position: absolute;
       top: 0;
       left: 0;
       z-index: 999999;
       display: block;
-      width: 400px;
-      height: 400px;
+      // width: 400px;
+      // height: 400px;
       // background: #f4f4f4;
       border-radius: 12px;
       margin: 0;
@@ -443,21 +573,21 @@
       // transition: all 0.5s linear;
       // overflow: hidden;
 
-      img {
-        width: 400px;
-        height: 400px;
-      }
+      // img {
+      //   width: 400px;
+      //   height: 400px;
+      // }
 
-      @include breakpoint($break-sm) {
-        width: 100%;
-        height: auto;
+      // @include breakpoint($break-sm) {
+      //   width: 100%;
+      //   height: auto;
 
-        img {
-          display: block;
-          width: 100%;
-          height: auto;
-        }
-      }
+      //   img {
+      //     display: block;
+      //     width: 100%;
+      //     height: auto;
+      //   }
+      // }
     }
 
   }
@@ -504,17 +634,17 @@
       border: none;
       width: 20px;
       height: inherit;
-      border-radius: 8px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-content: center;
       align-items: center;
-      transition: transform 600ms cubic-bezier(0.23, 1, 0.32, 1);
+      transition: background-color 0.2s cubic-bezier(0.05, 0, 0.2, 1);
       cursor: pointer;
 
       &:hover {
-        color: $apex-green;
+        color: $grey-30;
+        background-color: rgba(20, 20, 20, 0.5); 
       }
       &:focus,
       &:focus-visible {
@@ -531,17 +661,17 @@
       border: none;
       width: 20px;
       height: inherit;
-      border-radius: 8px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-content: center;
       align-items: center;
-      transition: transform 600ms cubic-bezier(0.23, 1, 0.32, 1);
+      transition: background-color 0.2s cubic-bezier(0.05, 0, 0.2, 1);
       cursor: pointer;
 
       &:hover {
-        color: $apex-green;
+        color: $grey-30;
+        background-color: rgba(20, 20, 20, 0.5); 
       }
       &:focus,
       &:focus-visible {
@@ -597,8 +727,8 @@
     color: $white;
     background-color: $apex-green;
     border: none;
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
     display: flex;
     flex-direction: column;
@@ -606,7 +736,7 @@
     align-content: center;
     align-items: center;
     transition: transform 600ms cubic-bezier(0.23, 1, 0.32, 1);
-    margin-right: 20px;
+    margin: 0 15px;
     cursor: pointer;
 
     &:hover {
@@ -616,5 +746,11 @@
     &:focus-visible {
       outline: none;
     }
+  }
+
+  .icon-button-round:disabled {
+    background: #c6c6c6;
+    color: $white;
+    cursor: not-allowed;
   }
 </style>
