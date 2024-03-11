@@ -66,7 +66,9 @@
           <div v-else class="image-box">
             <img src="/apes/0.png" alt="ApeX" />
           </div> -->
-          <canvas id="apeTailor" ref="canvasBox" />
+          <div class="image-box">
+            <canvas id="apeTailor" ref="canvasBox" />
+          </div>
         </div>
         <div class="two-quarter mobile-hidden">
           <div class="input-row">
@@ -270,36 +272,29 @@
     }
   }
 
-  function setGmApe() {
-    console.log("jayApe.value Before", state.jayApe);
-    console.log("gmApe.value Before", state.gmApe);
-    
+  async function setGmApe() {
     state.jayApe = !state.jayApe;
     state.gmApe = !state.gmApe;
-    
-    console.log("jayApe.value Before", state.jayApe);
-    console.log("gmApe.value After", state.gmApe);
-
-    drawApe(`/apes/${tailorApe.value.image}`, 5);
+    await drawApe(`/apes/${tailorApe.value.image}`);
   }
 
-  function setJayApe() {
-    console.log("gmApe.value Before", state.gmApe);
-    console.log("jayApe.value Before", state.jayApe);  
+  async function setJayApe() {
+    // console.log("gmApe.value Before", state.gmApe);
+    // console.log("jayApe.value Before", state.jayApe);  
     
     state.gmApe = !state.gmApe;  
     state.jayApe = !state.jayApe;    
     
-    console.log("gmApe.value After", state.gmApe);
-    console.log("jayApe.value After", state.jayApe);
+    // console.log("gmApe.value After", state.gmApe);
+    // console.log("jayApe.value After", state.jayApe);
     
-    drawApe(`/apes/${tailorApe.value.image}`, 5);
+    await drawApe(`/apes/${tailorApe.value.image}`);
   }  
 
-  function drawApe( src: string, scale: number ) {
+  async function drawApe( src: string, scale = 5.40 ) {
 
-    const displayWidth = 400;
-    const displayHeight = 400;
+    const displayWidth = 380;
+    const displayHeight = 380;
     const cvn = canvasBox.value;
 
     cvn.fillStyle = "#2e2e2e";
@@ -363,12 +358,12 @@
     console.log('Ape Image', ape[0].image);
 
     await store.setTailorApe(ape[0]);
-    drawApe(`/apes/${tailorApe.value.image}`, 5);
+    await drawApe(`/apes/${tailorApe.value.image}`);
   }
 
-  function resetApe() {
+  async function resetApe() {
     apeId.value = null;
-    store.setTailorApe({
+    await store.setTailorApe({
       id: "",
       body: "",
       skin: "",
@@ -380,11 +375,11 @@
       piercing: "",
       image: "",
     });
-    setDefaultApe();
+    await setDefaultApe();
   }
 
-  function setDefaultApe() {
-    drawApe(apexApe, 1.5);
+  async function setDefaultApe() {
+    drawApe(apexApe, 1.58);
   }
 
   /* Get Apes JSON Data */
@@ -523,73 +518,23 @@
     .image-box {
       position: relative;
       display: block;
-      width: 400px;
-      height: 400px;
-      background: #f4f4f4;
+      width: 380px;
+      height: 380px;
+      background: $apex-grey;
       border-radius: 12px;
       margin: 0;
       padding: 0;
       transition: all 0.5s linear;
       overflow: hidden;
-
-      img {
-        width: 400px;
-        height: 400px;
-      }
-
-      @include breakpoint($break-sm) {
-        width: 100%;
-        height: auto;
-
-        img {
-          display: block;
-          width: 100%;
-          height: auto;
-        }
-      }
     }
 
     #apeTailor {
-      background: #f4f4f4;
-      border-radius: 12px;
-      margin: 0;
-      padding: 0;
-      transition: all 0.5s linear;
-      overflow: hidden;
-    }
-
-    .gm-image-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 999999;
       display: block;
-      // width: 400px;
-      // height: 400px;
-      // background: #f4f4f4;
-      border-radius: 12px;
+      max-width: 380px;
+      max-height: 380px;
       margin: 0;
       padding: 0;
-      // transition: all 0.5s linear;
-      // overflow: hidden;
-
-      // img {
-      //   width: 400px;
-      //   height: 400px;
-      // }
-
-      // @include breakpoint($break-sm) {
-      //   width: 100%;
-      //   height: auto;
-
-      //   img {
-      //     display: block;
-      //     width: 100%;
-      //     height: auto;
-      //   }
-      // }
     }
-
   }
 
   .attribute-box {
@@ -683,7 +628,7 @@
   .input-row {
     width: 100%;
     display: flex;
-    flex-direction: roww;
+    flex-direction: row;
     justify-content: center;
     align-content: center;
     align-items: center;
@@ -691,7 +636,7 @@
     input {
       width: 100%;
       max-width: 300px;
-      height: 48px;
+      height: 40px;
       color: $black;
       background-color: #fdfdfd;
       border: 1px solid $apex-dark-grey;
@@ -724,7 +669,7 @@
   }
 
   .icon-button-round {
-    color: $white;
+    color: $apex-grey;
     background-color: $apex-green;
     border: none;
     width: 35px;

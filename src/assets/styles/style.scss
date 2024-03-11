@@ -117,13 +117,13 @@ a,
 
 .green-button {
   width: 280px;
-  height: 50px;
+  height: 40px;
   display: flex;
   flex-direction: row nowrap;
   justify-content: center;
   align-content: center;
   align-items: center;
-  color: $white;
+  color: $apex-grey;
   background-color: $apex-green;
   font-size: 18px;
   font-weight: 600;
@@ -136,8 +136,37 @@ a,
 
   &:hover,
   &:focus &:focus-visible {
-    color: $apex-dark-grey;
+    color: $black;
     border: 1px solid $apex-green;
+  }
+  @include breakpoint($break-ssm) {
+    margin: 0 auto;
+  }
+}
+
+.grey-button {
+  width: 280px;
+  height: 40px;
+  display: flex;
+  flex-direction: row nowrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  color: $white;
+  background-color: $apex-grey;
+  font-size: 18px;
+  font-weight: 600;
+  border: 1px solid $apex-grey;
+  border-radius: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
+  transition: all 0.3s linear;
+  cursor: pointer;
+
+  &:hover,
+  &:focus &:focus-visible {
+    color: $apex-green;
+    border: 1px solid $apex-grey;
   }
   @include breakpoint($break-ssm) {
     margin: 0 auto;

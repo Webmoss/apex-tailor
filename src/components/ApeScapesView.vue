@@ -26,7 +26,7 @@
             for your Ape NFTs
           </div>
           <div class="button-container-start">
-              <button class="green-button" @click="goBanners()">ApeScapes</button>
+              <button class="grey-button" @click="goBanners()">ApeScapes</button>
             </div>
           </div>
         </div>
