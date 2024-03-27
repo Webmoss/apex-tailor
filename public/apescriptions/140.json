@@ -1,0 +1,72 @@
+{
+  "collectionId": 140,
+  "name": "Apescription #140",
+  "sha256Hash": "168e316c7b1a9b7679e6b3cafcda36518eafacc7802a3112ca4072fa0ece0140",
+  "attributes": [
+    {
+      "trait_type": "# Blue Range",
+      "value": "20 - 29"
+    },
+    {
+      "trait_type": "# Green Range",
+      "value": "70 - 79"
+    },
+    {
+      "trait_type": "# Red Range",
+      "value": "1 - 9"
+    },
+    {
+      "trait_type": "Body",
+      "value": "Tan"
+    },
+    {
+      "trait_type": "Bytes",
+      "value": 67160
+    },
+    {
+      "trait_type": "Bytes Range",
+      "value": "60000 - 69999"
+    },
+    {
+      "trait_type": "Clothes",
+      "value": "Tshirt Striped"
+    },
+    {
+      "trait_type": "DNA Core",
+      "value": "NEEPN"
+    },
+    {
+      "trait_type": "Eyes",
+      "value": "Closed"
+    },
+    {
+      "trait_type": "Glasses",
+      "value": "None"
+    },
+    {
+      "trait_type": "Hash Attempts",
+      "value": 47722
+    },
+    {
+      "trait_type": "Hash Attempts Range",
+      "value": "40000 - 49999"
+    },
+    {
+      "trait_type": "Hat",
+      "value": "None"
+    },
+    {
+      "trait_type": "Mouth",
+      "value": "Oh"
+    },
+    {
+      "trait_type": "Piercing",
+      "value": "None"
+    },
+    {
+      "trait_type": "Inscription Type",
+      "value": "Apescription"
+    }
+  ],
+  "description": "Apescription: Infinitely Scalable Simian Vector Graphic (SVG) Ethscribed on Ethereum."
+}
