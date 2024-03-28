@@ -11,7 +11,8 @@ export const useStore = defineStore({
     apes: [] as apeObject[],
     tailorApe: <apeObject>{},
     searchApeId: 'all',
-    searchResults: [] as apeObject[]
+    searchResults: [] as apeObject[],
+    myStage: null as any,
   }),
   getters: {
     getLoading(state) {
@@ -31,6 +32,9 @@ export const useStore = defineStore({
     },
     getTailorApe(state) {
       return state.tailorApe;
+    },
+    getMyStage(state) {
+      return state.myStage;
     },
     getSearchApeId(state) {
       return state.searchApeId;
@@ -57,6 +61,9 @@ export const useStore = defineStore({
     },
     setTailorApe(ape: apeObject) {
       this.tailorApe = ape;
+    },
+    setMyStage(stage: any) {
+      this.myStage = stage;
     },
     updateSearchApeId(apeId: string) {
       this.searchApeId = apeId;

@@ -59,24 +59,17 @@
           </div>
         </div>
         <div class="two-quarter">
-          <!-- <div v-if="tailorApe.image" class="image-box">
-            <img :src="`./apes/${tailorApe.image}`" alt="ApeX" />
-            <img v-if="gmApe" class="gm-image-overlay" :src="`./skins/${tailorApe.skin}-Skin/GM_${tailorApe.skin}_${tailorApe.body}.png`" alt="ApeX" />
-          </div>
-          <div v-else class="image-box">
-            <img src="/apes/0.png" alt="ApeX" />
-          </div> -->
           <div class="image-box">
-            <canvas id="apeTailor" ref="canvasBox" />
+            <div style="width: 380px; height: 380px; overflow: auto" id="canvasStage"></div>
           </div>
         </div>
         <div class="two-quarter mobile-hidden">
           <div class="input-row">
-              <button :disabled="!tailorApe.image" class="icon-button-round" @click="setGmApe()">
+              <button :disabled="!tailorApe.body" class="icon-button-round" @click="setGmApe()">
                 GM
               </button>
               <button class="green-button" @click="downloadCanvas()">Download</button>
-              <button :disabled="!tailorApe.image" class="icon-button-round" @click="setJayApe()">
+              <button :disabled="!tailorApe.body" class="icon-button-round" @click="setJayApe()">
                 J
               </button>
           </div>
@@ -223,6 +216,7 @@
   import { ref, reactive, onMounted } from "vue";
   import { storeToRefs } from "pinia";
   import { useStore } from "@/stores";
+  import Konva from "konva";
 
   import IconPlay from '../assets/svgs/icons/IconPlay.vue';
   import IconRestart from '../assets/svgs/icons/IconRestart.vue';
@@ -231,15 +225,12 @@
 
   import apexApe from "/apes/0.png";
 
-  import data from '../data/ape-metadata.json';
-
   /* Init Pinia Store Values and Methods */
   const store = useStore();
-  const { apes, tailorApe } = storeToRefs(store);
+  const { tailorApe } = storeToRefs(store);
 
-  const canvasBox = ref();
   const apeId = ref();
-  
+
   const state = reactive({
     gmApe: false,
     jayApe: false
@@ -275,90 +266,289 @@
   async function setGmApe() {
     state.jayApe = !state.jayApe;
     state.gmApe = !state.gmApe;
-    await drawApe(`/apes/${tailorApe.value.image}`);
+    await drawApe();
   }
 
   async function setJayApe() {
-    // console.log("gmApe.value Before", state.gmApe);
-    // console.log("jayApe.value Before", state.jayApe);  
-    
     state.gmApe = !state.gmApe;  
-    state.jayApe = !state.jayApe;    
-    
-    // console.log("gmApe.value After", state.gmApe);
-    // console.log("jayApe.value After", state.jayApe);
-    
-    await drawApe(`/apes/${tailorApe.value.image}`);
+    state.jayApe = !state.jayApe;
+    await drawApe();
   }  
 
-  async function drawApe( src: string, scale = 5.40 ) {
+  function stripSpaces(str: string) {
+    return str.split(' ').join('_');
+  }
 
-    const displayWidth = 380;
-    const displayHeight = 380;
-    const cvn = canvasBox.value;
+  async function drawApe() {
+    var stage = new Konva.Stage({
+      container: "canvasStage",
+      width: 380,
+      height: 380
+    });
 
-    cvn.fillStyle = "#2e2e2e";
-    cvn.style.width = displayWidth + 'px';
-    cvn.style.height = displayHeight + 'px';
-    cvn.width = displayWidth * scale;
-    cvn.height = displayHeight * scale;
+    var layer = new Konva.Layer();
+    stage.add(layer);
 
-    let ctx = cvn.getContext("2d");  
-    let bg = new Image();
-    // let bgBody = new Image();
-    // let bgClothes = new Image();
-    // let bgEyes = new Image();
-    // let bgGlasses = new Image();
-    // let bgHat = new Image();
-    // let bgMouth = new Image();
-    // let bgPiercing = new Image();
-    let bgGM = new Image();
-    // let bgJay = new Image();
+    console.log("Body",tailorApe.value.body);
+    console.log("Skin", tailorApe.value.skin);
 
-    bg.src = src;
-    // bgBody.src = tailorApe.value.body ? `./body/${tailorApe.value.skin}-Skin/GM_${tailorApe.value.skin}_${tailorApe.value.body}.png`: '';
-    // bgClothes.src = tailorApe.value.clothes ? `./clothes/${tailorApe.value.skin}-Skin/GM_${tailorApe.value.skin}_${tailorApe.value.clothes}.png`: '';
-    // bgEyes.src = tailorApe.value.eyes ? `./eyes/${tailorApe.value.skin}-Skin/GM_${tailorApe.value.skin}_${tailorApe.value.eyes}.png`: '';
-    // bgGlasses.src = tailorApe.value.glasses ? `./glasses/${tailorApe.value.skin}-Skin/GM_${tailorApe.value.skin}_${tailorApe.value.glasses}.png`: '';
-    // bgHat.src = tailorApe.value.hat ? `./hats/${tailorApe.value.skin}-Skin/GM_${tailorApe.value.skin}_${tailorApe.value.hat}.png`: '';
-    // bgMouth.src = tailorApe.value.mouth ? `./mouthes/${tailorApe.value.skin}-Skin/GM_${tailorApe.value.skin}_${tailorApe.value.mouth}.png`: '';
-    // bgPiercing.src = tailorApe.value.piercing ? `./piercings/${tailorApe.value.skin}-Skin/GM_${tailorApe.value.skin}_${tailorApe.value.piercing}.png`: '';
-    bgGM.src = state.gmApe === true ? `./gmSkins/${tailorApe.value.skin}-Skin/GM_${tailorApe.value.skin}_${tailorApe.value.body}.png`: '';
-    // bgJay.src = state.jayApe === true ? `./jays/${tailorApe.value.skin}-Skin/GM_${tailorApe.value.skin}_${tailorApe.value.body}.png`: '';
+    if(tailorApe.value.body) {
+      var bgBodyImage = new Image();
+      bgBodyImage.src = `/body/${stripSpaces(tailorApe.value.body)}_${tailorApe.value.skin}.png`;
+      bgBodyImage.onload = function () {
+        var defaultApe = new Konva.Image({
+          x: 0,
+          y: 0,
+          image: bgBodyImage,
+          width: 380,
+          height: 380,
+        });
+        layer.add(defaultApe);
+      };      
+    }
+      
+    console.log("Clothes", tailorApe.value.clothes);
 
-    bg.onload = function() {
-      ctx.drawImage(bg, 0 , 0);
-      // ctx.drawImage(bgBody, 0 , 0);
-      // ctx.drawImage(bgClothes, 0 , 0);
-      // ctx.drawImage(bgEyes, 0 , 0);
-      // ctx.drawImage(bgGlasses, 0 , 0);
-      // ctx.drawImage(bgHat, 0 , 0);
-      // ctx.drawImage(bgMouth, 0 , 0);
-      // ctx.drawImage(bgPiercing, 0 , 0);
-      ctx.drawImage(bgGM, 0 , 0);
-      // ctx.drawImage(bgJay, 0 , 0);
+    if(tailorApe.value.clothes !== 'None') {
+      var clothesLayer = new Konva.Layer();
+      stage.add(clothesLayer);
+
+      var bgClothesImage = new Image();
+      bgClothesImage.src = `/clothes/${stripSpaces(tailorApe.value.clothes)}.png`;
+      bgClothesImage.onload = function () {
+        var defaultApe = new Konva.Image({
+          x: 0,
+          y: 0,
+          image: bgClothesImage,
+          width: 380,
+          height: 380,
+        });
+        clothesLayer.add(defaultApe);
+      }; 
+    }
+    
+    console.log("Eyes", tailorApe.value.eyes);
+    if(tailorApe.value.eyes !== 'None') {
+      
+      var eyesLayer = new Konva.Layer();
+      stage.add(eyesLayer);
+
+      var bgEyesImage = new Image();
+      bgEyesImage.src = `/eyes/${stripSpaces(tailorApe.value.eyes)}_${tailorApe.value.skin}.png`;
+      bgEyesImage.onload = function () {
+        var defaultApe = new Konva.Image({
+          x: 0,
+          y: 0,
+          image: bgEyesImage,
+          width: 380,
+          height: 380,
+        });
+        eyesLayer.add(defaultApe);
+      }; 
+    }
+    
+    console.log("Glasses", tailorApe.value.glasses);
+    if(tailorApe.value.glasses !== 'None') {
+      var glassesLayer = new Konva.Layer();
+      stage.add(glassesLayer);
+
+      var bgGlassesImage = new Image();
+      bgGlassesImage.src = `/glasses/${stripSpaces(tailorApe.value.glasses)}_${tailorApe.value.skin}.png`;
+      bgGlassesImage.onload = function () {
+        var defaultApe = new Konva.Image({
+          x: 0,
+          y: 0,
+          image: bgGlassesImage,
+          width: 380,
+          height: 380,
+        });
+        glassesLayer.add(defaultApe);
+      }; 
+    }
+    
+    console.log("Hat", tailorApe.value.hat);
+    if(tailorApe.value.hat !== 'None') {
+      var hatLayer = new Konva.Layer();
+      stage.add(hatLayer);
+
+      var bgHatImage = new Image();
+      bgHatImage.src = `/hats/${stripSpaces(tailorApe.value.hat)}.png`;
+      bgHatImage.onload = function () {
+        var defaultApe = new Konva.Image({
+          x: 0,
+          y: 0,
+          image: bgHatImage,
+          width: 380,
+          height: 380,
+        });
+        hatLayer.add(defaultApe);
+      };
+    }
+
+    console.log("Mouth", tailorApe.value.mouth);
+    if(tailorApe.value.mouth !== 'None') {
+      var mouthLayer = new Konva.Layer();
+      stage.add(mouthLayer);
+
+      var bgMouthImage = new Image();
+      bgMouthImage.src = `/mouthes/${stripSpaces(tailorApe.value.mouth)}_${tailorApe.value.skin}.png`;
+      bgMouthImage.onload = function () {
+        var defaultApe = new Konva.Image({
+          x: 0,
+          y: 0,
+          image: bgMouthImage,
+          width: 380,
+          height: 380,
+        });
+        mouthLayer.add(defaultApe);
+      };
+    }
+
+    console.log("Piercing", tailorApe.value.piercing);
+    if(tailorApe.value.piercing !== 'None') {
+      var piercingLayer = new Konva.Layer();
+      stage.add(piercingLayer);
+
+      var bgPiercingImage = new Image();
+      bgPiercingImage.src = `/piercings/${stripSpaces(tailorApe.value.piercing)}.png`;
+      bgPiercingImage.onload = function () {
+        var defaultApe = new Konva.Image({
+          x: 0,
+          y: 0,
+          image: bgPiercingImage,
+          width: 380,
+          height: 380,
+        });
+        piercingLayer.add(defaultApe);
+      };
+    }
+
+    console.log("GM", state.gmApe === true);
+    if(state.gmApe === true) {
+      var gmLayer = new Konva.Layer();
+      stage.add(gmLayer);
+
+      var bgGMImage = new Image();
+      bgGMImage.src = `/gmSkins/${tailorApe.value.skin}-Skin/GM_${tailorApe.value.skin}_${tailorApe.value.body}.png`;
+      bgGMImage.onload = function () {
+        var defaultApe = new Konva.Image({
+          x: 0,
+          y: 0,
+          image: bgGMImage,
+          width: 380,
+          height: 380,
+        });
+        gmLayer.add(defaultApe);
+      };
+    }
+
+    console.log("Jay", state.jayApe === true);
+    if(state.jayApe === true) {
+      var jayLayer = new Konva.Layer();
+      stage.add(jayLayer);
+
+      var bgJayImage = new Image();
+      bgJayImage.src = `/jays/${tailorApe.value.skin}-Skin/GM_${tailorApe.value.skin}_${tailorApe.value.body}.png`;
+      bgJayImage.onload = function () {
+        var defaultApe = new Konva.Image({
+          x: 0,
+          y: 0,
+          image: bgJayImage,
+          width: 380,
+          height: 380,
+        });
+        jayLayer.add(defaultApe);
+      };
     }
   }
 
   async function searchApe( apeId: string ) {
-    console.log('Search Ape', apeId);
+    
+    // console.log('Search Ape', apeId);
+    let ape = await fetch(`/apescriptions/${apeId}.json`)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error
+            (`HTTP error! Status: ${res.status}`);
+        }
+        return res.json();
+      })
+      .catch((error) => {
+        console.error("Unable to fetch Ape data:", error)
+      });
+    
+    // console.log('Found Ape', ape);
+    // console.log('Ape Id', ape.collectionId);
+    // console.log('Ape Body', ape.attributes[3].value);
+    // console.log('Ape Skin', ape.attributes[7].value);
 
-    let ape = apes.value.filter(a => a.id === apeId)
+    let skin = "";
+    switch(ape.attributes[7].value) {
+      case "PNEII":
+        skin = 'Medium';
+        break;
+      case "INENP":
+        skin = 'Medium';
+        break;
+      case "NIIIN":
+        skin = 'Dark';
+        break;
+      case "NAAPN":
+        skin = 'Dark';
+        break;
+      case "NAAIP":
+        skin = 'Light';
+        break;
+      case "APIPE":
+        skin = 'Light';
+        break;  
+      case "NIPEP":
+        skin = 'Dark';
+        break;
+      case "AENAN":
+        skin = 'Medium';
+        break;
+      case "EANNP":
+        skin = 'Dark';
+        break;
+      case "IEIPA":
+        skin = 'Medium';
+        break;
+      case "PAINI":
+        skin = 'Medium';
+        break;
+      case "IAIAA":
+        skin = 'Medium';
+        break;
+      case "IENIA":
+        skin = 'Medium';
+        break;
+      default:
+      skin = 'Light';
+    }
+    // console.log('Ape Clothes', ape.attributes[6].value);
+    // console.log('Ape Eyes', ape.attributes[8].value);
+    // console.log('Ape Glasses', ape.attributes[9].value);
+    // console.log('Ape Hat', ape.attributes[12].value);
+    // console.log('Ape Mouth', ape.attributes[13].value);
+    // console.log('Ape Piercing', ape.attributes[14].value);
+    // console.log('Ape Image', ape.image);
 
-    console.log('Found Ape', ape[0]);
-    console.log('Ape Id', ape[0].id);
-    console.log('Ape Body', ape[0].body);
-    console.log('Ape Skin', ape[0].skin);
-    console.log('Ape Clothes', ape[0].clothes);
-    console.log('Ape Eyes', ape[0].eyes);
-    console.log('Ape Glasses', ape[0].glasses);
-    console.log('Ape Hat', ape[0].hat);
-    console.log('Ape Mouth', ape[0].mouth);
-    console.log('Ape Piercing', ape[0].piercing);
-    console.log('Ape Image', ape[0].image);
+    const myApe = {
+      id: ape.collectionId,
+      body: ape.attributes[3].value,
+      skin: skin,
+      clothes: ape.attributes[6].value,
+      eyes: ape.attributes[8].value,
+      glasses: ape.attributes[9].value,
+      hat: ape.attributes[12].value,
+      mouth: ape.attributes[13].value,
+      piercing: ape.attributes[14].value,
+      image: ape.image,
+    }
 
-    await store.setTailorApe(ape[0]);
-    await drawApe(`/apes/${tailorApe.value.image}`);
+    await store.setTailorApe(myApe);
+    await drawApe();
   }
 
   async function resetApe() {
@@ -379,21 +569,31 @@
   }
 
   async function setDefaultApe() {
-    drawApe(apexApe, 1.58);
-  }
+    var stage = new Konva.Stage({
+      container: "canvasStage",
+      width: 380,
+      height: 380
+    });
 
-  /* Get Apes JSON Data */
-  async function fetchApes() {
-    try {
-      await store.setApes(data.apes);
-    } catch (error) {
-      console.log("Error :", error);
-    }
+    var layer = new Konva.Layer();
+    stage.add(layer);
+
+    var imageObj = new Image();
+    imageObj.onload = function () {
+      var defaultApe = new Konva.Image({
+        x: 0,
+        y: 0,
+        image: imageObj,
+        width: 380,
+        height: 380,
+      });
+      layer.add(defaultApe);
+    };
+    imageObj.src = apexApe;    
   }
 
   onMounted(async () => {
-    await fetchApes();
-    setDefaultApe();
+    await setDefaultApe();        
   });
 </script>
 
