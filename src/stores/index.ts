@@ -10,9 +10,6 @@ export const useStore = defineStore({
     ethBalance: '',
     apes: [] as apeObject[],
     tailorApe: <apeObject>{},
-    searchApeId: 'all',
-    searchResults: [] as apeObject[],
-    myStage: null as any,
   }),
   getters: {
     getLoading(state) {
@@ -32,15 +29,6 @@ export const useStore = defineStore({
     },
     getTailorApe(state) {
       return state.tailorApe;
-    },
-    getMyStage(state) {
-      return state.myStage;
-    },
-    getSearchApeId(state) {
-      return state.searchApeId;
-    },
-    getSearchResults(state) {
-      return state.searchResults;
     }
   },
   actions: {
@@ -62,18 +50,32 @@ export const useStore = defineStore({
     setTailorApe(ape: apeObject) {
       this.tailorApe = ape;
     },
-    setMyStage(stage: any) {
-      this.myStage = stage;
+    setTailorApeBody(value: string) {
+      this.tailorApe.body = value;
     },
-    updateSearchApeId(apeId: string) {
-      this.searchApeId = apeId;
+    setTailorApeSkin(value: string) {
+      this.tailorApe.skin = value;
     },
-    addSearchResults(apes: apeObject[]) {
-      this.searchResults = apes;
+    setTailorApeClothes(value: string) {
+      this.tailorApe.clothes = value;
     },
-    clearSearchResults() {
-      this.searchApeId = 'all';
-      this.searchResults = [];
+    setTailorApeEyes(value: string) {
+      this.tailorApe.eyes = value;
+    },
+    setTailorApeGlasses(value: string) {
+      this.tailorApe.glasses = value;
+    },
+    setTailorApeHat(value: string) {
+      this.tailorApe.hat = value;
+    },
+    setTailorApeMouth(value: string) {
+      this.tailorApe.mouth = value;
+    },
+    setTailorApePiercing(value: string) {
+      this.tailorApe.piercing = value;
+    },
+    setTailorApeImage(value: string) {
+      this.tailorApe.image = value;
     }
   }
 });

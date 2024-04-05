@@ -1,0 +1,89 @@
+{
+  "mouthes": [
+    {
+      "index": 1,
+      "type": "Bored",
+      "image": "Bored.png"
+    },
+    {
+      "index": 2,
+      "type": "Diamond_Grillz",
+      "image": "Diamond_Grillz.png"
+    },
+    {
+      "index": 3,
+      "type": "Dumbfounded",
+      "image": "Dumbfounded.png"
+    },
+    {
+      "index": 4,
+      "type": "Ell",
+      "image": "Ell.png"
+    },
+    {
+      "index": 5,
+      "type": "Gold_Grillz",
+      "image": "Gold_Grillz.png"
+    },
+    {
+      "index": 6,
+      "type": "Grin",
+      "image": "Grin.png"
+    },
+    {
+      "index": 7,
+      "type": "Jovial",
+      "image": "Jovial.png"
+    },
+    {
+      "index": 8,
+      "type": "Oh",
+      "image": "Oh.png"
+    },
+    {
+      "index": 9,
+      "type": "Ooh",
+      "image": "Ooh.png"
+    },
+    {
+      "index": 10,
+      "type": "Rage",
+      "image": "Rage.png"
+    },
+    {
+      "index": 11,
+      "type": "Rainbow",
+      "image": "Rainbow.png"
+    },
+    {
+      "index": 12,
+      "type": "Stubble",
+      "image": "Stubble.png"
+    },
+    {
+      "index": 13,
+      "type": "Teeth",
+      "image": "Teeth.png"
+    },
+    {
+      "index": 14,
+      "type": "Tongue",
+      "image": "Tongue.png"
+    },
+    {
+      "index": 15,
+      "type": "Urgh",
+      "image": "Urgh.png"
+    },
+    {
+      "index": 16,
+      "type": "Vuh",
+      "image": "Vuh.png"
+    },
+    {
+      "index": 17,
+      "type": "Wah",
+      "image": "Wah.png"
+    }
+  ]
+}

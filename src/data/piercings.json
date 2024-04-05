@@ -1,0 +1,19 @@
+{
+  "piercings": [
+    {
+      "index": 1,
+      "type": "Drip",
+      "image": "Drip.png"
+    },
+    {
+      "index": 2,
+      "type": "Gold_Stud",
+      "image": "Gold_Stud.png"
+    },
+    {
+      "index": 3,
+      "type": "Silver_Stud",
+      "image": "Silver_Stud.png"
+    }
+  ]
+}
