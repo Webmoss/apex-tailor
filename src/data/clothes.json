@@ -22,71 +22,61 @@
     },
     {
       "index": 5,
-      "type": "Hoodie_Robot",
-      "image": "Hoodie_Robot.png"
-    },
-    {
-      "index": 6,
       "type": "Hoodie",
       "image": "Hoodie.png"
     },
     {
-      "index": 7,
-      "type": "Leather_Jacket_Robot",
-      "image": "Leather_Jacket_Robot.png"
-    },
-    {
-      "index": 8,
+      "index": 6,
       "type": "Leather_Jacket",
       "image": "Leather_Jacket.png"
     },
     {
-      "index": 9,
+      "index": 7,
       "type": "Smoking_Jacket",
       "image": "Smoking_Jacket.png"
     },
     {
-      "index": 10,
+      "index": 8,
       "type": "Suit",
       "image": "Suit.png"
     },
     {
-      "index": 11,
+      "index": 9,
       "type": "Torn",
       "image": "Torn.png"
     },
     {
-      "index": 12,
+      "index": 10,
       "type": "Tshirt_Apescription",
       "image": "Tshirt_Apescription.png"
     },
     {
-      "index": 13,
+      "index": 11,
       "type": "Tshirt_Black",
       "image": "Tshirt_Black.png"
     },
     {
-      "index": 14,
+      "index": 12,
       "type": "Tshirt_Bones",
       "image": "Tshirt_Bones.png"
     },
     {
-      "index": 15,
+      "index": 13,
       "type": "Tshirt_Logo",
       "image": "Tshirt_Logo.png"
     },
     {
-      "index": 16,
+      "index": 14,
       "type": "Tshirt_Striped",
       "image": "Tshirt_Striped.png"
     },
     {
-      "index": 17,
+      "index": 15,
       "type": "Tshirt_Tuxedo",
       "image": "Tshirt_Tuxedo.png"
     },
     {
-      "index": 18,
+      "index": 16,
       "type": "Turtleneck",
       "image": "Turtleneck.png"
     }

@@ -3,22 +3,17 @@
     <div class="tailor-container">
       <!-- Attributes Row #1 -->
       <div class="column mobile-hidden">
-
         <div class="one-quarter">
-          <div v-if="tailorApe.skin && tailorApe.hat === 'None'" class="scroll-box">
-            <template v-for="item in hats" v-bind:key="item.type">
-              <div class="attribute-box">
-                <button class="icon-button-left" @click="previousApeAttr('hats', item.type)">
-                  <IconLeft />
-                </button>
-                <img :src="`/hats/${item.type}.png`" alt="ApeX" @click="nextApeAttr('hats', item.type)" />
-                <button class="icon-button-right" @click="nextApeAttr('hats', item.type)">
-                  <IconRight />
-                </button>
-              </div>
-            </template>             
+          <div v-if="tailorApe.hat === 'None'" class="attribute-box">
+            <button class="icon-button-left" @click="previousApeAttr('hats', apeAttributes.hat)">
+              <IconLeft />
+            </button>
+            <img :src="`/hats/${apeAttributes.hat}.png`" alt="ApeX" @click="nextApeAttr('hats', apeAttributes.hat)" />
+            <button class="icon-button-right" @click="nextApeAttr('hats', apeAttributes.hat)">
+              <IconRight />
+            </button>
           </div>
-          <div v-else-if="tailorApe.skin && tailorApe.hat !== 'None'" class="attribute-box">
+          <div v-else-if="tailorApe.hat !== 'None'" class="attribute-box">
             <button class="icon-button-left" @click="previousApeAttr('hats', tailorApe.hat)">
               <IconLeft />
             </button>
@@ -50,20 +45,16 @@
         </div>
 
         <div class="one-quarter">
-          <div v-if="tailorApe.skin && tailorApe.glasses === 'None'" class="scroll-box">
-            <template v-for="item in glasses" v-bind:key="item.type">
-              <div class="attribute-box">
-                <button class="icon-button-left" @click="previousApeAttr('glasses', item.type)">
-                  <IconLeft />
-                </button>
-                <img :src="`/glasses/${item.type}_${tailorApe.skin}.png`" alt="ApeX" @click="nextApeAttr('glasses', item.type)" />
-                <button class="icon-button-right" @click="nextApeAttr('glasses', item.type)">
-                  <IconRight />
-                </button>
-              </div>
-            </template> 
+          <div v-if="tailorApe.glasses === 'None'" class="attribute-box">
+            <button class="icon-button-left" @click="previousApeAttr('glasses', apeAttributes.glasses)">
+              <IconLeft />
+            </button>
+            <img :src="`/glasses/${apeAttributes.glasses}_${apeAttributes.skin}.png`" alt="ApeX" @click="nextApeAttr('glasses', apeAttributes.glasses)" />
+            <button class="icon-button-right" @click="nextApeAttr('glasses', apeAttributes.glasses)">
+              <IconRight />
+            </button>
           </div>
-          <div v-else-if="tailorApe.skin && tailorApe.glasses !== 'None'" class="attribute-box">
+          <div v-else-if="tailorApe.glasses !== 'None'" class="attribute-box">
             <button class="icon-button-left" @click="previousApeAttr('glasses', tailorApe.glasses)">
               <IconLeft />
             </button>
@@ -78,20 +69,16 @@
         </div>
 
         <div class="one-quarter">
-          <div v-if="tailorApe.skin && tailorApe.piercing === 'None'" class="scroll-box">
-            <template v-for="item in piercings" v-bind:key="item.type">
-              <div class="attribute-box">
-                <button class="icon-button-left" @click="previousApeAttr('piercings', item.type)">
-                  <IconLeft />
-                </button>
-                <img :src="`/piercings/${item.type}.png`" alt="ApeX" @click="nextApeAttr('piercings', item.type)" />
-                <button class="icon-button-right" @click="nextApeAttr('piercings', item.type)">
-                  <IconRight />
-                </button>
-              </div>
-            </template> 
+          <div v-if="tailorApe.piercing === 'None'" class="attribute-box">
+            <button class="icon-button-left" @click="previousApeAttr('piercings', apeAttributes.piercing)">
+              <IconLeft />
+            </button>
+            <img :src="`/piercings/${apeAttributes.piercing}.png`" alt="ApeX" @click="nextApeAttr('piercings', apeAttributes.piercing)" />
+            <button class="icon-button-right" @click="nextApeAttr('piercings', apeAttributes.piercing)">
+              <IconRight />
+            </button>
           </div>
-          <div v-else-if="tailorApe.skin && tailorApe.piercing !== 'None'" class="attribute-box">
+          <div v-else-if="tailorApe.piercing !== 'None'" class="attribute-box">
             <button class="icon-button-left" @click="previousApeAttr('piercings', tailorApe.piercing)">
               <IconLeft />
             </button>
@@ -104,7 +91,6 @@
             <img src="/greenStage.png" alt="ApeX" />
           </div>
         </div>
-        
       </div>
       <!-- END Attributes Row #1 -->
 
@@ -150,20 +136,16 @@
       <!-- Attributes Row #2 -->
       <div class="column mobile-hidden">
         <div class="one-quarter">
-          <div v-if="tailorApe.skin && tailorApe.eyes === 'None'" class="scroll-box">
-            <template v-for="item in eyes" v-bind:key="item.type">
-              <div class="attribute-box">
-                <button class="icon-button-left" @click="previousApeAttr('eyes', item.type)">
-                  <IconLeft />
-                </button>
-                <img :src="`/eyes/${item.type}_${tailorApe.skin}.png`" alt="ApeX" @click="nextApeAttr('eyes', item.type)" />
-                <button class="icon-button-right" @click="nextApeAttr('eyes', item.type)">
-                  <IconRight />
-                </button>
-              </div>
-            </template> 
+          <div v-if="tailorApe.eyes === 'None'" class="attribute-box">
+            <button class="icon-button-left" @click="previousApeAttr('eyes', apeAttributes.eyes)">
+              <IconLeft />
+            </button>
+            <img :src="`/eyes/${apeAttributes.eyes}_${apeAttributes.skin}.png`" alt="ApeX" @click="nextApeAttr('eyes', apeAttributes.eyes)" />
+            <button class="icon-button-right" @click="nextApeAttr('eyes', apeAttributes.eyes)">
+              <IconRight />
+            </button>
           </div>
-          <div v-else-if="tailorApe.skin && tailorApe.eyes !== 'None'" class="attribute-box">
+          <div v-else-if="tailorApe.eyes !== 'None'" class="attribute-box">
             <button class="icon-button-left" @click="previousApeAttr('eyes', tailorApe.eyes)">
               <IconLeft />
             </button>
@@ -177,20 +159,16 @@
           </div>
         </div>
         <div class="one-quarter">
-          <div v-if="tailorApe.skin && tailorApe.mouth === 'None'" class="scroll-box">
-            <template v-for="item in mouthes" v-bind:key="item.type">
-              <div class="attribute-box">
-                <button class="icon-button-left" @click="previousApeAttr('mouthes', item.type)">
-                  <IconLeft />
-                </button>
-                <img :src="`/mouthes/${item.type}_${tailorApe.skin}.png`" alt="ApeX" @click="nextApeAttr('mouthes', item.type)" />
-                <button class="icon-button-right" @click="nextApeAttr('mouthes', item.type)">
-                  <IconRight />
-                </button>
-              </div>
-            </template>             
+          <div v-if="tailorApe.mouth === 'None'" class="attribute-box">
+            <button class="icon-button-left" @click="previousApeAttr('mouthes', apeAttributes.mouth)">
+              <IconLeft />
+            </button>
+            <img :src="`/mouthes/${apeAttributes.mouth}_${tailorApe.skin}.png`" alt="ApeX" @click="nextApeAttr('mouthes', apeAttributes.mouth)" />
+            <button class="icon-button-right" @click="nextApeAttr('mouthes', apeAttributes.mouth)">
+              <IconRight />
+            </button>
           </div>
-          <div v-else-if="tailorApe.skin && tailorApe.mouth !== 'None'" class="attribute-box">
+          <div v-else-if="tailorApe.mouth !== 'None'" class="attribute-box">
             <button class="icon-button-left" @click="previousApeAttr('mouthes', tailorApe.mouth)">
               <IconLeft />
             </button>
@@ -204,24 +182,31 @@
           </div>
         </div>
         <div class="one-quarter">
-          <div v-if="tailorApe.skin && tailorApe.clothes === 'None'" class="scroll-box">
-            <template v-for="item in clothes" v-bind:key="item.type">
-              <div class="attribute-box">
-                <button class="icon-button-left" @click="previousApeAttr('clothes', item.type)">
-                  <IconLeft />
-                </button>                
-                <img :src="`/clothes/${item.type}.png`" alt="ApeX" @click="nextApeAttr('clothes', item.type)" />
-                <button class="icon-button-right" @click="nextApeAttr('clothes', item.type)">
-                  <IconRight />
-                </button>
-              </div>
-            </template>             
+          <div v-if="tailorApe.clothes === 'None'" class="attribute-box">
+            <button class="icon-button-left" @click="previousApeAttr('clothes', apeAttributes.clothes)">
+              <IconLeft />
+            </button>                
+            <img :src="`/clothes/${apeAttributes.clothes}.png`" alt="ApeX" @click="nextApeAttr('clothes', apeAttributes.clothes)" />
+            <button class="icon-button-right" @click="nextApeAttr('clothes', apeAttributes.clothes)">
+              <IconRight />
+            </button>
           </div>
-          <div v-else-if="tailorApe.skin && tailorApe.clothes !== 'None'" class="attribute-box">
+          <div v-else-if="tailorApe.clothes !== 'None'" class="attribute-box">
             <button class="icon-button-left" @click="previousApeAttr('clothes', tailorApe.clothes)">
               <IconLeft />
             </button>
-            <img :src="`/clothes/${tailorApe.clothes}.png`" alt="ApeX" @click="nextApeAttr('clothes', tailorApe.clothes)" />
+            <img 
+              v-if="tailorApe.body === 'Robot' && tailorApe.clothes === 'Hoodie' || tailorApe.clothes === 'Leather_Jacket'" 
+              :src="`/clothes/${tailorApe.clothes}.png`" 
+              alt="ApeX" 
+              @click="nextApeAttr('clothes', tailorApe.clothes)" 
+            />
+            <img 
+              v-else
+              :src="`/clothes/${tailorApe.clothes}.png`" 
+              alt="ApeX" 
+              @click="nextApeAttr('clothes', tailorApe.clothes)" 
+            />
             <button class="icon-button-right" @click="nextApeAttr('clothes', tailorApe.clothes)">
               <IconRight />
             </button>
@@ -238,20 +223,16 @@
         <!-- Attributes Row #1 -->
         <div class="column">
           <div class="one-quarter">
-            <div v-if="tailorApe.skin && tailorApe.hat === 'None'" class="scroll-box">
-              <template v-for="item in hats" v-bind:key="item.type">
-                <div class="attribute-box">
-                  <button class="icon-button-left" @click="previousApeAttr('hats', item.type)">
-                    <IconLeft />
-                  </button>
-                  <img :src="`/hats/${item.type}.png`" alt="ApeX" @click="nextApeAttr('hats', item.type)" />
-                  <button class="icon-button-right" @click="nextApeAttr('hats', item.type)">
-                    <IconRight />
-                  </button>
-                </div>
-              </template>             
+            <div v-if="tailorApe.hat === 'None'" class="attribute-box">
+              <button class="icon-button-left" @click="previousApeAttr('hats', apeAttributes.hat)">
+                <IconLeft />
+              </button>
+              <img :src="`/hats/${apeAttributes.hat}.png`" alt="ApeX" @click="nextApeAttr('hats', apeAttributes.hat)" />
+              <button class="icon-button-right" @click="nextApeAttr('hats', apeAttributes.hat)">
+                <IconRight />
+              </button>
             </div>
-            <div v-else-if="tailorApe.skin && tailorApe.hat !== 'None'" class="attribute-box">
+            <div v-else-if="tailorApe.hat !== 'None'" class="attribute-box">
               <button class="icon-button-left" @click="previousApeAttr('hats', tailorApe.hat)">
                 <IconLeft />
               </button>
@@ -282,20 +263,16 @@
             </div>
           </div>
           <div class="one-quarter">
-            <div v-if="tailorApe.skin && tailorApe.glasses === 'None'" class="scroll-box">
-              <template v-for="item in glasses" v-bind:key="item.type">
-                <div class="attribute-box">
-                  <button class="icon-button-left" @click="previousApeAttr('glasses', item.type)">
-                    <IconLeft />
-                  </button>
-                  <img :src="`/glasses/${item.type}_${tailorApe.skin}.png`" alt="ApeX" @click="nextApeAttr('glasses', item.type)" />
-                  <button class="icon-button-right" @click="nextApeAttr('glasses', item.type)">
-                    <IconRight />
-                  </button>
-                </div>
-              </template> 
+            <div v-if="tailorApe.glasses === 'None'" class="attribute-box">
+              <button class="icon-button-left" @click="previousApeAttr('glasses', apeAttributes.glasses)">
+                <IconLeft />
+              </button>
+              <img :src="`/glasses/${apeAttributes.glasses}_${apeAttributes.skin}.png`" alt="ApeX" @click="nextApeAttr('glasses', apeAttributes.glasses)" />
+              <button class="icon-button-right" @click="nextApeAttr('glasses', apeAttributes.glasses)">
+                <IconRight />
+              </button>
             </div>
-            <div v-else-if="tailorApe.skin && tailorApe.glasses !== 'None'" class="attribute-box">
+            <div v-else-if="tailorApe.glasses !== 'None'" class="attribute-box">
               <button class="icon-button-left" @click="previousApeAttr('glasses', tailorApe.glasses)">
                 <IconLeft />
               </button>
@@ -309,20 +286,16 @@
             </div>
           </div>
           <div class="one-quarter">
-            <div v-if="tailorApe.skin && tailorApe.piercing === 'None'" class="scroll-box">
-              <template v-for="item in piercings" v-bind:key="item.type">
-                <div class="attribute-box">
-                  <button class="icon-button-left" @click="previousApeAttr('piercings', item.type)">
-                    <IconLeft />
-                  </button>
-                  <img :src="`/piercings/${item.type}.png`" alt="ApeX" @click="nextApeAttr('piercings', item.type)" />
-                  <button class="icon-button-right" @click="nextApeAttr('piercings', item.type)">
-                    <IconRight />
-                  </button>
-                </div>
-              </template> 
+            <div v-if="tailorApe.piercing === 'None'" class="attribute-box">
+              <button class="icon-button-left" @click="previousApeAttr('piercings', apeAttributes.piercing)">
+                <IconLeft />
+              </button>
+              <img :src="`/piercings/${apeAttributes.piercing}.png`" alt="ApeX" @click="nextApeAttr('piercings', apeAttributes.piercing)" />
+              <button class="icon-button-right" @click="nextApeAttr('piercings', apeAttributes.piercing)">
+                <IconRight />
+              </button>
             </div>
-            <div v-else-if="tailorApe.skin && tailorApe.piercing !== 'None'" class="attribute-box">
+            <div v-else-if="tailorApe.piercing !== 'None'" class="attribute-box">
               <button class="icon-button-left" @click="previousApeAttr('piercings', tailorApe.piercing)">
                 <IconLeft />
               </button>
@@ -340,20 +313,16 @@
         <!-- Attributes Row #2 -->
         <div class="column">
           <div class="one-quarter">
-            <div v-if="tailorApe.skin && tailorApe.eyes === 'None'" class="scroll-box">
-              <template v-for="item in eyes" v-bind:key="item.type">
-                <div class="attribute-box">
-                  <button class="icon-button-left" @click="previousApeAttr('eyes', item.type)">
-                    <IconLeft />
-                  </button>
-                  <img :src="`/eyes/${item.type}_${tailorApe.skin}.png`" alt="ApeX" @click="nextApeAttr('eyes', item.type)" />
-                  <button class="icon-button-right" @click="nextApeAttr('eyes', item.type)">
-                    <IconRight />
-                  </button>
-                </div>
-              </template> 
+            <div v-if="tailorApe.eyes === 'None'" class="attribute-box">
+              <button class="icon-button-left" @click="previousApeAttr('eyes', apeAttributes.eyes)">
+                <IconLeft />
+              </button>
+              <img :src="`/eyes/${apeAttributes.eyes}_${apeAttributes.skin}.png`" alt="ApeX" @click="nextApeAttr('eyes', apeAttributes.eyes)" />
+              <button class="icon-button-right" @click="nextApeAttr('eyes', apeAttributes.eyes)">
+                <IconRight />
+              </button>
             </div>
-            <div v-else-if="tailorApe.skin && tailorApe.eyes !== 'None'" class="attribute-box">
+            <div v-else-if="tailorApe.eyes !== 'None'" class="attribute-box">
               <button class="icon-button-left" @click="previousApeAttr('eyes', tailorApe.eyes)">
                 <IconLeft />
               </button>
@@ -367,20 +336,16 @@
             </div>
           </div>
           <div class="one-quarter">
-            <div v-if="tailorApe.skin && tailorApe.mouth === 'None'" class="scroll-box">
-              <template v-for="item in mouthes" v-bind:key="item.type">
-                <div class="attribute-box">
-                  <button class="icon-button-left" @click="previousApeAttr('mouthes', item.type)">
-                    <IconLeft />
-                  </button>
-                  <img :src="`/mouthes/${item.type}_${tailorApe.skin}.png`" alt="ApeX" @click="nextApeAttr('mouthes', item.type)" />
-                  <button class="icon-button-right" @click="nextApeAttr('mouthes', item.type)">
-                    <IconRight />
-                  </button>
-                </div>
-              </template>             
+            <div v-if="tailorApe.mouth === 'None'" class="attribute-box">
+              <button class="icon-button-left" @click="previousApeAttr('mouthes', apeAttributes.mouth)">
+                <IconLeft />
+              </button>
+              <img :src="`/mouthes/${apeAttributes.mouth}_${tailorApe.skin}.png`" alt="ApeX" @click="nextApeAttr('mouthes', apeAttributes.mouth)" />
+              <button class="icon-button-right" @click="nextApeAttr('mouthes', apeAttributes.mouth)">
+                <IconRight />
+              </button>
             </div>
-            <div v-else-if="tailorApe.skin && tailorApe.mouth !== 'None'" class="attribute-box">
+            <div v-else-if="tailorApe.mouth !== 'None'" class="attribute-box">
               <button class="icon-button-left" @click="previousApeAttr('mouthes', tailorApe.mouth)">
                 <IconLeft />
               </button>
@@ -394,24 +359,31 @@
             </div>
           </div>
           <div class="one-quarter">
-            <div v-if="tailorApe.skin && tailorApe.clothes === 'None'" class="scroll-box">
-              <template v-for="item in clothes" v-bind:key="item.type">
-                <div class="attribute-box">
-                  <button class="icon-button-left" @click="previousApeAttr('clothes', item.type)">
-                    <IconLeft />
-                  </button>
-                  <img :src="`/clothes/${item.type}.png`" alt="ApeX" @click="nextApeAttr('clothes', item.type)" />
-                  <button class="icon-button-right" @click="nextApeAttr('clothes', item.type)">
-                    <IconRight />
-                  </button>
-                </div>
-              </template>             
+            <div v-if="tailorApe.clothes === 'None'" class="attribute-box">
+              <button class="icon-button-left" @click="previousApeAttr('clothes', apeAttributes.clothes)">
+                <IconLeft />
+              </button>                
+              <img :src="`/clothes/${apeAttributes.clothes}.png`" alt="ApeX" @click="nextApeAttr('clothes', apeAttributes.clothes)" />
+              <button class="icon-button-right" @click="nextApeAttr('clothes', apeAttributes.clothes)">
+                <IconRight />
+              </button>
             </div>
-            <div v-else-if="tailorApe.skin && tailorApe.clothes !== 'None'" class="attribute-box">
+            <div v-else-if="tailorApe.clothes !== 'None'" class="attribute-box">
               <button class="icon-button-left" @click="previousApeAttr('clothes', tailorApe.clothes)">
                 <IconLeft />
               </button>
-              <img :src="`/clothes/${tailorApe.clothes}.png`" alt="ApeX" @click="nextApeAttr('clothes', tailorApe.clothes)" />
+              <img 
+                v-if="tailorApe.body === 'Robot' && tailorApe.clothes === 'Hoodie' || tailorApe.clothes === 'Leather_Jacket'" 
+                :src="`/clothes/${tailorApe.clothes}.png`" 
+                alt="ApeX" 
+                @click="nextApeAttr('clothes', tailorApe.clothes)" 
+              />
+              <img 
+                v-else
+                :src="`/clothes/${tailorApe.clothes}.png`" 
+                alt="ApeX" 
+                @click="nextApeAttr('clothes', tailorApe.clothes)" 
+              />
               <button class="icon-button-right" @click="nextApeAttr('clothes', tailorApe.clothes)">
                 <IconRight />
               </button>
@@ -464,7 +436,7 @@
 
   /* Init Pinia Store Values and Methods */
   const store = useStore();
-  const { loading, tailorApe } = storeToRefs(store);
+  const { loading, tailorApe, apeAttributes } = storeToRefs(store);
 
   const apeId = ref();
 
@@ -495,9 +467,9 @@
       console.log("previousIndex", previousIndex);
 
       let previousTrait = hats.filter(item => item.index === previousIndex)
-      console.log("previousTrait", previousTrait);
+      // console.log("previousTrait", previousTrait);
 
-      store.setTailorApeHat(previousTrait[0].type)
+      store.setTailorApeHat(previousTrait[0].type);
       console.log("hats previousTrait Type", previousTrait[0].type);
 
     } else if(attr === 'eyes') {
@@ -512,9 +484,9 @@
       console.log("previousIndex", previousIndex);
 
       let previousTrait = eyes.filter(item => item.index === previousIndex)
-      console.log("previousTrait", previousTrait);
+      // console.log("previousTrait", previousTrait);
 
-      store.setTailorApeEyes(previousTrait[0].type)
+      store.setTailorApeEyes(previousTrait[0].type);
       console.log("eyes previousTrait Type", previousTrait[0].type);
 
     } else if(attr === 'clothes') {
@@ -529,9 +501,10 @@
       console.log("previousIndex", previousIndex);
 
       let previousTrait = clothes.filter(item => item.index === previousIndex)
-      console.log("previousTrait", previousTrait);
-
-      store.setTailorApeClothes(previousTrait[0].type)
+      // if(previousTrait[0].type === 'Hoodie'){
+      //   store.setTailorApeHat('');
+      // }
+      store.setTailorApeClothes(previousTrait[0].type);
       console.log("clothes previousTrait Type", previousTrait[0].type);
 
     } else if(attr === 'glasses') {
@@ -546,7 +519,7 @@
       console.log("previousIndex", previousIndex);
 
       let previousTrait = glasses.filter(item => item.index === previousIndex)
-      console.log("previousTrait", previousTrait);
+      // console.log("previousTrait", previousTrait);
 
       store.setTailorApeGlasses(previousTrait[0].type)
       console.log("glasses previousTrait Type", previousTrait[0].type);
@@ -563,7 +536,7 @@
       console.log("previousIndex", previousIndex);
 
       let previousTrait = piercings.filter(item => item.index === previousIndex)
-      console.log("previousTrait", previousTrait);
+      // console.log("previousTrait", previousTrait);
 
       store.setTailorApePiercing(previousTrait[0].type)
       console.log("piercings previousTrait Type", previousTrait[0].type);
@@ -580,7 +553,7 @@
       console.log("previousIndex", previousIndex);
 
       let previousTrait = mouthes.filter(item => item.index === previousIndex)
-      console.log("previousTrait", previousTrait);
+      // console.log("previousTrait", previousTrait);
 
       store.setTailorApeMouth(previousTrait[0].type)
       console.log("mouthes previousTrait Type", previousTrait[0].type);
@@ -646,8 +619,9 @@
       console.log("nextIndex", nextIndex);
 
       let nextTrait = clothes.filter(item => item.index === nextIndex)
-      console.log("nextTrait", nextTrait[0].type);
-
+      // if(nextTrait[0].type === 'Hoodie'){
+      //   store.setTailorApeHat('');
+      // }
       store.setTailorApeClothes(nextTrait[0].type)
       console.log("clothes nextTrait Type", nextTrait[0].type);
 
@@ -794,7 +768,12 @@
       stage.add(clothesLayer);
 
       var bgClothesImage = new Image();
-      bgClothesImage.src = `/clothes/${stripSpaces(tailorApe.value.clothes)}.png`;
+      if(tailorApe.value.body === 'Robot' && tailorApe.value.clothes === 'Hoodie' || tailorApe.value.clothes === 'Leather_Jacket') {
+        bgClothesImage.src = `/clothes/${stripSpaces(tailorApe.value.clothes)}_Robot.png`;
+      } else {
+        bgClothesImage.src = `/clothes/${stripSpaces(tailorApe.value.clothes)}.png`;
+      }
+      
       bgClothesImage.onload = function () {
         var defaultApe = new Konva.Image({
           x: 0,
@@ -1048,6 +1027,7 @@
       image: "",
     });
     await setDefaultApe();
+    await setDefaultAttributes();
   }
 
   async function setDefaultApe() {
@@ -1074,8 +1054,24 @@
     imageObj.src = apexApe;    
   }
 
+  async function setDefaultAttributes() {
+    store.setApeAttributes({
+      id: "1",
+      body: "",
+      skin: "Light",
+      clothes: "Bone_Necklace",
+      eyes: "Angry",
+      glasses: "Beams",
+      hat: "Apescription_Beanie",
+      mouth: "Bored",
+      piercing: "Drip",
+      image: "",
+    }); 
+  }
+
   onMounted(async () => {
-    await setDefaultApe();        
+    await setDefaultApe();   
+    await setDefaultAttributes();
   });
 </script>
 
@@ -1236,23 +1232,6 @@
       transition: all 0.5s linear;
       overflow: hidden;
     }
-  }
-
-  .scroll-box {
-    // display: flex;
-    flex-direction: row;
-    // justify-content: center;
-    // align-content: center;
-    // align-items: center;
-    // position: relative;
-    width: 160px;
-    height: 160px;
-    // background: #f4f4f4;
-    // border-radius: 12px;
-    // margin: 0;
-    // padding: 0;
-    // transition: all 0.5s linear;
-    overflow: scroll;
   }
 
   .attribute-box {

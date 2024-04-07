@@ -10,6 +10,7 @@ export const useStore = defineStore({
     ethBalance: '',
     apes: [] as apeObject[],
     tailorApe: <apeObject>{},
+    apeAttributes: <apeObject>{},
   }),
   getters: {
     getLoading(state) {
@@ -29,6 +30,9 @@ export const useStore = defineStore({
     },
     getTailorApe(state) {
       return state.tailorApe;
+    },
+    getApeAttributes(state) {
+      return state.apeAttributes;
     }
   },
   actions: {
@@ -76,6 +80,36 @@ export const useStore = defineStore({
     },
     setTailorApeImage(value: string) {
       this.tailorApe.image = value;
+    },
+    setApeAttributes(attributes: apeObject) {
+      this.apeAttributes = attributes;
+    },
+    setApeAttributesBody(value: string) {
+      this.apeAttributes.body = value;
+    },
+    setApeAttributesSkin(value: string) {
+      this.apeAttributes.skin = value;
+    },
+    setApeAttributesClothes(value: string) {
+      this.apeAttributes.clothes = value;
+    },
+    setApeAttributesEyes(value: string) {
+      this.apeAttributes.eyes = value;
+    },
+    setApeAttributesGlasses(value: string) {
+      this.apeAttributes.glasses = value;
+    },
+    setApeAttributesHat(value: string) {
+      this.apeAttributes.hat = value;
+    },
+    setApeAttributesMouth(value: string) {
+      this.apeAttributes.mouth = value;
+    },
+    setApeAttributesPiercing(value: string) {
+      this.apeAttributes.piercing = value;
+    },
+    setApeAttributesImage(value: string) {
+      this.apeAttributes.image = value;
     }
   }
 });
