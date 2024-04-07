@@ -4,7 +4,7 @@
       <!-- Attributes Row #1 -->
       <div class="column mobile-hidden">
         <div class="one-quarter">
-          <div v-if="tailorApe.hat === 'None'" class="attribute-box">
+          <div v-if="tailorApe.body && tailorApe.hat === 'None'" class="attribute-box">
             <button class="icon-button-left" @click="previousApeAttr('hats', apeAttributes.hat)">
               <IconLeft />
             </button>
@@ -13,7 +13,7 @@
               <IconRight />
             </button>
           </div>
-          <div v-else-if="tailorApe.hat !== 'None'" class="attribute-box">
+          <div v-else-if="tailorApe.body && tailorApe.hat !== 'None'" class="attribute-box">
             <button class="icon-button-left" @click="previousApeAttr('hats', tailorApe.hat)">
               <IconLeft />
             </button>
@@ -45,7 +45,7 @@
         </div>
 
         <div class="one-quarter">
-          <div v-if="tailorApe.glasses === 'None'" class="attribute-box">
+          <div v-if="tailorApe.body && tailorApe.glasses === 'None'" class="attribute-box">
             <button class="icon-button-left" @click="previousApeAttr('glasses', apeAttributes.glasses)">
               <IconLeft />
             </button>
@@ -54,7 +54,7 @@
               <IconRight />
             </button>
           </div>
-          <div v-else-if="tailorApe.glasses !== 'None'" class="attribute-box">
+          <div v-else-if="tailorApe.body && tailorApe.glasses !== 'None'" class="attribute-box">
             <button class="icon-button-left" @click="previousApeAttr('glasses', tailorApe.glasses)">
               <IconLeft />
             </button>
@@ -69,7 +69,7 @@
         </div>
 
         <div class="one-quarter">
-          <div v-if="tailorApe.piercing === 'None'" class="attribute-box">
+          <div v-if="tailorApe.body && tailorApe.piercing === 'None'" class="attribute-box">
             <button class="icon-button-left" @click="previousApeAttr('piercings', apeAttributes.piercing)">
               <IconLeft />
             </button>
@@ -78,7 +78,7 @@
               <IconRight />
             </button>
           </div>
-          <div v-else-if="tailorApe.piercing !== 'None'" class="attribute-box">
+          <div v-else-if="tailorApe.body && tailorApe.piercing !== 'None'" class="attribute-box">
             <button class="icon-button-left" @click="previousApeAttr('piercings', tailorApe.piercing)">
               <IconLeft />
             </button>
@@ -136,7 +136,7 @@
       <!-- Attributes Row #2 -->
       <div class="column mobile-hidden">
         <div class="one-quarter">
-          <div v-if="tailorApe.eyes === 'None'" class="attribute-box">
+          <div v-if="tailorApe.body && tailorApe.eyes === 'None'" class="attribute-box">
             <button class="icon-button-left" @click="previousApeAttr('eyes', apeAttributes.eyes)">
               <IconLeft />
             </button>
@@ -145,7 +145,7 @@
               <IconRight />
             </button>
           </div>
-          <div v-else-if="tailorApe.eyes !== 'None'" class="attribute-box">
+          <div v-else-if="tailorApe.body && tailorApe.eyes !== 'None'" class="attribute-box">
             <button class="icon-button-left" @click="previousApeAttr('eyes', tailorApe.eyes)">
               <IconLeft />
             </button>
@@ -159,7 +159,7 @@
           </div>
         </div>
         <div class="one-quarter">
-          <div v-if="tailorApe.mouth === 'None'" class="attribute-box">
+          <div v-if="tailorApe.body && tailorApe.mouth === 'None'" class="attribute-box">
             <button class="icon-button-left" @click="previousApeAttr('mouthes', apeAttributes.mouth)">
               <IconLeft />
             </button>
@@ -168,7 +168,7 @@
               <IconRight />
             </button>
           </div>
-          <div v-else-if="tailorApe.mouth !== 'None'" class="attribute-box">
+          <div v-else-if="tailorApe.body && tailorApe.mouth !== 'None'" class="attribute-box">
             <button class="icon-button-left" @click="previousApeAttr('mouthes', tailorApe.mouth)">
               <IconLeft />
             </button>
@@ -182,7 +182,7 @@
           </div>
         </div>
         <div class="one-quarter">
-          <div v-if="tailorApe.clothes === 'None'" class="attribute-box">
+          <div v-if="tailorApe.body && tailorApe.clothes === 'None'" class="attribute-box">
             <button class="icon-button-left" @click="previousApeAttr('clothes', apeAttributes.clothes)">
               <IconLeft />
             </button>                
@@ -191,7 +191,7 @@
               <IconRight />
             </button>
           </div>
-          <div v-else-if="tailorApe.clothes !== 'None'" class="attribute-box">
+          <div v-else-if="tailorApe.body && tailorApe.clothes !== 'None'" class="attribute-box">
             <button class="icon-button-left" @click="previousApeAttr('clothes', tailorApe.clothes)">
               <IconLeft />
             </button>
@@ -223,7 +223,7 @@
         <!-- Attributes Row #1 -->
         <div class="column">
           <div class="one-quarter">
-            <div v-if="tailorApe.hat === 'None'" class="attribute-box">
+            <div v-if="tailorApe.body && tailorApe.hat === 'None'" class="attribute-box">
               <button class="icon-button-left" @click="previousApeAttr('hats', apeAttributes.hat)">
                 <IconLeft />
               </button>
@@ -232,7 +232,7 @@
                 <IconRight />
               </button>
             </div>
-            <div v-else-if="tailorApe.hat !== 'None'" class="attribute-box">
+            <div v-else-if="tailorApe.body && tailorApe.hat !== 'None'" class="attribute-box">
               <button class="icon-button-left" @click="previousApeAttr('hats', tailorApe.hat)">
                 <IconLeft />
               </button>
@@ -263,7 +263,7 @@
             </div>
           </div>
           <div class="one-quarter">
-            <div v-if="tailorApe.glasses === 'None'" class="attribute-box">
+            <div v-if="tailorApe.body && tailorApe.glasses === 'None'" class="attribute-box">
               <button class="icon-button-left" @click="previousApeAttr('glasses', apeAttributes.glasses)">
                 <IconLeft />
               </button>
@@ -272,7 +272,7 @@
                 <IconRight />
               </button>
             </div>
-            <div v-else-if="tailorApe.glasses !== 'None'" class="attribute-box">
+            <div v-else-if="tailorApe.body && tailorApe.glasses !== 'None'" class="attribute-box">
               <button class="icon-button-left" @click="previousApeAttr('glasses', tailorApe.glasses)">
                 <IconLeft />
               </button>
@@ -286,7 +286,7 @@
             </div>
           </div>
           <div class="one-quarter">
-            <div v-if="tailorApe.piercing === 'None'" class="attribute-box">
+            <div v-if="tailorApe.body && tailorApe.piercing === 'None'" class="attribute-box">
               <button class="icon-button-left" @click="previousApeAttr('piercings', apeAttributes.piercing)">
                 <IconLeft />
               </button>
@@ -295,7 +295,7 @@
                 <IconRight />
               </button>
             </div>
-            <div v-else-if="tailorApe.piercing !== 'None'" class="attribute-box">
+            <div v-else-if="tailorApe.body && tailorApe.piercing !== 'None'" class="attribute-box">
               <button class="icon-button-left" @click="previousApeAttr('piercings', tailorApe.piercing)">
                 <IconLeft />
               </button>
@@ -313,7 +313,7 @@
         <!-- Attributes Row #2 -->
         <div class="column">
           <div class="one-quarter">
-            <div v-if="tailorApe.eyes === 'None'" class="attribute-box">
+            <div v-if="tailorApe.body && tailorApe.eyes === 'None'" class="attribute-box">
               <button class="icon-button-left" @click="previousApeAttr('eyes', apeAttributes.eyes)">
                 <IconLeft />
               </button>
@@ -322,7 +322,7 @@
                 <IconRight />
               </button>
             </div>
-            <div v-else-if="tailorApe.eyes !== 'None'" class="attribute-box">
+            <div v-else-if="tailorApe.body && tailorApe.eyes !== 'None'" class="attribute-box">
               <button class="icon-button-left" @click="previousApeAttr('eyes', tailorApe.eyes)">
                 <IconLeft />
               </button>
@@ -336,7 +336,7 @@
             </div>
           </div>
           <div class="one-quarter">
-            <div v-if="tailorApe.mouth === 'None'" class="attribute-box">
+            <div v-if="tailorApe.body && tailorApe.mouth === 'None'" class="attribute-box">
               <button class="icon-button-left" @click="previousApeAttr('mouthes', apeAttributes.mouth)">
                 <IconLeft />
               </button>
@@ -345,7 +345,7 @@
                 <IconRight />
               </button>
             </div>
-            <div v-else-if="tailorApe.mouth !== 'None'" class="attribute-box">
+            <div v-else-if="tailorApe.body && tailorApe.mouth !== 'None'" class="attribute-box">
               <button class="icon-button-left" @click="previousApeAttr('mouthes', tailorApe.mouth)">
                 <IconLeft />
               </button>
@@ -359,7 +359,7 @@
             </div>
           </div>
           <div class="one-quarter">
-            <div v-if="tailorApe.clothes === 'None'" class="attribute-box">
+            <div v-if="tailorApe.body && tailorApe.clothes === 'None'" class="attribute-box">
               <button class="icon-button-left" @click="previousApeAttr('clothes', apeAttributes.clothes)">
                 <IconLeft />
               </button>                
@@ -368,7 +368,7 @@
                 <IconRight />
               </button>
             </div>
-            <div v-else-if="tailorApe.clothes !== 'None'" class="attribute-box">
+            <div v-else-if="tailorApe.body && tailorApe.clothes !== 'None'" class="attribute-box">
               <button class="icon-button-left" @click="previousApeAttr('clothes', tailorApe.clothes)">
                 <IconLeft />
               </button>
@@ -440,6 +440,13 @@
 
   const apeId = ref();
 
+  const hatsTotal = hats.length;
+  const eyesTotal = eyes.length;
+  const clothesTotal = clothes.length;
+  const glassesTotal = glasses.length;
+  const piercingsTotal = piercings.length;
+  const mouthesTotal = mouthes.length;
+
   const state = reactive({
     gmApe: true,
     jayApe: false
@@ -450,236 +457,178 @@
   }
 
   async function previousApeAttr( attr: string, value: string ) {
-    console.log("Previous Attr:", attr);
-    console.log("New Value:", value);
 
     let trait = null;
 
     if(attr === 'hats') {
-
       trait = hats.filter(item => item.type === value)
-      console.log("trait", trait[0].type);
-
       let currentIndex = trait[0].index;
-      console.log("currentIndex", currentIndex);
-
-      let previousIndex = currentIndex - 1;
-      console.log("previousIndex", previousIndex);
-
-      let previousTrait = hats.filter(item => item.index === previousIndex)
-      // console.log("previousTrait", previousTrait);
-
-      store.setTailorApeHat(previousTrait[0].type);
-      console.log("hats previousTrait Type", previousTrait[0].type);
-
+      if(currentIndex === 1) {
+        let previousTrait = hats.filter(item => item.index === hatsTotal)
+        store.setTailorApeHat(previousTrait[0].type);
+        store.setApeAttributesHat(previousTrait[0].type);
+      } else {
+        let previousTrait = hats.filter(item => item.index === currentIndex - 1)
+        store.setTailorApeHat(previousTrait[0].type);
+        store.setApeAttributesHat(previousTrait[0].type);
+      }
     } else if(attr === 'eyes') {
-
       trait = eyes.filter(item => item.type === value)
-      console.log("trait", trait[0].type);
-
       let currentIndex = trait[0].index;
-      console.log("currentIndex", currentIndex);
-
-      let previousIndex = currentIndex - 1;
-      console.log("previousIndex", previousIndex);
-
-      let previousTrait = eyes.filter(item => item.index === previousIndex)
-      // console.log("previousTrait", previousTrait);
-
-      store.setTailorApeEyes(previousTrait[0].type);
-      console.log("eyes previousTrait Type", previousTrait[0].type);
-
+      if(currentIndex === 1) {
+        let previousTrait = eyes.filter(item => item.index === eyesTotal)
+        store.setTailorApeEyes(previousTrait[0].type);
+        store.setApeAttributesEyes(previousTrait[0].type);
+      } else {
+        let previousTrait = eyes.filter(item => item.index === currentIndex - 1)
+        store.setTailorApeEyes(previousTrait[0].type);
+        store.setApeAttributesEyes(previousTrait[0].type);
+      }
     } else if(attr === 'clothes') {
-
       trait = clothes.filter(item => item.type === value)
-      console.log("trait", trait[0].type);
-
       let currentIndex = trait[0].index;
-      console.log("currentIndex", currentIndex);
-
-      let previousIndex = currentIndex - 1;
-      console.log("previousIndex", previousIndex);
-
-      let previousTrait = clothes.filter(item => item.index === previousIndex)
-      // if(previousTrait[0].type === 'Hoodie'){
-      //   store.setTailorApeHat('');
-      // }
-      store.setTailorApeClothes(previousTrait[0].type);
-      console.log("clothes previousTrait Type", previousTrait[0].type);
-
+      if(currentIndex === 1) {
+        let previousTrait = clothes.filter(item => item.index === clothesTotal)
+        // if(previousTrait[0].type === 'Hoodie'){
+        //   store.setTailorApeClothes('');
+        // }
+        store.setTailorApeClothes(previousTrait[0].type);
+        store.setApeAttributesClothes(previousTrait[0].type);
+      } else {
+        let previousTrait = clothes.filter(item => item.index === currentIndex - 1)
+        // if(previousTrait[0].type === 'Hoodie'){
+        //   store.setTailorApeClothes('');
+        // }
+        store.setTailorApeClothes(previousTrait[0].type);
+        store.setApeAttributesClothes(previousTrait[0].type);
+      }
     } else if(attr === 'glasses') {
-
       trait = glasses.filter(item => item.type === value)
-      console.log("trait", trait[0].type);
-
       let currentIndex = trait[0].index;
-      console.log("currentIndex", currentIndex);
-
-      let previousIndex = currentIndex - 1;
-      console.log("previousIndex", previousIndex);
-
-      let previousTrait = glasses.filter(item => item.index === previousIndex)
-      // console.log("previousTrait", previousTrait);
-
-      store.setTailorApeGlasses(previousTrait[0].type)
-      console.log("glasses previousTrait Type", previousTrait[0].type);
-
+      if(currentIndex === 1) {
+        let previousTrait = glasses.filter(item => item.index === glassesTotal)
+        store.setTailorApeGlasses(previousTrait[0].type);
+        store.setApeAttributesGlasses(previousTrait[0].type);
+      } else {
+        let previousTrait = glasses.filter(item => item.index === currentIndex - 1)
+        store.setTailorApeGlasses(previousTrait[0].type);
+        store.setApeAttributesGlasses(previousTrait[0].type);
+      }
     } else if(attr === 'piercings') {
-
       trait = piercings.filter(item => item.type === value)
-      console.log("trait", trait[0].type);
-
       let currentIndex = trait[0].index;
-      console.log("currentIndex", currentIndex);
-
-      let previousIndex = currentIndex - 1;
-      console.log("previousIndex", previousIndex);
-
-      let previousTrait = piercings.filter(item => item.index === previousIndex)
-      // console.log("previousTrait", previousTrait);
-
-      store.setTailorApePiercing(previousTrait[0].type)
-      console.log("piercings previousTrait Type", previousTrait[0].type);
-
+      if(currentIndex === 1) {
+        let previousTrait = piercings.filter(item => item.index === piercingsTotal)
+        store.setTailorApePiercing(previousTrait[0].type);
+        store.setApeAttributesPiercing(previousTrait[0].type);
+      } else {
+        let previousTrait = piercings.filter(item => item.index === currentIndex - 1)
+        store.setTailorApePiercing(previousTrait[0].type);
+        store.setApeAttributesPiercing(previousTrait[0].type);
+      }
     } else if(attr === 'mouthes') {
-
       trait = mouthes.filter(item => item.type === value)
-      console.log("trait", trait[0].type);
-
       let currentIndex = trait[0].index;
-      console.log("currentIndex", currentIndex);
-
-      let previousIndex = currentIndex - 1;
-      console.log("previousIndex", previousIndex);
-
-      let previousTrait = mouthes.filter(item => item.index === previousIndex)
-      // console.log("previousTrait", previousTrait);
-
-      store.setTailorApeMouth(previousTrait[0].type)
-      console.log("mouthes previousTrait Type", previousTrait[0].type);
-
+      if(currentIndex === 1) {
+        let previousTrait = mouthes.filter(item => item.index === mouthesTotal)
+        store.setTailorApeMouth(previousTrait[0].type);
+        store.setApeAttributesMouth(previousTrait[0].type);
+      } else {
+        let previousTrait = mouthes.filter(item => item.index === currentIndex - 1)
+        store.setTailorApeMouth(previousTrait[0].type);
+        store.setApeAttributesMouth(previousTrait[0].type);
+      }
     } else {
       trait = null
     }
-  
-    if(trait !== null) {
+      if(trait !== null) {
       await drawApe();
     }
   }
 
   async function nextApeAttr( attr: string, value: string ) {
-    console.log("Next Attr:", attr);
-    console.log("New Value:", value);
-
     let trait = null;
-
     if(attr === 'hats') {
-
       trait = hats.filter(item => item.type === value)
-      console.log("trait", trait[0].type);
-
       let currentIndex = trait[0].index;
-      console.log("currentIndex", currentIndex);
-
-      let nextIndex = currentIndex + 1;
-      console.log("nextIndex", nextIndex);
-
-      let nextTrait = hats.filter(item => item.index === nextIndex)
-      console.log("nextTrait", nextTrait[0].type);
-
-      store.setTailorApeHat(nextTrait[0].type)
-      console.log("hats nextTrait Type", nextTrait[0].type);
-
+      if(currentIndex === hatsTotal) {
+        let nextTrait = hats.filter(item => item.index === 1)
+        store.setTailorApeHat(nextTrait[0].type);
+        store.setApeAttributesHat(nextTrait[0].type);
+      } else {
+        let nextTrait = hats.filter(item => item.index === currentIndex + 1)
+        store.setTailorApeHat(nextTrait[0].type);
+        store.setApeAttributesHat(nextTrait[0].type);
+      }
     } else if(attr === 'eyes') {
-
       trait = eyes.filter(item => item.type === value)
-      console.log("trait", trait[0].type);
-
       let currentIndex = trait[0].index;
-      console.log("currentIndex", currentIndex);
-
-      let nextIndex = currentIndex + 1;
-      console.log("nextIndex", nextIndex);
-
-      let nextTrait = eyes.filter(item => item.index === nextIndex)
-      console.log("nextTrait", nextTrait[0].type);
-
-      store.setTailorApeEyes(nextTrait[0].type)
-      console.log("eyes nextTrait Type", nextTrait[0].type);
-
+      if(currentIndex === eyesTotal) {
+        let nextTrait = eyes.filter(item => item.index === 1)
+        store.setTailorApeEyes(nextTrait[0].type);
+        store.setApeAttributesEyes(nextTrait[0].type);
+      } else {
+        let nextTrait = eyes.filter(item => item.index === currentIndex + 1)
+        store.setTailorApeEyes(nextTrait[0].type);
+        store.setApeAttributesEyes(nextTrait[0].type);
+      }
     } else if(attr === 'clothes') {
-
       trait = clothes.filter(item => item.type === value)
-      console.log("trait", trait[0].type);
-
       let currentIndex = trait[0].index;
-      console.log("currentIndex", currentIndex);
-
-      let nextIndex = currentIndex + 1;
-      console.log("nextIndex", nextIndex);
-
-      let nextTrait = clothes.filter(item => item.index === nextIndex)
-      // if(nextTrait[0].type === 'Hoodie'){
-      //   store.setTailorApeHat('');
-      // }
-      store.setTailorApeClothes(nextTrait[0].type)
-      console.log("clothes nextTrait Type", nextTrait[0].type);
-
+      if(currentIndex === clothesTotal) {
+        let nextTrait = clothes.filter(item => item.index === 1)
+        // if(nextTrait[0].type === 'Hoodie'){
+        //   store.setTailorApeHat('');
+        // }
+        store.setTailorApeClothes(nextTrait[0].type);
+        store.setApeAttributesClothes(nextTrait[0].type);
+      } else {
+        let nextTrait = clothes.filter(item => item.index === currentIndex + 1)
+        // if(nextTrait[0].type === 'Hoodie'){
+        //   store.setTailorApeHat('');
+        // }
+        store.setTailorApeClothes(nextTrait[0].type);
+        store.setApeAttributesClothes(nextTrait[0].type);
+       }
     } else if(attr === 'glasses') {
-
       trait = glasses.filter(item => item.type === value)
-      console.log("trait", trait[0].type);
-
       let currentIndex = trait[0].index;
-      console.log("currentIndex", currentIndex);
-
-      let nextIndex = currentIndex + 1;
-      console.log("nextIndex", nextIndex);
-
-      let nextTrait = glasses.filter(item => item.index === nextIndex)
-      console.log("nextTrait", nextTrait[0].type);
-
-      store.setTailorApeGlasses(nextTrait[0].type)
-      console.log("glasses nextTrait Type", nextTrait[0].type);
-
+      if(currentIndex === glassesTotal) {
+        let nextTrait = glasses.filter(item => item.index === 1)
+        store.setTailorApeGlasses(nextTrait[0].type);
+        store.setApeAttributesGlasses(nextTrait[0].type);
+      } else {
+        let nextTrait = glasses.filter(item => item.index === currentIndex + 1)
+        store.setTailorApeGlasses(nextTrait[0].type);
+        store.setApeAttributesGlasses(nextTrait[0].type);
+      }
     } else if(attr === 'piercings') {
-
       trait = piercings.filter(item => item.type === value)
-      console.log("trait", trait[0].type);
-
       let currentIndex = trait[0].index;
-      console.log("currentIndex", currentIndex);
-
-      let nextIndex = currentIndex + 1;
-      console.log("nextIndex", nextIndex);
-
-      let nextTrait = piercings.filter(item => item.index === nextIndex)
-      console.log("nextTrait", nextTrait[0].type);
-
-      store.setTailorApePiercing(nextTrait[0].type)
-      console.log("piercings nextTrait Type", nextTrait[0].type);
-
+      if(currentIndex === piercingsTotal) {
+        let nextTrait = piercings.filter(item => item.index === 1)
+        store.setTailorApePiercing(nextTrait[0].type);
+        store.setApeAttributesPiercing(nextTrait[0].type);
+      } else {
+        let nextTrait = piercings.filter(item => item.index === currentIndex + 1)
+        store.setTailorApePiercing(nextTrait[0].type);
+        store.setApeAttributesPiercing(nextTrait[0].type);
+      }
     } else if(attr === 'mouthes') {
-
       trait = mouthes.filter(item => item.type === value)
-      console.log("trait", trait[0].type);
-
       let currentIndex = trait[0].index;
-      console.log("currentIndex", currentIndex);
-
-      let nextIndex = currentIndex + 1;
-      console.log("nextIndex", nextIndex);
-
-      let nextTrait = mouthes.filter(item => item.index === nextIndex)
-      console.log("nextTrait", nextTrait[0].type);
-
-      store.setTailorApeMouth(nextTrait[0].type)
-      console.log("mouthes nextTrait Type", nextTrait[0].type);
-
+      if(currentIndex === mouthesTotal) {
+        let nextTrait = mouthes.filter(item => item.index === 1)
+        store.setTailorApeMouth(nextTrait[0].type);
+        store.setApeAttributesMouth(nextTrait[0].type);
+      } else {
+        let nextTrait = mouthes.filter(item => item.index === currentIndex + 1)
+        store.setTailorApeMouth(nextTrait[0].type);
+        store.setApeAttributesMouth(nextTrait[0].type);
+      }
     } else {
       trait = null
-    }
-    
+    }    
     if(trait !== null) {
       await drawApe();
     }
@@ -1026,8 +975,8 @@
       piercing: "",
       image: "",
     });
-    await setDefaultApe();
     await setDefaultAttributes();
+    await setDefaultApe();
   }
 
   async function setDefaultApe() {
@@ -1238,7 +1187,8 @@
     position: relative;
     width: 160px;
     height: 160px;
-    background: #f4f4f4;
+    background: $apex-green;
+    // background: #f4f4f4;
     border-radius: 12px;
     margin: 0;
     padding: 0;
