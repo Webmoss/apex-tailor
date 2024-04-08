@@ -12,7 +12,7 @@
               <IconLeft />
             </button>
             <img
-              :src="`/hats/${apeAttributes.hat}.png`"
+              :src="`/hats/${stripSpaces(apeAttributes.hat)}.png`"
               alt="ApeX"
               @click="nextApeAttr('hats', apeAttributes.hat)"
             />
@@ -315,18 +315,18 @@
           >
             <button
               class="icon-button-left"
-              @click="previousApeAttr('clothes', apeAttributes.clothes)"
+              @click="previousApeAttr('clothes', stripSpaces(apeAttributes.clothes))"
             >
               <IconLeft />
             </button>
             <img
-              :src="`/clothes/${apeAttributes.clothes}.png`"
+              :src="`/clothes/${stripSpaces(apeAttributes.clothes)}.png`"
               alt="ApeX"
-              @click="nextApeAttr('clothes', apeAttributes.clothes)"
+              @click="nextApeAttr('clothes', stripSpaces(apeAttributes.clothes))"
             />
             <button
               class="icon-button-right"
-              @click="nextApeAttr('clothes', apeAttributes.clothes)"
+              @click="nextApeAttr('clothes', stripSpaces(apeAttributes.clothes))"
             >
               <IconRight />
             </button>
@@ -337,7 +337,7 @@
           >
             <button
               class="icon-button-left"
-              @click="previousApeAttr('clothes', tailorApe.clothes)"
+              @click="previousApeAttr('clothes', stripSpaces(tailorApe.clothes))"
             >
               <IconLeft />
             </button>
@@ -346,19 +346,19 @@
                 (tailorApe.body === 'Robot' && tailorApe.clothes === 'Hoodie') ||
                 tailorApe.clothes === 'Leather_Jacket'
               "
-              :src="`/clothes/${tailorApe.clothes}.png`"
+              :src="`/clothes/${stripSpaces(tailorApe.clothes)}.png`"
               alt="ApeX"
-              @click="nextApeAttr('clothes', tailorApe.clothes)"
-            />
+              @click="nextApeAttr('clothes', stripSpaces(tailorApe.clothes))"
+            />    
             <img
               v-else
-              :src="`/clothes/${tailorApe.clothes}.png`"
+              :src="`/clothes/${stripSpaces(tailorApe.clothes)}.png`"
               alt="ApeX"
-              @click="nextApeAttr('clothes', tailorApe.clothes)"
+              @click="nextApeAttr('clothes', stripSpaces(tailorApe.clothes))"
             />
             <button
               class="icon-button-right"
-              @click="nextApeAttr('clothes', tailorApe.clothes)"
+              @click="nextApeAttr('clothes', stripSpaces(tailorApe.clothes))"
             >
               <IconRight />
             </button>
@@ -383,7 +383,7 @@
                 <IconLeft />
               </button>
               <img
-                :src="`/hats/${apeAttributes.hat}.png`"
+                :src="`/hats/${stripSpaces(apeAttributes.hat)}.png`"
                 alt="ApeX"
                 @click="nextApeAttr('hats', apeAttributes.hat)"
               />
@@ -637,18 +637,18 @@
             >
               <button
                 class="icon-button-left"
-                @click="previousApeAttr('clothes', apeAttributes.clothes)"
+                @click="previousApeAttr('clothes', stripSpaces(apeAttributes.clothes))"
               >
                 <IconLeft />
               </button>
               <img
-                :src="`/clothes/${apeAttributes.clothes}.png`"
+                :src="`/clothes/${stripSpaces(apeAttributes.clothes)}.png`"
                 alt="ApeX"
-                @click="nextApeAttr('clothes', apeAttributes.clothes)"
+                @click="nextApeAttr('clothes', stripSpaces(apeAttributes.clothes))"
               />
               <button
                 class="icon-button-right"
-                @click="nextApeAttr('clothes', apeAttributes.clothes)"
+                @click="nextApeAttr('clothes', stripSpaces(apeAttributes.clothes))"
               >
                 <IconRight />
               </button>
@@ -659,7 +659,7 @@
             >
               <button
                 class="icon-button-left"
-                @click="previousApeAttr('clothes', tailorApe.clothes)"
+                @click="previousApeAttr('clothes', stripSpaces(tailorApe.clothes))"
               >
                 <IconLeft />
               </button>
@@ -668,19 +668,19 @@
                   (tailorApe.body === 'Robot' && tailorApe.clothes === 'Hoodie') ||
                   tailorApe.clothes === 'Leather_Jacket'
                 "
-                :src="`/clothes/${tailorApe.clothes}.png`"
+                :src="`/clothes/${stripSpaces(tailorApe.clothes)}.png`"
                 alt="ApeX"
-                @click="nextApeAttr('clothes', tailorApe.clothes)"
+                @click="nextApeAttr('clothes', stripSpaces(tailorApe.clothes))"
               />
               <img
                 v-else
-                :src="`/clothes/${tailorApe.clothes}.png`"
+                :src="`/clothes/${stripSpaces(tailorApe.clothes)}.png`"
                 alt="ApeX"
-                @click="nextApeAttr('clothes', tailorApe.clothes)"
+                @click="nextApeAttr('clothes', stripSpaces(tailorApe.clothes))"
               />
               <button
                 class="icon-button-right"
-                @click="nextApeAttr('clothes', tailorApe.clothes)"
+                @click="nextApeAttr('clothes', stripSpaces(tailorApe.clothes))"
               >
                 <IconRight />
               </button>
@@ -1020,9 +1020,7 @@ async function drawApe() {
 
   if (tailorApe.value.body) {
     var bgBodyImage = new Image();
-    bgBodyImage.src = `/body/${stripSpaces(tailorApe.value.body)}_${
-      tailorApe.value.skin
-    }.png`;
+    bgBodyImage.src = `/body/${stripSpaces(tailorApe.value.body)}_${tailorApe.value.skin}.png`;
     bgBodyImage.onload = function () {
       var defaultApe = new Konva.Image({
         x: 0,
@@ -1042,10 +1040,7 @@ async function drawApe() {
     stage.add(clothesLayer);
 
     var bgClothesImage = new Image();
-    if (
-      (tailorApe.value.body === "Robot" && tailorApe.value.clothes === "Hoodie") ||
-      tailorApe.value.clothes === "Leather_Jacket"
-    ) {
+    if ((tailorApe.value.body === "Robot" && tailorApe.value.clothes === "Hoodie") || tailorApe.value.clothes === "Leather_Jacket") {
       bgClothesImage.src = `/clothes/${stripSpaces(tailorApe.value.clothes)}_Robot.png`;
     } else {
       bgClothesImage.src = `/clothes/${stripSpaces(tailorApe.value.clothes)}.png`;
@@ -1069,9 +1064,7 @@ async function drawApe() {
     stage.add(eyesLayer);
 
     var bgEyesImage = new Image();
-    bgEyesImage.src = `/eyes/${stripSpaces(tailorApe.value.eyes)}_${
-      tailorApe.value.skin
-    }.png`;
+    bgEyesImage.src = `/eyes/${stripSpaces(tailorApe.value.eyes)}_${tailorApe.value.skin}.png`;
     bgEyesImage.onload = function () {
       var defaultApe = new Konva.Image({
         x: 0,
@@ -1090,9 +1083,7 @@ async function drawApe() {
     stage.add(glassesLayer);
 
     var bgGlassesImage = new Image();
-    bgGlassesImage.src = `/glasses/${stripSpaces(tailorApe.value.glasses)}_${
-      tailorApe.value.skin
-    }.png`;
+    bgGlassesImage.src = `/glasses/${stripSpaces(tailorApe.value.glasses)}_${tailorApe.value.skin}.png`;
     bgGlassesImage.onload = function () {
       var defaultApe = new Konva.Image({
         x: 0,
@@ -1130,9 +1121,7 @@ async function drawApe() {
     stage.add(mouthLayer);
 
     var bgMouthImage = new Image();
-    bgMouthImage.src = `/mouthes/${stripSpaces(tailorApe.value.mouth)}_${
-      tailorApe.value.skin
-    }.png`;
+    bgMouthImage.src = `/mouthes/${stripSpaces(tailorApe.value.mouth)}_${tailorApe.value.skin}.png`;
     bgMouthImage.onload = function () {
       var defaultApe = new Konva.Image({
         x: 0,
