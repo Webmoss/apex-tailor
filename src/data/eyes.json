@@ -27,41 +27,36 @@
     },
     {
       "index": 6,
-      "type": "Crazy",
-      "image": "Crazy.png"
-    },
-    {
-      "index": 7,
       "type": "Cyborg",
       "image": "Cyborg.png"
     },
     {
-      "index": 8,
+      "index": 7,
       "type": "Hypno",
       "image": "Hypno.png"
     },
     {
-      "index": 9,
+      "index": 8,
       "type": "Laser",
       "image": "Laser.png"
     },
     {
-      "index": 10,
+      "index": 9,
       "type": "Sad",
       "image": "Sad.png"
     },
     {
-      "index": 11,
+      "index": 10,
       "type": "Tired",
       "image": "Tired.png"
     },
     {
-      "index": 12,
+      "index": 11,
       "type": "Undead",
       "image": "Undead.png"
     },
     {
-      "index": 13,
+      "index": 12,
       "type": "Wide",
       "image": "Wide.png"
     }
