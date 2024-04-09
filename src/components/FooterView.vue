@@ -165,9 +165,9 @@
     
     img {
       display: block;
-      height: 80px;
+      height: 60px;
       @include breakpoint($break-sm) {
-        height: 60px;
+        height: 45px;
         margin: 0 0 0 10px;
       }
     }
@@ -218,9 +218,10 @@
     cursor: pointer;
   }
   .social-links li {
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.4rem;
     @include breakpoint($break-md) {
       padding-right: 20px;
+      padding-bottom: 0.2rem;
     }
     @include breakpoint($break-lg) {
       padding-right: 0;

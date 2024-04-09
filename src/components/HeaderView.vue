@@ -105,9 +105,9 @@
     img {
       display: block;
       width: auto;
-      height: 55px;
+      height: 50px;
       @include breakpoint($break-sm) {
-        height: 50px;
+        height: 45px;
         margin: 0;
       }
     }
