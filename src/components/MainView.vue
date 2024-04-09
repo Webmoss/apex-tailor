@@ -7,18 +7,18 @@
           <div v-if="tailorApe.body && tailorApe.hat === 'None'" class="attribute-box">
             <button
               class="icon-button-left"
-              @click="previousApeAttr('hats', apeAttributes.hat)"
+              @click="previousApeAttr('hats', stripSpaces(apeAttributes.hat))"
             >
               <IconLeft />
             </button>
             <img
               :src="`/hats/${stripSpaces(apeAttributes.hat)}.png`"
               alt="ApeX"
-              @click="nextApeAttr('hats', apeAttributes.hat)"
+              @click="nextApeAttr('hats', stripSpaces(apeAttributes.hat))"
             />
             <button
               class="icon-button-right"
-              @click="nextApeAttr('hats', apeAttributes.hat)"
+              @click="nextApeAttr('hats', stripSpaces(apeAttributes.hat))"
             >
               <IconRight />
             </button>
@@ -29,7 +29,7 @@
           >
             <button
               class="icon-button-left"
-              @click="previousApeAttr('hats', tailorApe.hat)"
+              @click="previousApeAttr('hats', stripSpaces(tailorApe.hat))"
             >
               <IconLeft />
             </button>
@@ -37,21 +37,21 @@
               v-if="tailorApe.body === 'Zombie'"
               :src="`/hats/${tailorApe.hat}_Zombie.png`"
               alt="ApeX"
-              @click="nextApeAttr('hats', tailorApe.hat)"
+              @click="nextApeAttr('hats', stripSpaces(tailorApe.hat))"
             />
             <img
               v-else-if="tailorApe.body === 'Robot'"
-              :src="`/hats/${tailorApe.hat}_Robot.png`"
+              :src="`/hats/${stripSpaces(tailorApe.hat)}_Robot.png`"
               alt="ApeX"
-              @click="nextApeAttr('hats', tailorApe.hat)"
+              @click="nextApeAttr('hats', stripSpaces(tailorApe.hat))"
             />
             <img
               v-else
-              :src="`/hats/${tailorApe.hat}.png`"
+              :src="`/hats/${stripSpaces(tailorApe.hat)}.png`"
               alt="ApeX"
-              @click="nextApeAttr('hats', tailorApe.hat)"
+              @click="nextApeAttr('hats', stripSpaces(tailorApe.hat))"
             />
-            <button class="icon-button-right" @click="nextApeAttr('hats', tailorApe.hat)">
+            <button class="icon-button-right" @click="nextApeAttr('hats', stripSpaces(tailorApe.hat))">
               <IconRight />
             </button>
           </div>
@@ -117,18 +117,18 @@
           >
             <button
               class="icon-button-left"
-              @click="previousApeAttr('piercings', apeAttributes.piercing)"
+              @click="previousApeAttr('piercings', stripSpaces(apeAttributes.piercing))"
             >
               <IconLeft />
             </button>
             <img
-              :src="`/piercings/${apeAttributes.piercing}.png`"
+              :src="`/piercings/${stripSpaces(apeAttributes.piercing)}.png`"
               alt="ApeX"
-              @click="nextApeAttr('piercings', apeAttributes.piercing)"
+              @click="nextApeAttr('piercings', stripSpaces(apeAttributes.piercing))"
             />
             <button
               class="icon-button-right"
-              @click="nextApeAttr('piercings', apeAttributes.piercing)"
+              @click="nextApeAttr('piercings', stripSpaces(apeAttributes.piercing))"
             >
               <IconRight />
             </button>
@@ -139,18 +139,18 @@
           >
             <button
               class="icon-button-left"
-              @click="previousApeAttr('piercings', tailorApe.piercing)"
+              @click="previousApeAttr('piercings', stripSpaces(tailorApe.piercing))"
             >
               <IconLeft />
             </button>
             <img
-              :src="`/piercings/${tailorApe.piercing}.png`"
+              :src="`/piercings/${stripSpaces(tailorApe.piercing)}.png`"
               alt="ApeX"
-              @click="nextApeAttr('piercings', tailorApe.piercing)"
+              @click="nextApeAttr('piercings', stripSpaces(tailorApe.piercing))"
             />
             <button
               class="icon-button-right"
-              @click="nextApeAttr('piercings', tailorApe.piercing)"
+              @click="nextApeAttr('piercings', stripSpaces(tailorApe.piercing))"
             >
               <IconRight />
             </button>
@@ -378,18 +378,18 @@
             <div v-if="tailorApe.body && tailorApe.hat === 'None'" class="attribute-box">
               <button
                 class="icon-button-left"
-                @click="previousApeAttr('hats', apeAttributes.hat)"
+                @click="previousApeAttr('hats', stripSpaces(apeAttributes.hat))"
               >
                 <IconLeft />
               </button>
               <img
                 :src="`/hats/${stripSpaces(apeAttributes.hat)}.png`"
                 alt="ApeX"
-                @click="nextApeAttr('hats', apeAttributes.hat)"
+                @click="nextApeAttr('hats', stripSpaces(apeAttributes.hat))"
               />
               <button
                 class="icon-button-right"
-                @click="nextApeAttr('hats', apeAttributes.hat)"
+                @click="nextApeAttr('hats', stripSpaces(apeAttributes.hat))"
               >
                 <IconRight />
               </button>
@@ -400,31 +400,31 @@
             >
               <button
                 class="icon-button-left"
-                @click="previousApeAttr('hats', tailorApe.hat)"
+                @click="previousApeAttr('hats', stripSpaces(tailorApe.hat))"
               >
                 <IconLeft />
               </button>
               <img
                 v-if="tailorApe.body === 'Zombie'"
-                :src="`/hats/${tailorApe.hat}_Zombie.png`"
+                :src="`/hats/${stripSpaces(tailorApe.hat)}_Zombie.png`"
                 alt="ApeX"
-                @click="nextApeAttr('hats', tailorApe.hat)"
+                @click="nextApeAttr('hats', stripSpaces(tailorApe.hat))"
               />
               <img
                 v-else-if="tailorApe.body === 'Robot'"
-                :src="`/hats/${tailorApe.hat}_Robot.png`"
+                :src="`/hats/${stripSpaces(tailorApe.hat)}_Robot.png`"
                 alt="ApeX"
-                @click="nextApeAttr('hats', tailorApe.hat)"
+                @click="nextApeAttr('hats',stripSpaces( tailorApe.hat))"
               />
               <img
                 v-else
-                :src="`/hats/${tailorApe.hat}.png`"
+                :src="`/hats/${stripSpaces(tailorApe.hat)}.png`"
                 alt="ApeX"
-                @click="nextApeAttr('hats', tailorApe.hat)"
+                @click="nextApeAttr('hats', stripSpaces(tailorApe.hat))"
               />
               <button
                 class="icon-button-right"
-                @click="nextApeAttr('hats', tailorApe.hat)"
+                @click="nextApeAttr('hats', stripSpaces(tailorApe.hat))"
               >
                 <IconRight />
               </button>
@@ -489,18 +489,18 @@
             >
               <button
                 class="icon-button-left"
-                @click="previousApeAttr('piercings', apeAttributes.piercing)"
+                @click="previousApeAttr('piercings', stripSpaces(apeAttributes.piercing))"
               >
                 <IconLeft />
               </button>
               <img
-                :src="`/piercings/${apeAttributes.piercing}.png`"
+                :src="`/piercings/${stripSpaces(apeAttributes.piercing)}.png`"
                 alt="ApeX"
-                @click="nextApeAttr('piercings', apeAttributes.piercing)"
+                @click="nextApeAttr('piercings', stripSpaces(apeAttributes.piercing))"
               />
               <button
                 class="icon-button-right"
-                @click="nextApeAttr('piercings', apeAttributes.piercing)"
+                @click="nextApeAttr('piercings', stripSpaces(apeAttributes.piercing))"
               >
                 <IconRight />
               </button>
@@ -511,18 +511,18 @@
             >
               <button
                 class="icon-button-left"
-                @click="previousApeAttr('piercings', tailorApe.piercing)"
+                @click="previousApeAttr('piercings', stripSpaces(tailorApe.piercing))"
               >
                 <IconLeft />
               </button>
               <img
-                :src="`/piercings/${tailorApe.piercing}.png`"
+                :src="`/piercings/${stripSpaces(tailorApe.piercing)}.png`"
                 alt="ApeX"
-                @click="nextApeAttr('piercings', tailorApe.piercing)"
+                @click="nextApeAttr('piercings', stripSpaces(tailorApe.piercing))"
               />
               <button
                 class="icon-button-right"
-                @click="nextApeAttr('piercings', tailorApe.piercing)"
+                @click="nextApeAttr('piercings', stripSpaces(tailorApe.piercing))"
               >
                 <IconRight />
               </button>
@@ -779,16 +779,24 @@ async function previousApeAttr(attr: string, value: string) {
       store.setApeAttributesHat(previousTrait[0].type);
     }
   } else if (attr === "eyes") {
-    trait = eyes.filter((item) => item.type === value);
-    let currentIndex = trait[0].index;
-    if (currentIndex === 1) {
-      let previousTrait = eyes.filter((item) => item.index === eyesTotal);
-      store.setTailorApeEyes(previousTrait[0].type);
-      store.setApeAttributesEyes(previousTrait[0].type);
+    if(value === 'Crazy'){
+      console.log("Crazy", value);
+      store.setTailorApeEyes("Closed");
+      store.setTailorApeGlasses("None");
+      store.setApeAttributesEyes("Closed");
+      store.setApeAttributesGlasses("Beams");      
     } else {
-      let previousTrait = eyes.filter((item) => item.index === currentIndex - 1);
-      store.setTailorApeEyes(previousTrait[0].type);
-      store.setApeAttributesEyes(previousTrait[0].type);
+      trait = eyes.filter((item) => item.type === value);
+      let currentIndex = trait[0].index;
+      if (currentIndex === 1) {
+        let previousTrait = eyes.filter((item) => item.index === eyesTotal);
+        store.setTailorApeEyes(previousTrait[0].type);
+        store.setApeAttributesEyes(previousTrait[0].type);
+      } else {
+        let previousTrait = eyes.filter((item) => item.index === currentIndex - 1);
+        store.setTailorApeEyes(previousTrait[0].type);
+        store.setApeAttributesEyes(previousTrait[0].type);
+      }
     }
   } else if (attr === "clothes") {
     trait = clothes.filter((item) => item.type === value);
@@ -811,24 +819,29 @@ async function previousApeAttr(attr: string, value: string) {
       store.setApeAttributesClothes(previousTrait[0].type);
     }
   } else if (attr === "glasses") {
-    trait = glasses.filter((item) => item.type === value);
-    let currentIndex = trait[0].index;
-    if (currentIndex === 1) {
-      let previousTrait = glasses.filter((item) => item.index === glassesTotal);
-      if (previousTrait[0].type === "Crazy") {
-        store.setTailorApeEyes("Crazy");
-        store.setApeAttributesEyes("Crazy");
-      }
-      store.setTailorApeGlasses(previousTrait[0].type);
-      store.setApeAttributesGlasses(previousTrait[0].type);
+    if(value === 'Crazy'){
+      store.setTailorApeGlasses("Beams");
+      store.setApeAttributesGlasses("Beams");
     } else {
-      let previousTrait = glasses.filter((item) => item.index === currentIndex - 1);
-      if (previousTrait[0].type === "Crazy") {
-        store.setTailorApeEyes("Crazy");
-        store.setApeAttributesEyes("Crazy");
+      trait = glasses.filter((item) => item.type === value);
+      let currentIndex = trait[0].index;
+      if (currentIndex === 1) {
+        let previousTrait = glasses.filter((item) => item.index === glassesTotal);
+        if (previousTrait[0].type === "Crazy") {
+          store.setTailorApeEyes("Crazy");
+          store.setApeAttributesEyes("Crazy");
+        }
+        store.setTailorApeGlasses(previousTrait[0].type);
+        store.setApeAttributesGlasses(previousTrait[0].type);
+      } else {
+        let previousTrait = glasses.filter((item) => item.index === currentIndex - 1);
+        if (previousTrait[0].type === "Crazy") {
+          store.setTailorApeEyes("Crazy");
+          store.setApeAttributesEyes("Crazy");
+        }
+        store.setTailorApeGlasses(previousTrait[0].type);
+        store.setApeAttributesGlasses(previousTrait[0].type);
       }
-      store.setTailorApeGlasses(previousTrait[0].type);
-      store.setApeAttributesGlasses(previousTrait[0].type);
     }
   } else if (attr === "piercings") {
     trait = piercings.filter((item) => item.type === value);
@@ -857,9 +870,7 @@ async function previousApeAttr(attr: string, value: string) {
   } else {
     trait = null;
   }
-  if (trait !== null) {
-    await drawApe();
-  }
+  await drawApe();
 }
 
 async function nextApeAttr(attr: string, value: string) {
@@ -877,16 +888,23 @@ async function nextApeAttr(attr: string, value: string) {
       store.setApeAttributesHat(nextTrait[0].type);
     }
   } else if (attr === "eyes") {
-    trait = eyes.filter((item) => item.type === value);
-    let currentIndex = trait[0].index;
-    if (currentIndex === eyesTotal) {
-      let nextTrait = eyes.filter((item) => item.index === 1);
-      store.setTailorApeEyes(nextTrait[0].type);
-      store.setApeAttributesEyes(nextTrait[0].type);
+    if(value === 'Crazy'){
+      store.setTailorApeEyes("Cyborg");
+      store.setTailorApeGlasses("None");
+      store.setApeAttributesEyes("Cyborg");
+      store.setApeAttributesGlasses("Beams");
     } else {
-      let nextTrait = eyes.filter((item) => item.index === currentIndex + 1);
-      store.setTailorApeEyes(nextTrait[0].type);
-      store.setApeAttributesEyes(nextTrait[0].type);
+      trait = eyes.filter((item) => item.type === value);
+      let currentIndex = trait[0].index;
+      if (currentIndex === eyesTotal) {
+        let nextTrait = eyes.filter((item) => item.index === 1);
+        store.setTailorApeEyes(nextTrait[0].type);
+        store.setApeAttributesEyes(nextTrait[0].type);
+      } else {
+        let nextTrait = eyes.filter((item) => item.index === currentIndex + 1);
+        store.setTailorApeEyes(nextTrait[0].type);
+        store.setApeAttributesEyes(nextTrait[0].type);
+      }
     }
   } else if (attr === "clothes") {
     trait = clothes.filter((item) => item.type === value);
@@ -909,24 +927,29 @@ async function nextApeAttr(attr: string, value: string) {
       store.setApeAttributesClothes(nextTrait[0].type);
     }
   } else if (attr === "glasses") {
-    trait = glasses.filter((item) => item.type === value);
-    let currentIndex = trait[0].index;
-    if (currentIndex === glassesTotal) {
-      let nextTrait = glasses.filter((item) => item.index === 1);
-      if (nextTrait[0].type === "Crazy") {
-        store.setTailorApeEyes("Crazy");
-        store.setApeAttributesEyes("Crazy");
-      }
-      store.setTailorApeGlasses(nextTrait[0].type);
-      store.setApeAttributesGlasses(nextTrait[0].type);
+    if(value === 'Crazy'){
+      store.setTailorApeGlasses("Beams");
+      store.setApeAttributesGlasses("Beams");
     } else {
-      let nextTrait = glasses.filter((item) => item.index === currentIndex + 1);
-      if (nextTrait[0].type === "Crazy") {
-        store.setTailorApeEyes("Crazy");
-        store.setApeAttributesEyes("Crazy");
+      trait = glasses.filter((item) => item.type === value);
+      let currentIndex = trait[0].index;
+      if (currentIndex === glassesTotal) {
+        let nextTrait = glasses.filter((item) => item.index === 1);
+        if (nextTrait[0].type === "Crazy") {
+          store.setTailorApeEyes("Crazy");
+          store.setApeAttributesEyes("Crazy");
+        }
+        store.setTailorApeGlasses(nextTrait[0].type);
+        store.setApeAttributesGlasses(nextTrait[0].type);
+      } else {
+        let nextTrait = glasses.filter((item) => item.index === currentIndex + 1);
+        if (nextTrait[0].type === "Crazy") {
+          store.setTailorApeEyes("Crazy");
+          store.setApeAttributesEyes("Crazy");
+        }
+        store.setTailorApeGlasses(nextTrait[0].type);
+        store.setApeAttributesGlasses(nextTrait[0].type);
       }
-      store.setTailorApeGlasses(nextTrait[0].type);
-      store.setApeAttributesGlasses(nextTrait[0].type);
     }
   } else if (attr === "piercings") {
     trait = piercings.filter((item) => item.type === value);
@@ -955,9 +978,7 @@ async function nextApeAttr(attr: string, value: string) {
   } else {
     trait = null;
   }
-  if (trait !== null) {
-    await drawApe();
-  }
+  await drawApe();
 }
 
 function downloadCanvas() {
@@ -1064,6 +1085,10 @@ async function drawApe() {
     stage.add(eyesLayer);
 
     var bgEyesImage = new Image();
+    if(tailorApe.value.eyes === 'Crazy') {
+      store.setTailorApeGlasses("Crazy");
+      store.setApeAttributesGlasses("Crazy");
+    }
     bgEyesImage.src = `/eyes/${stripSpaces(tailorApe.value.eyes)}_${tailorApe.value.skin}.png`;
     bgEyesImage.onload = function () {
       var defaultApe = new Konva.Image({
@@ -1083,7 +1108,7 @@ async function drawApe() {
     stage.add(glassesLayer);
 
     var bgGlassesImage = new Image();
-    bgGlassesImage.src = `/glasses/${stripSpaces(tailorApe.value.glasses)}_${tailorApe.value.skin}.png`;
+    bgGlassesImage.src = `/glasses/${stripSpaces(tailorApe.value.glasses)}_${tailorApe.value.skin}.png`;    
     bgGlassesImage.onload = function () {
       var defaultApe = new Konva.Image({
         x: 0,
