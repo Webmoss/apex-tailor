@@ -40,7 +40,7 @@
               @click="nextApeAttr('hats', stripSpaces(tailorApe.hat))"
             />
             <img
-              v-else-if="tailorApe.body === 'Robot'"
+              v-else-if="tailorApe.body === 'Robot' && tailorApe.hat === 'MFPURR_Charcoal' || tailorApe.hat === 'MFPURR_Cream'"
               :src="`/hats/${stripSpaces(tailorApe.hat)}_Robot.png`"
               alt="ApeX"
               @click="nextApeAttr('hats', stripSpaces(tailorApe.hat))"
@@ -412,10 +412,10 @@
                   @click="nextApeAttr('hats', stripSpaces(tailorApe.hat))"
                 />
                 <img
-                  v-else-if="tailorApe.body === 'Robot'"
+                  v-else-if="tailorApe.body === 'Robot' && tailorApe.hat === 'MFPURR_Charcoal' || tailorApe.hat === 'MFPURR_Cream'"
                   :src="`/hats/${stripSpaces(tailorApe.hat)}_Robot.png`"
                   alt="ApeX"
-                  @click="nextApeAttr('hats',stripSpaces( tailorApe.hat))"
+                  @click="nextApeAttr('hats', stripSpaces(tailorApe.hat))"
                 />
                 <img
                   v-else
