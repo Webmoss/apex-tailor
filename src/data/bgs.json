@@ -1,0 +1,19 @@
+{
+  "bgs": [
+    {
+      "index": 1,
+      "type": "Green_Stage",
+      "image": "Green_Stage.png"
+    },
+    {
+      "index": 2,
+      "type": "Tileable_Green",
+      "image": "Tileable_Green.png"
+    },
+    {
+      "index": 3,
+      "type": "Tileable_Grey",
+      "image": "Tileable_Grey.png"
+    }
+  ]
+}

@@ -1,8 +1,10 @@
 <template>
   <main id="apewear" class="container">
     <div class="tailor-container">
+      
       <!-- Attributes Row #1 -->
       <div class="column mobile-hidden">
+
         <div class="one-quarter">
           <div v-if="tailorApe.body && tailorApe.hat === 'None'" class="attribute-box">
             <button
@@ -56,7 +58,7 @@
             </button>
           </div>
           <div v-else class="attribute-box">
-            <img src="/greenStage.png" alt="ApeX" />
+            <img src="/bgs/Green_Stage.png" alt="ApeX" />
           </div>
         </div>
 
@@ -106,7 +108,7 @@
             </button>
           </div>
           <div v-else class="attribute-box">
-            <img src="/greenStage.png" alt="ApeX" />
+            <img src="/bgs/Green_Stage.png" alt="ApeX" />
           </div>
         </div>
 
@@ -156,7 +158,7 @@
             </button>
           </div>
           <div v-else class="attribute-box">
-            <img src="/greenStage.png" alt="ApeX" />
+            <img src="/bgs/Green_Stage.png" alt="ApeX" />
           </div>
         </div>
       </div>
@@ -172,7 +174,7 @@
               v-model="apeId"
               name="apeId"
               type="text"
-              placeholder="Ape ID #"
+              placeholder="Ape #0000"
               @keyup.enter="searchApe(apeId)"
             />
             <button class="icon-button" @click="searchApe(apeId)" :disabled="!apeId">
@@ -182,10 +184,24 @@
         </div>
         <div class="two-quarter">
           <div v-if="!loading" class="image-box">
+            <button
+              v-if="tailorApe.body && tailorApe.image !== ''"
+              class="icon-button-left"
+              @click="previousApeAttr('bgs', stripSpaces(tailorApe.image))"
+            >
+              <IconLeft />
+            </button>
             <div
               style="width: 380px; height: 380px; overflow: hidden"
               id="apeTailor"
             ></div>
+            <button
+              v-if="tailorApe.body && tailorApe.image !== ''"
+              class="icon-button-right"
+              @click="nextApeAttr('bgs', stripSpaces(tailorApe.image))"
+            >
+              <IconRight />
+            </button>
           </div>
           <div v-else class="loading-box">
             <div class="loading-msg">Loading...</div>
@@ -225,7 +241,7 @@
               <IconLeft />
             </button>
             <img
-              :src="`/eyes/${apeAttributes.eyes}_${apeAttributes.skin}.png`"
+              :src="`/eyes/${stripSpaces(apeAttributes.eyes)}_${apeAttributes.skin}.png`"
               alt="ApeX"
               @click="nextApeAttr('eyes', apeAttributes.eyes)"
             />
@@ -247,7 +263,7 @@
               <IconLeft />
             </button>
             <img
-              :src="`/eyes/${tailorApe.eyes}_${tailorApe.skin}.png`"
+              :src="`/eyes/${stripSpaces(tailorApe.eyes)}_${tailorApe.skin}.png`"
               alt="ApeX"
               @click="nextApeAttr('eyes', tailorApe.eyes)"
             />
@@ -259,25 +275,25 @@
             </button>
           </div>
           <div v-else class="attribute-box">
-            <img src="/greenStage.png" alt="ApeX" />
+            <img src="/bgs/Green_Stage.png" alt="ApeX" />
           </div>
         </div>
         <div class="one-quarter">
           <div v-if="tailorApe.body && tailorApe.mouth === 'None'" class="attribute-box">
             <button
               class="icon-button-left"
-              @click="previousApeAttr('mouthes', apeAttributes.mouth)"
+              @click="previousApeAttr('mouthes', stripSpaces(apeAttributes.mouth))"
             >
               <IconLeft />
             </button>
             <img
-              :src="`/mouthes/${apeAttributes.mouth}_${tailorApe.skin}.png`"
+              :src="`/mouthes/${stripSpaces(apeAttributes.mouth)}_${tailorApe.skin}.png`"
               alt="ApeX"
-              @click="nextApeAttr('mouthes', apeAttributes.mouth)"
+              @click="nextApeAttr('mouthes', stripSpaces(apeAttributes.mouth))"
             />
             <button
               class="icon-button-right"
-              @click="nextApeAttr('mouthes', apeAttributes.mouth)"
+              @click="nextApeAttr('mouthes', stripSpaces(apeAttributes.mouth))"
             >
               <IconRight />
             </button>
@@ -288,24 +304,24 @@
           >
             <button
               class="icon-button-left"
-              @click="previousApeAttr('mouthes', tailorApe.mouth)"
+              @click="previousApeAttr('mouthes', stripSpaces(tailorApe.mouth))"
             >
               <IconLeft />
             </button>
             <img
-              :src="`/mouthes/${tailorApe.mouth}_${tailorApe.skin}.png`"
+              :src="`/mouthes/${stripSpaces(tailorApe.mouth)}_${tailorApe.skin}.png`"
               alt="ApeX"
-              @click="nextApeAttr('mouthes', tailorApe.mouth)"
+              @click="nextApeAttr('mouthes', stripSpaces(tailorApe.mouth))"
             />
             <button
               class="icon-button-right"
-              @click="nextApeAttr('mouthes', tailorApe.mouth)"
+              @click="nextApeAttr('mouthes', stripSpaces(tailorApe.mouth))"
             >
               <IconRight />
             </button>
           </div>
           <div v-else class="attribute-box">
-            <img src="/greenStage.png" alt="ApeX" />
+            <img src="/bgs/Green_Stage.png" alt="ApeX" />
           </div>
         </div>
         <div class="one-quarter">
@@ -364,7 +380,7 @@
             </button>
           </div>
           <div v-else class="attribute-box">
-            <img src="/greenStage.png" alt="ApeX" />
+            <img src="/bgs/Green_Stage.png" alt="ApeX" />
           </div>
         </div>
       </div>
@@ -431,7 +447,7 @@
                 </button>
               </div>
               <div v-else class="attribute-box">
-                <img src="/greenStage.png" alt="ApeX" />
+                <img src="/bgs/Green_Stage.png" alt="ApeX" />
               </div>
             </div>
             <div class="one-quarter">
@@ -480,7 +496,7 @@
                 </button>
               </div>
               <div v-else class="attribute-box">
-                <img src="/greenStage.png" alt="ApeX" />
+                <img src="/bgs/Green_Stage.png" alt="ApeX" />
               </div>
             </div>
             <div class="one-quarter">
@@ -529,7 +545,7 @@
                 </button>
               </div>
               <div v-else class="attribute-box">
-                <img src="/greenStage.png" alt="ApeX" />
+                <img src="/bgs/Green_Stage.png" alt="ApeX" />
               </div>
             </div>
           </div>
@@ -579,7 +595,7 @@
                 </button>
               </div>
               <div v-else class="attribute-box">
-                <img src="/greenStage.png" alt="ApeX" />
+                <img src="/bgs/Green_Stage.png" alt="ApeX" />
               </div>
             </div>
             <div class="one-quarter">
@@ -589,18 +605,18 @@
               >
                 <button
                   class="icon-button-left"
-                  @click="previousApeAttr('mouthes', apeAttributes.mouth)"
+                  @click="previousApeAttr('mouthes', stripSpaces(apeAttributes.mouth))"
                 >
                   <IconLeft />
                 </button>
                 <img
-                  :src="`/mouthes/${apeAttributes.mouth}_${tailorApe.skin}.png`"
+                  :src="`/mouthes/${stripSpaces(apeAttributes.mouth)}_${tailorApe.skin}.png`"
                   alt="ApeX"
-                  @click="nextApeAttr('mouthes', apeAttributes.mouth)"
+                  @click="nextApeAttr('mouthes', stripSpaces(apeAttributes.mouth))"
                 />
                 <button
                   class="icon-button-right"
-                  @click="nextApeAttr('mouthes', apeAttributes.mouth)"
+                  @click="nextApeAttr('mouthes', stripSpaces(apeAttributes.mouth))"
                 >
                   <IconRight />
                 </button>
@@ -611,24 +627,24 @@
               >
                 <button
                   class="icon-button-left"
-                  @click="previousApeAttr('mouthes', tailorApe.mouth)"
+                  @click="previousApeAttr('mouthes', stripSpaces(tailorApe.mouth))"
                 >
                   <IconLeft />
                 </button>
                 <img
-                  :src="`/mouthes/${tailorApe.mouth}_${tailorApe.skin}.png`"
+                  :src="`/mouthes/${stripSpaces(tailorApe.mouth)}_${tailorApe.skin}.png`"
                   alt="ApeX"
-                  @click="nextApeAttr('mouthes', tailorApe.mouth)"
+                  @click="nextApeAttr('mouthes', stripSpaces(tailorApe.mouth))"
                 />
                 <button
                   class="icon-button-right"
-                  @click="nextApeAttr('mouthes', tailorApe.mouth)"
+                  @click="nextApeAttr('mouthes', stripSpaces(tailorApe.mouth))"
                 >
                   <IconRight />
                 </button>
               </div>
               <div v-else class="attribute-box">
-                <img src="/greenStage.png" alt="ApeX" />
+                <img src="/bgs/Green_Stage.png" alt="ApeX" />
               </div>
             </div>
             <div class="one-quarter">
@@ -687,7 +703,7 @@
                 </button>
               </div>
               <div v-else class="attribute-box">
-                <img src="/greenStage.png" alt="ApeX" />
+                <img src="/bgs/Green_Stage.png" alt="ApeX" />
               </div>
             </div>
           </div>
@@ -734,6 +750,7 @@ import IconRestart from "../assets/svgs/icons/IconRestart.vue";
 import IconLeft from "../assets/svgs/icons/IconLeft.vue";
 import IconRight from "../assets/svgs/icons/IconRight.vue";
 
+import { bgs } from "@/data/bgs.json";
 import { hats } from "@/data/hats.json";
 import { eyes } from "@/data/eyes.json";
 import { clothes } from "@/data/clothes.json";
@@ -749,6 +766,7 @@ const { loading, tailorApe, apeAttributes } = storeToRefs(store);
 
 const apeId = ref();
 
+const bgsTotal = bgs.length;
 const hatsTotal = hats.length;
 const eyesTotal = eyes.length;
 const clothesTotal = clothes.length;
@@ -757,7 +775,7 @@ const piercingsTotal = piercings.length;
 const mouthesTotal = mouthes.length;
 
 const state = reactive({
-  gmApe: true,
+  gmApe: false,
   jayApe: false,
 });
 
@@ -767,8 +785,23 @@ function stripSpaces(str: string) {
 
 async function previousApeAttr(attr: string, value: string) {
   let trait = null;
-
-  if (attr === "hats") {
+  if (attr === "bgs") {
+    console.log("attr", attr);
+    console.log("value", value);
+    trait = bgs.filter((item) => item.type === stripSpaces(value));
+    console.log("trait", trait);
+    let currentIndex = trait[0].index;
+    console.log("currentIndex", currentIndex);
+    if (currentIndex === 1) {
+      let previousTrait = bgs.filter((item) => item.index === bgsTotal);
+      store.setTailorApeImage(previousTrait[0].type);
+      store.setApeAttributesImage(previousTrait[0].type);
+    } else {
+      let previousTrait = bgs.filter((item) => item.index === currentIndex - 1);
+      store.setTailorApeImage(previousTrait[0].type);
+      store.setApeAttributesImage(previousTrait[0].type);
+    }
+  } else if (attr === "hats") {
     trait = hats.filter((item) => item.type === value);
     let currentIndex = trait[0].index;
     if (currentIndex === 1) {
@@ -878,7 +911,23 @@ async function previousApeAttr(attr: string, value: string) {
 
 async function nextApeAttr(attr: string, value: string) {
   let trait = null;
-  if (attr === "hats") {
+  if (attr === "bgs") {
+    console.log("attr", attr);
+    console.log("value", value);
+    trait = bgs.filter((item) => item.type === stripSpaces(value));
+    console.log("trait", trait);
+    let currentIndex = trait[0].index;
+    console.log("currentIndex", currentIndex);
+    if (currentIndex === bgsTotal) {
+      let nextTrait = bgs.filter((item) => item.index === 1);
+      store.setTailorApeImage(nextTrait[0].type);
+      store.setApeAttributesImage(nextTrait[0].type);
+    } else {
+      let nextTrait = bgs.filter((item) => item.index === currentIndex + 1);
+      store.setTailorApeImage(nextTrait[0].type);
+      store.setApeAttributesImage(nextTrait[0].type);
+    }
+  } else if (attr === "hats") {
     trait = hats.filter((item) => item.type === value);
     let currentIndex = trait[0].index;
     if (currentIndex === hatsTotal) {
@@ -986,26 +1035,27 @@ async function nextApeAttr(attr: string, value: string) {
   await drawApe();
 }
 
-function downloadCanvas() {
-  const canvasElement = document.getElementById("apeTailor") as HTMLCanvasElement | null;
+async function downloadCanvas() {
+  // const canvasElement = document.getElementById("apeTailor") as any;
 
-  if (canvasElement != null) {
-    let MIME_TYPE = "image/png";
-    let imgURL = canvasElement.toDataURL(MIME_TYPE, 1.0);
+  // if (canvasElement != null) {
+  //   let MIME_TYPE = "image/png";
+  //   let imgURL = canvasElement.toDataURL(MIME_TYPE, 1.0);
 
-    let dlLink = document.createElement("a");
-    dlLink.download = `ApeWear-Ape${tailorApe.value.id}`;
-    dlLink.href = imgURL;
-    dlLink.dataset.downloadurl = [MIME_TYPE, dlLink.download, dlLink.href].join(":");
+  //   let dlLink = document.createElement("a");
+  //   dlLink.download = `ApeWear-Ape${tailorApe.value.id}`;
+  //   dlLink.href = imgURL;
+  //   dlLink.dataset.downloadurl = [MIME_TYPE, dlLink.download, dlLink.href].join(":");
 
-    document.body.appendChild(dlLink);
-    dlLink.click();
-    document.body.removeChild(dlLink);
-  }
+  //   document.body.appendChild(dlLink);
+  //   dlLink.click();
+  //   document.body.removeChild(dlLink);
+  // }
+  await drawApe(true);
 }
 
 async function setGmApe() {
-  state.jayApe = !state.jayApe;
+  // state.jayApe = !state.jayApe;
   state.gmApe = !state.gmApe;
   await drawApe();
 }
@@ -1016,9 +1066,11 @@ async function setGmApe() {
 //   await drawApe();
 // }
 
-async function drawApe() {
+async function drawApe(download = false) {
   
   // store.setLoading(true);
+
+  console.log("Download: ", download);
 
   var stage = new Konva.Stage({
     container: "apeTailor",
@@ -1026,45 +1078,145 @@ async function drawApe() {
     height: 380,
   });
 
-  var layer = new Konva.Layer();
-  stage.add(layer);
+  var bgLayer = new Konva.Layer();
+  var apeBodyLayer = new Konva.Layer();
+  var apeFaceLayer = new Konva.Layer();
+  var apeLayer = new Konva.Layer();
+  var overlayLayer = new Konva.Layer();
 
-  var bgImage = new Image();
-  bgImage.onload = function () {
-    var defaultApe = new Konva.Image({
-      x: 0,
-      y: 0,
-      image: bgImage,
-      width: 380,
-      height: 380,
-    });
-    layer.add(defaultApe);
-  };
-  bgImage.src = "/greenStage.png";
+  console.log("BG Image: ", tailorApe.value.image);
+  
+  if (tailorApe.value.image) {
+    // var layer = new Konva.Layer();
+    // stage.add(layer);
+    
+    var bgImage = new Image();
+    bgImage.src = `/bgs/${tailorApe.value.image}.png`;
+    bgImage.onload = function () {
+      var apeBg = new Konva.Image({
+        x: 0,
+        y: 0,
+        image: bgImage,
+        width: 380,
+        height: 380,
+      });
+      bgLayer.add(apeBg);
+      // layer.zIndex(0);
+    };    
+  }
 
   console.log("Body: ", tailorApe.value.body);
   console.log("Skin: ", tailorApe.value.skin);
 
   if (tailorApe.value.body) {
+    // var bodyLayer = new Konva.Layer();
+    // stage.add(bodyLayer);
+
     var bgBodyImage = new Image();
     bgBodyImage.src = `/body/${stripSpaces(tailorApe.value.body)}_${tailorApe.value.skin}.png`;
     bgBodyImage.onload = function () {
-      var defaultApe = new Konva.Image({
+      var apeBody = new Konva.Image({
         x: 0,
         y: 0,
         image: bgBodyImage,
         width: 380,
         height: 380,
       });
-      layer.add(defaultApe);
+      apeBodyLayer.add(apeBody);
+      // bodyLayer.zIndex(1);
+    };
+  }
+
+  console.log("Mouth: ", tailorApe.value.mouth);
+
+  if (tailorApe.value.mouth !== "None") {
+    // var mouthLayer = new Konva.Layer();
+    // stage.add(mouthLayer);
+
+    var bgMouthImage = new Image();
+    bgMouthImage.src = `/mouthes/${stripSpaces(tailorApe.value.mouth)}_${tailorApe.value.skin}.png`;
+    bgMouthImage.onload = function () {
+      var apeMouth = new Konva.Image({
+        x: 0,
+        y: 0,
+        image: bgMouthImage,
+        width: 380,
+        height: 380,
+      });
+      apeFaceLayer.add(apeMouth);
+      // mouthLayer.zIndex(7);
+    };
+  }
+
+  console.log("Eyes: ", tailorApe.value.eyes);
+  if (tailorApe.value.eyes !== "None") {
+    // var eyesLayer = new Konva.Layer();
+    // stage.add(eyesLayer);
+
+    var bgEyesImage = new Image();
+    if(tailorApe.value.eyes === 'Crazy') {
+      store.setTailorApeGlasses("Crazy");
+      store.setApeAttributesGlasses("Crazy");
+    }
+    bgEyesImage.src = `/eyes/${stripSpaces(tailorApe.value.eyes)}_${tailorApe.value.skin}.png`;
+    bgEyesImage.onload = function () {
+      var apeEyes = new Konva.Image({
+        x: 0,
+        y: 0,
+        image: bgEyesImage,
+        width: 380,
+        height: 380,
+      });
+      apeFaceLayer.add(apeEyes);
+      // eyesLayer.zIndex(3);
+    };
+  }
+
+  console.log("Glasses: ", tailorApe.value.glasses);
+  if (tailorApe.value.glasses !== "None") {
+    // var glassesLayer = new Konva.Layer();
+    // stage.add(glassesLayer);
+
+    var bgGlassesImage = new Image();
+    bgGlassesImage.src = `/glasses/${stripSpaces(tailorApe.value.glasses)}_${tailorApe.value.skin}.png`;    
+    bgGlassesImage.onload = function () {
+      var apeGlasses = new Konva.Image({
+        x: 0,
+        y: 0,
+        image: bgGlassesImage,
+        width: 380,
+        height: 380,
+      });
+      apeLayer.add(apeGlasses);
+      // glassesLayer.zIndex(4);
+    };
+  }
+
+  console.log("Hat: ", tailorApe.value.hat);
+  if (tailorApe.value.hat !== "None") {
+    // var hatLayer = new Konva.Layer();
+    // stage.add(hatLayer);
+
+    var bgHatImage = new Image();
+    bgHatImage.src = `/hats/${stripSpaces(tailorApe.value.hat)}.png`;
+    bgHatImage.onload = function () {
+      var apeHat = new Konva.Image({
+        x: 0,
+        y: 0,
+        image: bgHatImage,
+        width: 380,
+        height: 380,
+      });
+      apeLayer.add(apeHat);
+      // hatLayer.zIndex(5);
     };
   }
 
   console.log("Clothes: ", tailorApe.value.clothes);
 
   if (tailorApe.value.clothes !== "None") {
-    var clothesLayer = new Konva.Layer();
-    stage.add(clothesLayer);
+    // var clothesLayer = new Konva.Layer();
+    // stage.add(clothesLayer);
 
     var bgClothesImage = new Image();
     if ((tailorApe.value.body === "Robot" && tailorApe.value.clothes === "Hoodie") || tailorApe.value.clothes === "Leather_Jacket") {
@@ -1074,154 +1226,104 @@ async function drawApe() {
     }
 
     bgClothesImage.onload = function () {
-      var defaultApe = new Konva.Image({
+      var apeClothes = new Konva.Image({
         x: 0,
         y: 0,
         image: bgClothesImage,
         width: 380,
         height: 380,
       });
-      clothesLayer.add(defaultApe);
-    };
-  }
-
-  console.log("Eyes: ", tailorApe.value.eyes);
-  if (tailorApe.value.eyes !== "None") {
-    var eyesLayer = new Konva.Layer();
-    stage.add(eyesLayer);
-
-    var bgEyesImage = new Image();
-    if(tailorApe.value.eyes === 'Crazy') {
-      store.setTailorApeGlasses("Crazy");
-      store.setApeAttributesGlasses("Crazy");
-    }
-    bgEyesImage.src = `/eyes/${stripSpaces(tailorApe.value.eyes)}_${tailorApe.value.skin}.png`;
-    bgEyesImage.onload = function () {
-      var defaultApe = new Konva.Image({
-        x: 0,
-        y: 0,
-        image: bgEyesImage,
-        width: 380,
-        height: 380,
-      });
-      eyesLayer.add(defaultApe);
-    };
-  }
-
-  console.log("Glasses: ", tailorApe.value.glasses);
-  if (tailorApe.value.glasses !== "None") {
-    var glassesLayer = new Konva.Layer();
-    stage.add(glassesLayer);
-
-    var bgGlassesImage = new Image();
-    bgGlassesImage.src = `/glasses/${stripSpaces(tailorApe.value.glasses)}_${tailorApe.value.skin}.png`;    
-    bgGlassesImage.onload = function () {
-      var defaultApe = new Konva.Image({
-        x: 0,
-        y: 0,
-        image: bgGlassesImage,
-        width: 380,
-        height: 380,
-      });
-      glassesLayer.add(defaultApe);
-    };
-  }
-
-  console.log("Hat: ", tailorApe.value.hat);
-  if (tailorApe.value.hat !== "None") {
-    var hatLayer = new Konva.Layer();
-    stage.add(hatLayer);
-
-    var bgHatImage = new Image();
-    bgHatImage.src = `/hats/${stripSpaces(tailorApe.value.hat)}.png`;
-    bgHatImage.onload = function () {
-      var defaultApe = new Konva.Image({
-        x: 0,
-        y: 0,
-        image: bgHatImage,
-        width: 380,
-        height: 380,
-      });
-      hatLayer.add(defaultApe);
-    };
-  }
-
-  console.log("Mouth: ", tailorApe.value.mouth);
-  if (tailorApe.value.mouth !== "None") {
-    var mouthLayer = new Konva.Layer();
-    stage.add(mouthLayer);
-
-    var bgMouthImage = new Image();
-    bgMouthImage.src = `/mouthes/${stripSpaces(tailorApe.value.mouth)}_${tailorApe.value.skin}.png`;
-    bgMouthImage.onload = function () {
-      var defaultApe = new Konva.Image({
-        x: 0,
-        y: 0,
-        image: bgMouthImage,
-        width: 380,
-        height: 380,
-      });
-      mouthLayer.add(defaultApe);
+      apeLayer.add(apeClothes);
+      // clothesLayer.zIndex(6);
     };
   }
 
   console.log("Piercing: ", tailorApe.value.piercing);
   if (tailorApe.value.piercing !== "None") {
-    var piercingLayer = new Konva.Layer();
-    stage.add(piercingLayer);
+    // var piercingLayer = new Konva.Layer();
+    // stage.add(piercingLayer);
 
     var bgPiercingImage = new Image();
     bgPiercingImage.src = `/piercings/${stripSpaces(tailorApe.value.piercing)}.png`;
     bgPiercingImage.onload = function () {
-      var defaultApe = new Konva.Image({
+      var apePiercing = new Konva.Image({
         x: 0,
         y: 0,
         image: bgPiercingImage,
         width: 380,
         height: 380,
       });
-      piercingLayer.add(defaultApe);
+      apeLayer.add(apePiercing);
+      // piercingLayer.zIndex(8);
     };
   }
 
   console.log("GM: ", state.gmApe === true);
   if (state.gmApe === true) {
-    var gmLayer = new Konva.Layer();
-    stage.add(gmLayer);
+    // var gmLayer = new Konva.Layer();
+    // stage.add(gmLayer);
 
     var bgGMImage = new Image();
     bgGMImage.src = `/gmSkins/${tailorApe.value.skin}-Skin/GM_${tailorApe.value.skin}_${tailorApe.value.body}.png`;
     bgGMImage.onload = function () {
-      var defaultApe = new Konva.Image({
+      var apeGM = new Konva.Image({
         x: 0,
         y: 0,
         image: bgGMImage,
         width: 380,
         height: 380,
       });
-      gmLayer.add(defaultApe);
+      overlayLayer.add(apeGM);
+      // gmLayer.zIndex(9);
     };
   }
 
   console.log("Jay: ", state.jayApe === true);
   if (state.jayApe === true) {
-    var jayLayer = new Konva.Layer();
-    stage.add(jayLayer);
+    // var jayLayer = new Konva.Layer();
+    // stage.add(jayLayer);
 
     var bgJayImage = new Image();
     bgJayImage.src = `/jays/${tailorApe.value.skin}-Skin/GM_${tailorApe.value.skin}_${tailorApe.value.body}.png`;
     bgJayImage.onload = function () {
-      var defaultApe = new Konva.Image({
+      var apeJay = new Konva.Image({
         x: 0,
         y: 0,
         image: bgJayImage,
         width: 380,
         height: 380,
       });
-      jayLayer.add(defaultApe);
+      overlayLayer.add(apeJay);
+      // layer.zIndex(10);
     };
   }
 
+  stage.add(bgLayer, apeBodyLayer, apeFaceLayer, apeLayer, overlayLayer);
+
+  bgLayer.draw();
+  bgLayer.zIndex(0);
+  apeBodyLayer.draw();
+  apeBodyLayer.zIndex(1);
+  apeFaceLayer.draw();
+  apeFaceLayer.zIndex(2);
+  apeLayer.draw();
+  apeLayer.zIndex(3);
+  overlayLayer.draw();
+  overlayLayer.zIndex(4);
+  
+  if(download) {
+    let MIME_TYPE = "image/png";
+    let dataURL = stage.toDataURL({ mimeType: MIME_TYPE, pixelRatio: 2 });
+    
+    let dlLink = document.createElement("a");
+    dlLink.download = `ApeWear-Ape-${tailorApe.value.id}`;
+    dlLink.href = dataURL;
+    dlLink.dataset.downloadurl = [MIME_TYPE, dlLink.download, dlLink.href].join(":");
+
+    document.body.appendChild(dlLink);
+    dlLink.click();
+    document.body.removeChild(dlLink);
+  }
   // store.setLoading(false);
 }
 
@@ -1305,7 +1407,7 @@ async function searchApe(apeId: string) {
     hat: ape.attributes[12].value,
     mouth: ape.attributes[13].value,
     piercing: ape.attributes[14].value,
-    image: ape.image,
+    image: "Green_Stage",
   };
 
   await store.setTailorApe(myApe);
@@ -1324,7 +1426,7 @@ async function resetApe() {
     hat: "",
     mouth: "",
     piercing: "",
-    image: "",
+    image: "Green_Stage",
   });
   await setDefaultAttributes();
   await setDefaultApe();
@@ -1365,7 +1467,7 @@ async function setDefaultAttributes() {
     hat: "Apescription_Beanie",
     mouth: "Bored",
     piercing: "Drip",
-    image: "",
+    image: "Green_Stage",
   });
 }
 
@@ -1504,6 +1606,62 @@ onMounted(async () => {
     padding: 0;
     transition: all 0.5s linear;
     overflow: hidden;
+
+    .icon-button-left {
+      position: absolute;
+      top: 0;
+      left: 0;
+      color: $white;
+      background-color: transparent;
+      border: none;
+      width: 30px;
+      height: inherit;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-content: center;
+      align-items: center;
+      transition: background-color 0.2s cubic-bezier(0.05, 0, 0.2, 1);
+      cursor: pointer;
+      z-index: 999999;
+
+      &:hover {
+        color: $grey-30;
+        background-color: rgba(20, 20, 20, 0.5);
+      }
+      &:focus,
+      &:focus-visible {
+        outline: none;
+      }
+    }
+
+    .icon-button-right {
+      position: absolute;
+      top: 0;
+      right: 0;
+      color: $white;
+      background-color: transparent;
+      border: none;
+      width: 30px;
+      height: inherit;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-content: center;
+      align-items: center;
+      transition: background-color 0.2s cubic-bezier(0.05, 0, 0.2, 1);
+      cursor: pointer;
+      z-index: 999999;
+
+      &:hover {
+        color: $grey-30;
+        background-color: rgba(20, 20, 20, 0.5);
+      }
+      &:focus,
+      &:focus-visible {
+        outline: none;
+      }
+    }
   }
 
   #apeTailor {
