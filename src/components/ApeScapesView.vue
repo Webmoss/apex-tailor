@@ -102,7 +102,7 @@
   }
 
   .scroll-tracker {
-    background: $apex-grey;
+    background: $white;
     transform-origin: left;
     height: 100%;
     width: 60%;

@@ -3,165 +3,166 @@
     <div class="tailor-container">
       
       <!-- Attributes Row #1 -->
-      <div class="column mobile-hidden">
+      <Transition name="fade-left">
+        <div v-if="tailorApe.body" class="column mobile-hidden">
+          <div class="one-quarter">
+            <div v-if="tailorApe.body && tailorApe.hat === 'None'" class="attribute-box">
+              <button
+                class="icon-button-left"
+                @click="previousApeAttr('hats', stripSpaces(apeAttributes.hat))"
+              >
+                <IconLeft />
+              </button>
+              <img
+                :src="`/hats/${stripSpaces(apeAttributes.hat)}.png`"
+                alt="ApeX"
+                @click="nextApeAttr('hats', stripSpaces(apeAttributes.hat))"
+              />
+              <button
+                class="icon-button-right"
+                @click="nextApeAttr('hats', stripSpaces(apeAttributes.hat))"
+              >
+                <IconRight />
+              </button>
+            </div>
+            <div
+              v-else-if="tailorApe.body && tailorApe.hat !== 'None'"
+              class="attribute-box"
+            >
+              <button
+                class="icon-button-left"
+                @click="previousApeAttr('hats', stripSpaces(tailorApe.hat))"
+              >
+                <IconLeft />
+              </button>
+              <img
+                v-if="tailorApe.body === 'Zombie'"
+                :src="`/hats/${tailorApe.hat}_Zombie.png`"
+                alt="ApeX"
+                @click="nextApeAttr('hats', stripSpaces(tailorApe.hat))"
+              />
+              <img
+                v-else-if="tailorApe.body === 'Robot' && tailorApe.hat === 'MFPURR_Charcoal' || tailorApe.hat === 'MFPURR_Cream'"
+                :src="`/hats/${stripSpaces(tailorApe.hat)}_Robot.png`"
+                alt="ApeX"
+                @click="nextApeAttr('hats', stripSpaces(tailorApe.hat))"
+              />
+              <img
+                v-else
+                :src="`/hats/${stripSpaces(tailorApe.hat)}.png`"
+                alt="ApeX"
+                @click="nextApeAttr('hats', stripSpaces(tailorApe.hat))"
+              />
+              <button class="icon-button-right" @click="nextApeAttr('hats', stripSpaces(tailorApe.hat))">
+                <IconRight />
+              </button>
+            </div>
+            <div v-else class="attribute-box">
+              <img src="/bgs/Green_Stage.png" alt="ApeX" />
+            </div>
+          </div>
 
-        <div class="one-quarter">
-          <div v-if="tailorApe.body && tailorApe.hat === 'None'" class="attribute-box">
-            <button
-              class="icon-button-left"
-              @click="previousApeAttr('hats', stripSpaces(apeAttributes.hat))"
+          <div class="one-quarter">
+            <div
+              v-if="tailorApe.body && tailorApe.glasses === 'None'"
+              class="attribute-box"
             >
-              <IconLeft />
-            </button>
-            <img
-              :src="`/hats/${stripSpaces(apeAttributes.hat)}.png`"
-              alt="ApeX"
-              @click="nextApeAttr('hats', stripSpaces(apeAttributes.hat))"
-            />
-            <button
-              class="icon-button-right"
-              @click="nextApeAttr('hats', stripSpaces(apeAttributes.hat))"
+              <button
+                class="icon-button-left"
+                @click="previousApeAttr('glasses', apeAttributes.glasses)"
+              >
+                <IconLeft />
+              </button>
+              <img
+                :src="`/glasses/${apeAttributes.glasses}_${apeAttributes.skin}.png`"
+                alt="ApeX"
+                @click="nextApeAttr('glasses', apeAttributes.glasses)"
+              />
+              <button
+                class="icon-button-right"
+                @click="nextApeAttr('glasses', apeAttributes.glasses)"
+              >
+                <IconRight />
+              </button>
+            </div>
+            <div
+              v-else-if="tailorApe.body && tailorApe.glasses !== 'None'"
+              class="attribute-box"
             >
-              <IconRight />
-            </button>
+              <button
+                class="icon-button-left"
+                @click="previousApeAttr('glasses', tailorApe.glasses)"
+              >
+                <IconLeft />
+              </button>
+              <img
+                :src="`/glasses/${tailorApe.glasses}_${tailorApe.skin}.png`"
+                alt="ApeX"
+                @click="nextApeAttr('glasses', tailorApe.glasses)"
+              />
+              <button
+                class="icon-button-right"
+                @click="nextApeAttr('glasses', tailorApe.glasses)"
+              >
+                <IconRight />
+              </button>
+            </div>
+            <div v-else class="attribute-box">
+              <img src="/bgs/Green_Stage.png" alt="ApeX" />
+            </div>
           </div>
-          <div
-            v-else-if="tailorApe.body && tailorApe.hat !== 'None'"
-            class="attribute-box"
-          >
-            <button
-              class="icon-button-left"
-              @click="previousApeAttr('hats', stripSpaces(tailorApe.hat))"
+
+          <div class="one-quarter">
+            <div
+              v-if="tailorApe.body && tailorApe.piercing === 'None'"
+              class="attribute-box"
             >
-              <IconLeft />
-            </button>
-            <img
-              v-if="tailorApe.body === 'Zombie'"
-              :src="`/hats/${tailorApe.hat}_Zombie.png`"
-              alt="ApeX"
-              @click="nextApeAttr('hats', stripSpaces(tailorApe.hat))"
-            />
-            <img
-              v-else-if="tailorApe.body === 'Robot' && tailorApe.hat === 'MFPURR_Charcoal' || tailorApe.hat === 'MFPURR_Cream'"
-              :src="`/hats/${stripSpaces(tailorApe.hat)}_Robot.png`"
-              alt="ApeX"
-              @click="nextApeAttr('hats', stripSpaces(tailorApe.hat))"
-            />
-            <img
-              v-else
-              :src="`/hats/${stripSpaces(tailorApe.hat)}.png`"
-              alt="ApeX"
-              @click="nextApeAttr('hats', stripSpaces(tailorApe.hat))"
-            />
-            <button class="icon-button-right" @click="nextApeAttr('hats', stripSpaces(tailorApe.hat))">
-              <IconRight />
-            </button>
-          </div>
-          <div v-else class="attribute-box">
-            <img src="/bgs/Green_Stage.png" alt="ApeX" />
+              <button
+                class="icon-button-left"
+                @click="previousApeAttr('piercings', stripSpaces(apeAttributes.piercing))"
+              >
+                <IconLeft />
+              </button>
+              <img
+                :src="`/piercings/${stripSpaces(apeAttributes.piercing)}.png`"
+                alt="ApeX"
+                @click="nextApeAttr('piercings', stripSpaces(apeAttributes.piercing))"
+              />
+              <button
+                class="icon-button-right"
+                @click="nextApeAttr('piercings', stripSpaces(apeAttributes.piercing))"
+              >
+                <IconRight />
+              </button>
+            </div>
+            <div
+              v-else-if="tailorApe.body && tailorApe.piercing !== 'None'"
+              class="attribute-box"
+            >
+              <button
+                class="icon-button-left"
+                @click="previousApeAttr('piercings', stripSpaces(tailorApe.piercing))"
+              >
+                <IconLeft />
+              </button>
+              <img
+                :src="`/piercings/${stripSpaces(tailorApe.piercing)}.png`"
+                alt="ApeX"
+                @click="nextApeAttr('piercings', stripSpaces(tailorApe.piercing))"
+              />
+              <button
+                class="icon-button-right"
+                @click="nextApeAttr('piercings', stripSpaces(tailorApe.piercing))"
+              >
+                <IconRight />
+              </button>
+            </div>
+            <div v-else class="attribute-box">
+              <img src="/bgs/Green_Stage.png" alt="ApeX" />
+            </div>
           </div>
         </div>
-
-        <div class="one-quarter">
-          <div
-            v-if="tailorApe.body && tailorApe.glasses === 'None'"
-            class="attribute-box"
-          >
-            <button
-              class="icon-button-left"
-              @click="previousApeAttr('glasses', apeAttributes.glasses)"
-            >
-              <IconLeft />
-            </button>
-            <img
-              :src="`/glasses/${apeAttributes.glasses}_${apeAttributes.skin}.png`"
-              alt="ApeX"
-              @click="nextApeAttr('glasses', apeAttributes.glasses)"
-            />
-            <button
-              class="icon-button-right"
-              @click="nextApeAttr('glasses', apeAttributes.glasses)"
-            >
-              <IconRight />
-            </button>
-          </div>
-          <div
-            v-else-if="tailorApe.body && tailorApe.glasses !== 'None'"
-            class="attribute-box"
-          >
-            <button
-              class="icon-button-left"
-              @click="previousApeAttr('glasses', tailorApe.glasses)"
-            >
-              <IconLeft />
-            </button>
-            <img
-              :src="`/glasses/${tailorApe.glasses}_${tailorApe.skin}.png`"
-              alt="ApeX"
-              @click="nextApeAttr('glasses', tailorApe.glasses)"
-            />
-            <button
-              class="icon-button-right"
-              @click="nextApeAttr('glasses', tailorApe.glasses)"
-            >
-              <IconRight />
-            </button>
-          </div>
-          <div v-else class="attribute-box">
-            <img src="/bgs/Green_Stage.png" alt="ApeX" />
-          </div>
-        </div>
-
-        <div class="one-quarter">
-          <div
-            v-if="tailorApe.body && tailorApe.piercing === 'None'"
-            class="attribute-box"
-          >
-            <button
-              class="icon-button-left"
-              @click="previousApeAttr('piercings', stripSpaces(apeAttributes.piercing))"
-            >
-              <IconLeft />
-            </button>
-            <img
-              :src="`/piercings/${stripSpaces(apeAttributes.piercing)}.png`"
-              alt="ApeX"
-              @click="nextApeAttr('piercings', stripSpaces(apeAttributes.piercing))"
-            />
-            <button
-              class="icon-button-right"
-              @click="nextApeAttr('piercings', stripSpaces(apeAttributes.piercing))"
-            >
-              <IconRight />
-            </button>
-          </div>
-          <div
-            v-else-if="tailorApe.body && tailorApe.piercing !== 'None'"
-            class="attribute-box"
-          >
-            <button
-              class="icon-button-left"
-              @click="previousApeAttr('piercings', stripSpaces(tailorApe.piercing))"
-            >
-              <IconLeft />
-            </button>
-            <img
-              :src="`/piercings/${stripSpaces(tailorApe.piercing)}.png`"
-              alt="ApeX"
-              @click="nextApeAttr('piercings', stripSpaces(tailorApe.piercing))"
-            />
-            <button
-              class="icon-button-right"
-              @click="nextApeAttr('piercings', stripSpaces(tailorApe.piercing))"
-            >
-              <IconRight />
-            </button>
-          </div>
-          <div v-else class="attribute-box">
-            <img src="/bgs/Green_Stage.png" alt="ApeX" />
-          </div>
-        </div>
-      </div>
+      </Transition>
       <!-- END Attributes Row #1 -->
 
       <div class="main-column">
@@ -211,17 +212,17 @@
           <div class="input-row">
             <button
               :disabled="!tailorApe.body"
-              class="icon-button-round"
-              @click="setGmApe()"
-            >
-              GM
-            </button>
-            <button
-              :disabled="!tailorApe.body"
               class="green-button"
               @click="downloadCanvas()"
             >
               Download
+            </button>
+            <button
+              :disabled="!tailorApe.body"
+              class="icon-button-round"
+              @click="setGmApe()"
+            >
+              GM
             </button>
             <!-- <button :disabled="!tailorApe.body" class="icon-button-round" @click="setJayApe()">
                 J
@@ -230,161 +231,163 @@
         </div>
       </div>
 
-      <!-- Attributes Row #2 -->
-      <div class="column mobile-hidden">
-        <div class="one-quarter">
-          <div v-if="tailorApe.body && tailorApe.eyes === 'None'" class="attribute-box">
-            <button
-              class="icon-button-left"
-              @click="previousApeAttr('eyes', apeAttributes.eyes)"
+      <!-- Attributes Column Right  -->
+      <Transition name="fade-right">
+        <div v-if="tailorApe.body" class="column mobile-hidden">
+          <div class="one-quarter">
+            <div v-if="tailorApe.body && tailorApe.eyes === 'None'" class="attribute-box">
+              <button
+                class="icon-button-left"
+                @click="previousApeAttr('eyes', apeAttributes.eyes)"
+              >
+                <IconLeft />
+              </button>
+              <img
+                :src="`/eyes/${stripSpaces(apeAttributes.eyes)}_${apeAttributes.skin}.png`"
+                alt="ApeX"
+                @click="nextApeAttr('eyes', apeAttributes.eyes)"
+              />
+              <button
+                class="icon-button-right"
+                @click="nextApeAttr('eyes', apeAttributes.eyes)"
+              >
+                <IconRight />
+              </button>
+            </div>
+            <div
+              v-else-if="tailorApe.body && tailorApe.eyes !== 'None'"
+              class="attribute-box"
             >
-              <IconLeft />
-            </button>
-            <img
-              :src="`/eyes/${stripSpaces(apeAttributes.eyes)}_${apeAttributes.skin}.png`"
-              alt="ApeX"
-              @click="nextApeAttr('eyes', apeAttributes.eyes)"
-            />
-            <button
-              class="icon-button-right"
-              @click="nextApeAttr('eyes', apeAttributes.eyes)"
-            >
-              <IconRight />
-            </button>
+              <button
+                class="icon-button-left"
+                @click="previousApeAttr('eyes', tailorApe.eyes)"
+              >
+                <IconLeft />
+              </button>
+              <img
+                :src="`/eyes/${stripSpaces(tailorApe.eyes)}_${tailorApe.skin}.png`"
+                alt="ApeX"
+                @click="nextApeAttr('eyes', tailorApe.eyes)"
+              />
+              <button
+                class="icon-button-right"
+                @click="nextApeAttr('eyes', tailorApe.eyes)"
+              >
+                <IconRight />
+              </button>
+            </div>
+            <div v-else class="attribute-box">
+              <img src="/bgs/Green_Stage.png" alt="ApeX" />
+            </div>
           </div>
-          <div
-            v-else-if="tailorApe.body && tailorApe.eyes !== 'None'"
-            class="attribute-box"
-          >
-            <button
-              class="icon-button-left"
-              @click="previousApeAttr('eyes', tailorApe.eyes)"
+          <div class="one-quarter">
+            <div v-if="tailorApe.body && tailorApe.mouth === 'None'" class="attribute-box">
+              <button
+                class="icon-button-left"
+                @click="previousApeAttr('mouthes', stripSpaces(apeAttributes.mouth))"
+              >
+                <IconLeft />
+              </button>
+              <img
+                :src="`/mouthes/${stripSpaces(apeAttributes.mouth)}_${tailorApe.skin}.png`"
+                alt="ApeX"
+                @click="nextApeAttr('mouthes', stripSpaces(apeAttributes.mouth))"
+              />
+              <button
+                class="icon-button-right"
+                @click="nextApeAttr('mouthes', stripSpaces(apeAttributes.mouth))"
+              >
+                <IconRight />
+              </button>
+            </div>
+            <div
+              v-else-if="tailorApe.body && tailorApe.mouth !== 'None'"
+              class="attribute-box"
             >
-              <IconLeft />
-            </button>
-            <img
-              :src="`/eyes/${stripSpaces(tailorApe.eyes)}_${tailorApe.skin}.png`"
-              alt="ApeX"
-              @click="nextApeAttr('eyes', tailorApe.eyes)"
-            />
-            <button
-              class="icon-button-right"
-              @click="nextApeAttr('eyes', tailorApe.eyes)"
-            >
-              <IconRight />
-            </button>
+              <button
+                class="icon-button-left"
+                @click="previousApeAttr('mouthes', stripSpaces(tailorApe.mouth))"
+              >
+                <IconLeft />
+              </button>
+              <img
+                :src="`/mouthes/${stripSpaces(tailorApe.mouth)}_${tailorApe.skin}.png`"
+                alt="ApeX"
+                @click="nextApeAttr('mouthes', stripSpaces(tailorApe.mouth))"
+              />
+              <button
+                class="icon-button-right"
+                @click="nextApeAttr('mouthes', stripSpaces(tailorApe.mouth))"
+              >
+                <IconRight />
+              </button>
+            </div>
+            <div v-else class="attribute-box">
+              <img src="/bgs/Green_Stage.png" alt="ApeX" />
+            </div>
           </div>
-          <div v-else class="attribute-box">
-            <img src="/bgs/Green_Stage.png" alt="ApeX" />
+          <div class="one-quarter">
+            <div
+              v-if="tailorApe.body && tailorApe.clothes === 'None'"
+              class="attribute-box"
+            >
+              <button
+                class="icon-button-left"
+                @click="previousApeAttr('clothes', stripSpaces(apeAttributes.clothes))"
+              >
+                <IconLeft />
+              </button>
+              <img
+                :src="`/clothes/${stripSpaces(apeAttributes.clothes)}.png`"
+                alt="ApeX"
+                @click="nextApeAttr('clothes', stripSpaces(apeAttributes.clothes))"
+              />
+              <button
+                class="icon-button-right"
+                @click="nextApeAttr('clothes', stripSpaces(apeAttributes.clothes))"
+              >
+                <IconRight />
+              </button>
+            </div>
+            <div
+              v-else-if="tailorApe.body && tailorApe.clothes !== 'None'"
+              class="attribute-box"
+            >
+              <button
+                class="icon-button-left"
+                @click="previousApeAttr('clothes', stripSpaces(tailorApe.clothes))"
+              >
+                <IconLeft />
+              </button>
+              <img
+                v-if="
+                  (tailorApe.body === 'Robot' && tailorApe.clothes === 'Hoodie') ||
+                  tailorApe.clothes === 'Leather_Jacket'
+                "
+                :src="`/clothes/${stripSpaces(tailorApe.clothes)}.png`"
+                alt="ApeX"
+                @click="nextApeAttr('clothes', stripSpaces(tailorApe.clothes))"
+              />    
+              <img
+                v-else
+                :src="`/clothes/${stripSpaces(tailorApe.clothes)}.png`"
+                alt="ApeX"
+                @click="nextApeAttr('clothes', stripSpaces(tailorApe.clothes))"
+              />
+              <button
+                class="icon-button-right"
+                @click="nextApeAttr('clothes', stripSpaces(tailorApe.clothes))"
+              >
+                <IconRight />
+              </button>
+            </div>
+            <div v-else class="attribute-box">
+              <img src="/bgs/Green_Stage.png" alt="ApeX" />
+            </div>
           </div>
         </div>
-        <div class="one-quarter">
-          <div v-if="tailorApe.body && tailorApe.mouth === 'None'" class="attribute-box">
-            <button
-              class="icon-button-left"
-              @click="previousApeAttr('mouthes', stripSpaces(apeAttributes.mouth))"
-            >
-              <IconLeft />
-            </button>
-            <img
-              :src="`/mouthes/${stripSpaces(apeAttributes.mouth)}_${tailorApe.skin}.png`"
-              alt="ApeX"
-              @click="nextApeAttr('mouthes', stripSpaces(apeAttributes.mouth))"
-            />
-            <button
-              class="icon-button-right"
-              @click="nextApeAttr('mouthes', stripSpaces(apeAttributes.mouth))"
-            >
-              <IconRight />
-            </button>
-          </div>
-          <div
-            v-else-if="tailorApe.body && tailorApe.mouth !== 'None'"
-            class="attribute-box"
-          >
-            <button
-              class="icon-button-left"
-              @click="previousApeAttr('mouthes', stripSpaces(tailorApe.mouth))"
-            >
-              <IconLeft />
-            </button>
-            <img
-              :src="`/mouthes/${stripSpaces(tailorApe.mouth)}_${tailorApe.skin}.png`"
-              alt="ApeX"
-              @click="nextApeAttr('mouthes', stripSpaces(tailorApe.mouth))"
-            />
-            <button
-              class="icon-button-right"
-              @click="nextApeAttr('mouthes', stripSpaces(tailorApe.mouth))"
-            >
-              <IconRight />
-            </button>
-          </div>
-          <div v-else class="attribute-box">
-            <img src="/bgs/Green_Stage.png" alt="ApeX" />
-          </div>
-        </div>
-        <div class="one-quarter">
-          <div
-            v-if="tailorApe.body && tailorApe.clothes === 'None'"
-            class="attribute-box"
-          >
-            <button
-              class="icon-button-left"
-              @click="previousApeAttr('clothes', stripSpaces(apeAttributes.clothes))"
-            >
-              <IconLeft />
-            </button>
-            <img
-              :src="`/clothes/${stripSpaces(apeAttributes.clothes)}.png`"
-              alt="ApeX"
-              @click="nextApeAttr('clothes', stripSpaces(apeAttributes.clothes))"
-            />
-            <button
-              class="icon-button-right"
-              @click="nextApeAttr('clothes', stripSpaces(apeAttributes.clothes))"
-            >
-              <IconRight />
-            </button>
-          </div>
-          <div
-            v-else-if="tailorApe.body && tailorApe.clothes !== 'None'"
-            class="attribute-box"
-          >
-            <button
-              class="icon-button-left"
-              @click="previousApeAttr('clothes', stripSpaces(tailorApe.clothes))"
-            >
-              <IconLeft />
-            </button>
-            <img
-              v-if="
-                (tailorApe.body === 'Robot' && tailorApe.clothes === 'Hoodie') ||
-                tailorApe.clothes === 'Leather_Jacket'
-              "
-              :src="`/clothes/${stripSpaces(tailorApe.clothes)}.png`"
-              alt="ApeX"
-              @click="nextApeAttr('clothes', stripSpaces(tailorApe.clothes))"
-            />    
-            <img
-              v-else
-              :src="`/clothes/${stripSpaces(tailorApe.clothes)}.png`"
-              alt="ApeX"
-              @click="nextApeAttr('clothes', stripSpaces(tailorApe.clothes))"
-            />
-            <button
-              class="icon-button-right"
-              @click="nextApeAttr('clothes', stripSpaces(tailorApe.clothes))"
-            >
-              <IconRight />
-            </button>
-          </div>
-          <div v-else class="attribute-box">
-            <img src="/bgs/Green_Stage.png" alt="ApeX" />
-          </div>
-        </div>
-      </div>
-      <!-- END Attributes Row #1 -->
+      </Transition>
+      <!-- END Attributes Column Right -->
 
       <!-- Mobile Versions -->
       <Transition name="fade">
@@ -714,17 +717,17 @@
               <div class="input-row">
                 <button
                   :disabled="!tailorApe.body"
-                  class="icon-button-round"
-                  @click="setGmApe()"
-                >
-                  GM
-                </button>
-                <button
-                  :disabled="!tailorApe.body"
                   class="green-button"
                   @click="downloadCanvas()"
                 >
                   Download
+                </button>
+                <button
+                  :disabled="!tailorApe.body"
+                  class="icon-button-round"
+                  @click="setGmApe()"
+                >
+                  GM
                 </button>
                 <!-- <button :disabled="!tailorApe.image" class="icon-button-round" @click="setJayApe()">
                   J
@@ -1860,9 +1863,26 @@ onMounted(async () => {
 .fade-leave-active {
   transition: opacity 0.6s ease;
 }
-
 .fade-enter-from,
 .fade-leave-to {
+  opacity: 0;
+}
+
+.fade-left-enter-active,
+.fade-left-leave-active {
+  transition: opacity 0.6s ease;
+}
+.fade-left-enter-from,
+.fade-left-leave-to {
+  opacity: 0;
+}
+
+.fade-right-enter-active,
+.fade-right-leave-active {
+  transition: opacity 0.6s ease;
+}
+.fade-right-enter-from,
+.fade-right-leave-to {
   opacity: 0;
 }
 </style>
