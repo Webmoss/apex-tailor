@@ -1,7 +1,6 @@
 <template>
   <main id="apewear" class="container">
     <div class="tailor-container">
-      
       <!-- Attributes Row #1 -->
       <Transition name="fade-left">
         <div v-if="tailorApe.body" class="column mobile-hidden">
@@ -168,14 +167,14 @@
       <div class="main-column">
         <div class="two-quarter">
           <div class="input-row">
-            <button class="icon-button" @click="resetApe()">
+            <button class="icon-button" @click="resetApe()" :disabled="!apeId">
               <IconRestart />
             </button>
             <input
               v-model="apeId"
               name="apeId"
               type="text"
-              placeholder="Ape #0000"
+              placeholder="Ape #000"
               @keyup.enter="searchApe(apeId)"
             />
             <button class="icon-button" @click="searchApe(apeId)" :disabled="!apeId">
@@ -213,7 +212,7 @@
             <button
               :disabled="!tailorApe.body"
               class="green-button"
-              @click="downloadCanvas()"
+              @click="drawApe(true)"
             >
               Download
             </button>
@@ -718,7 +717,7 @@
                 <button
                   :disabled="!tailorApe.body"
                   class="green-button"
-                  @click="downloadCanvas()"
+                  @click="drawApe(true)"
                 >
                   Download
                 </button>
@@ -763,7 +762,6 @@ import { mouthes } from "@/data/mouthes.json";
 
 import apexApe from "/apes/0.png";
 
-/* Init Pinia Store Values and Methods */
 const store = useStore();
 const { loading, tailorApe, apeAttributes } = storeToRefs(store);
 
@@ -789,12 +787,8 @@ function stripSpaces(str: string) {
 async function previousApeAttr(attr: string, value: string) {
   let trait = null;
   if (attr === "bgs") {
-    console.log("attr", attr);
-    console.log("value", value);
     trait = bgs.filter((item) => item.type === stripSpaces(value));
-    console.log("trait", trait);
     let currentIndex = trait[0].index;
-    console.log("currentIndex", currentIndex);
     if (currentIndex === 1) {
       let previousTrait = bgs.filter((item) => item.index === bgsTotal);
       store.setTailorApeImage(previousTrait[0].type);
@@ -856,11 +850,16 @@ async function previousApeAttr(attr: string, value: string) {
       store.setApeAttributesClothes(previousTrait[0].type);
     }
   } else if (attr === "glasses") {
-    if(value === 'Crazy'){
+    if (value === 'Crazy'){
       store.setTailorApeEyes("Angry");
       store.setTailorApeGlasses("None");
       store.setApeAttributesEyes("Angry");
       store.setApeAttributesGlasses("Beams"); 
+    } else if (value === 'Laser'){
+      store.setTailorApeEyes("Hypno");
+      store.setTailorApeGlasses("Horn_Rimmed");
+      store.setApeAttributesEyes("Hypno");
+      store.setApeAttributesGlasses("Horn_Rimmed"); 
     } else {
       trait = glasses.filter((item) => item.type === value);
       let currentIndex = trait[0].index;
@@ -869,17 +868,29 @@ async function previousApeAttr(attr: string, value: string) {
         if (previousTrait[0].type === "Crazy") {
           store.setTailorApeEyes("Crazy");
           store.setApeAttributesEyes("Crazy");
+        } else if (previousTrait[0].type === "Laser") {
+          store.setTailorApeEyes("Laser");
+          store.setTailorApeGlasses("Laser");
+          store.setApeAttributesEyes("Laser");
+          store.setApeAttributesEyes("Laser");
+        } else {
+          store.setTailorApeGlasses(previousTrait[0].type);
+          store.setApeAttributesGlasses(previousTrait[0].type);
         }
-        store.setTailorApeGlasses(previousTrait[0].type);
-        store.setApeAttributesGlasses(previousTrait[0].type);
       } else {
         let previousTrait = glasses.filter((item) => item.index === currentIndex - 1);
         if (previousTrait[0].type === "Crazy") {
           store.setTailorApeEyes("Crazy");
           store.setApeAttributesEyes("Crazy");
-        }
-        store.setTailorApeGlasses(previousTrait[0].type);
-        store.setApeAttributesGlasses(previousTrait[0].type);
+        } else if (previousTrait[0].type === "Laser") {
+          store.setTailorApeEyes("Laser");
+          store.setTailorApeGlasses("Laser");
+          store.setApeAttributesEyes("Laser");
+          store.setApeAttributesEyes("Laser");
+        } else {
+          store.setTailorApeGlasses(previousTrait[0].type);
+          store.setApeAttributesGlasses(previousTrait[0].type);
+        }        
       }
     }
   } else if (attr === "piercings") {
@@ -915,12 +926,8 @@ async function previousApeAttr(attr: string, value: string) {
 async function nextApeAttr(attr: string, value: string) {
   let trait = null;
   if (attr === "bgs") {
-    console.log("attr", attr);
-    console.log("value", value);
     trait = bgs.filter((item) => item.type === stripSpaces(value));
-    console.log("trait", trait);
     let currentIndex = trait[0].index;
-    console.log("currentIndex", currentIndex);
     if (currentIndex === bgsTotal) {
       let nextTrait = bgs.filter((item) => item.index === 1);
       store.setTailorApeImage(nextTrait[0].type);
@@ -969,9 +976,10 @@ async function nextApeAttr(attr: string, value: string) {
       if (nextTrait[0].type === "Hoodie") {
         store.setTailorApeHat("None");
         store.setApeAttributesHat("Apescription_Beanie");
+      } else {
+        store.setTailorApeClothes(nextTrait[0].type);
+        store.setApeAttributesClothes(nextTrait[0].type);
       }
-      store.setTailorApeClothes(nextTrait[0].type);
-      store.setApeAttributesClothes(nextTrait[0].type);
     } else {
       let nextTrait = clothes.filter((item) => item.index === currentIndex + 1);
       if (nextTrait[0].type === "Hoodie") {
@@ -987,6 +995,11 @@ async function nextApeAttr(attr: string, value: string) {
       store.setTailorApeGlasses("None");
       store.setApeAttributesEyes("Cyborg");
       store.setApeAttributesGlasses("Beams"); 
+    } else if(value === 'Laser'){
+      store.setTailorApeEyes("Sad");
+      store.setTailorApeGlasses("None");
+      store.setApeAttributesEyes("Sad");
+      store.setApeAttributesGlasses("Beams"); 
     } else {
       trait = glasses.filter((item) => item.type === value);
       let currentIndex = trait[0].index;
@@ -995,17 +1008,29 @@ async function nextApeAttr(attr: string, value: string) {
         if (nextTrait[0].type === "Crazy") {
           store.setTailorApeEyes("Crazy");
           store.setApeAttributesEyes("Crazy");
+        } else if (nextTrait[0].type === "Laser") {
+          store.setTailorApeEyes("Laser");
+          store.setTailorApeGlasses("Laser");
+          store.setApeAttributesEyes("Laser");
+          store.setApeAttributesEyes("Laser");
+        } else {
+          store.setTailorApeGlasses(nextTrait[0].type);
+          store.setApeAttributesGlasses(nextTrait[0].type);
         }
-        store.setTailorApeGlasses(nextTrait[0].type);
-        store.setApeAttributesGlasses(nextTrait[0].type);
       } else {
         let nextTrait = glasses.filter((item) => item.index === currentIndex + 1);
         if (nextTrait[0].type === "Crazy") {
           store.setTailorApeEyes("Crazy");
           store.setApeAttributesEyes("Crazy");
+        } else if (nextTrait[0].type === "Laser") {
+          store.setTailorApeEyes("Laser");
+          store.setTailorApeGlasses("Laser");
+          store.setApeAttributesEyes("Laser");
+          store.setApeAttributesEyes("Laser");
+        } else {
+          store.setTailorApeGlasses(nextTrait[0].type);
+          store.setApeAttributesGlasses(nextTrait[0].type);
         }
-        store.setTailorApeGlasses(nextTrait[0].type);
-        store.setApeAttributesGlasses(nextTrait[0].type);
       }
     }
   } else if (attr === "piercings") {
@@ -1038,25 +1063,6 @@ async function nextApeAttr(attr: string, value: string) {
   await drawApe();
 }
 
-async function downloadCanvas() {
-  // const canvasElement = document.getElementById("apeTailor") as any;
-
-  // if (canvasElement != null) {
-  //   let MIME_TYPE = "image/png";
-  //   let imgURL = canvasElement.toDataURL(MIME_TYPE, 1.0);
-
-  //   let dlLink = document.createElement("a");
-  //   dlLink.download = `ApeWear-Ape${tailorApe.value.id}`;
-  //   dlLink.href = imgURL;
-  //   dlLink.dataset.downloadurl = [MIME_TYPE, dlLink.download, dlLink.href].join(":");
-
-  //   document.body.appendChild(dlLink);
-  //   dlLink.click();
-  //   document.body.removeChild(dlLink);
-  // }
-  await drawApe(true);
-}
-
 async function setGmApe() {
   // state.jayApe = !state.jayApe;
   state.gmApe = !state.gmApe;
@@ -1073,8 +1079,6 @@ async function drawApe(download = false) {
   
   // store.setLoading(true);
 
-  console.log("Download: ", download);
-
   var stage = new Konva.Stage({
     container: "apeTailor",
     width: 380,
@@ -1084,16 +1088,14 @@ async function drawApe(download = false) {
   var bgLayer = new Konva.Layer();
   var apeBodyLayer = new Konva.Layer();
   var apeFaceLayer = new Konva.Layer();
-  var apeLayer = new Konva.Layer();
+  var apeApparelLayer = new Konva.Layer();
   var overlayLayer = new Konva.Layer();
-
-  console.log("BG Image: ", tailorApe.value.image);
+  
+  console.log("Skin: ", tailorApe.value.skin);
   
   if (tailorApe.value.image) {
-    // var layer = new Konva.Layer();
-    // stage.add(layer);
-    
     var bgImage = new Image();
+    bgImage.crossOrigin = "anonymous";
     bgImage.src = `/bgs/${tailorApe.value.image}.png`;
     bgImage.onload = function () {
       var apeBg = new Konva.Image({
@@ -1103,19 +1105,13 @@ async function drawApe(download = false) {
         width: 380,
         height: 380,
       });
-      bgLayer.add(apeBg);
-      // layer.zIndex(0);
+      bgLayer.add(apeBg);      
     };    
   }
 
-  console.log("Body: ", tailorApe.value.body);
-  console.log("Skin: ", tailorApe.value.skin);
-
   if (tailorApe.value.body) {
-    // var bodyLayer = new Konva.Layer();
-    // stage.add(bodyLayer);
-
     var bgBodyImage = new Image();
+    bgBodyImage.crossOrigin = "anonymous";
     bgBodyImage.src = `/body/${stripSpaces(tailorApe.value.body)}_${tailorApe.value.skin}.png`;
     bgBodyImage.onload = function () {
       var apeBody = new Konva.Image({
@@ -1126,37 +1122,12 @@ async function drawApe(download = false) {
         height: 380,
       });
       apeBodyLayer.add(apeBody);
-      // bodyLayer.zIndex(1);
     };
   }
 
-  console.log("Mouth: ", tailorApe.value.mouth);
-
-  if (tailorApe.value.mouth !== "None") {
-    // var mouthLayer = new Konva.Layer();
-    // stage.add(mouthLayer);
-
-    var bgMouthImage = new Image();
-    bgMouthImage.src = `/mouthes/${stripSpaces(tailorApe.value.mouth)}_${tailorApe.value.skin}.png`;
-    bgMouthImage.onload = function () {
-      var apeMouth = new Konva.Image({
-        x: 0,
-        y: 0,
-        image: bgMouthImage,
-        width: 380,
-        height: 380,
-      });
-      apeFaceLayer.add(apeMouth);
-      // mouthLayer.zIndex(7);
-    };
-  }
-
-  console.log("Eyes: ", tailorApe.value.eyes);
   if (tailorApe.value.eyes !== "None") {
-    // var eyesLayer = new Konva.Layer();
-    // stage.add(eyesLayer);
-
     var bgEyesImage = new Image();
+    bgEyesImage.crossOrigin = "anonymous";
     if(tailorApe.value.eyes === 'Crazy') {
       store.setTailorApeGlasses("Crazy");
       store.setApeAttributesGlasses("Crazy");
@@ -1171,37 +1142,17 @@ async function drawApe(download = false) {
         height: 380,
       });
       apeFaceLayer.add(apeEyes);
-      // eyesLayer.zIndex(3);
     };
   }
 
-  console.log("Glasses: ", tailorApe.value.glasses);
-  if (tailorApe.value.glasses !== "None") {
-    // var glassesLayer = new Konva.Layer();
-    // stage.add(glassesLayer);
-
-    var bgGlassesImage = new Image();
-    bgGlassesImage.src = `/glasses/${stripSpaces(tailorApe.value.glasses)}_${tailorApe.value.skin}.png`;    
-    bgGlassesImage.onload = function () {
-      var apeGlasses = new Konva.Image({
-        x: 0,
-        y: 0,
-        image: bgGlassesImage,
-        width: 380,
-        height: 380,
-      });
-      apeLayer.add(apeGlasses);
-      // glassesLayer.zIndex(4);
-    };
-  }
-
-  console.log("Hat: ", tailorApe.value.hat);
   if (tailorApe.value.hat !== "None") {
-    // var hatLayer = new Konva.Layer();
-    // stage.add(hatLayer);
-
     var bgHatImage = new Image();
-    bgHatImage.src = `/hats/${stripSpaces(tailorApe.value.hat)}.png`;
+    bgHatImage.crossOrigin = "anonymous";
+    if (tailorApe.value.clothes === "Hoodie") {
+      bgHatImage.src = `/hats/Hood.png`;
+    } else {
+      bgHatImage.src = `/hats/${stripSpaces(tailorApe.value.hat)}.png`;
+    }    
     bgHatImage.onload = function () {
       var apeHat = new Konva.Image({
         x: 0,
@@ -1210,18 +1161,14 @@ async function drawApe(download = false) {
         width: 380,
         height: 380,
       });
-      apeLayer.add(apeHat);
-      // hatLayer.zIndex(5);
+      apeApparelLayer.add(apeHat);
     };
   }
 
-  console.log("Clothes: ", tailorApe.value.clothes);
-
   if (tailorApe.value.clothes !== "None") {
-    // var clothesLayer = new Konva.Layer();
-    // stage.add(clothesLayer);
-
     var bgClothesImage = new Image();
+    bgClothesImage.crossOrigin = "anonymous";
+
     if ((tailorApe.value.body === "Robot" && tailorApe.value.clothes === "Hoodie") || tailorApe.value.clothes === "Leather_Jacket") {
       bgClothesImage.src = `/clothes/${stripSpaces(tailorApe.value.clothes)}_Robot.png`;
     } else {
@@ -1236,17 +1183,13 @@ async function drawApe(download = false) {
         width: 380,
         height: 380,
       });
-      apeLayer.add(apeClothes);
-      // clothesLayer.zIndex(6);
+      apeApparelLayer.add(apeClothes);
     };
   }
 
-  console.log("Piercing: ", tailorApe.value.piercing);
   if (tailorApe.value.piercing !== "None") {
-    // var piercingLayer = new Konva.Layer();
-    // stage.add(piercingLayer);
-
     var bgPiercingImage = new Image();
+    bgPiercingImage.crossOrigin = "anonymous";
     bgPiercingImage.src = `/piercings/${stripSpaces(tailorApe.value.piercing)}.png`;
     bgPiercingImage.onload = function () {
       var apePiercing = new Konva.Image({
@@ -1256,17 +1199,46 @@ async function drawApe(download = false) {
         width: 380,
         height: 380,
       });
-      apeLayer.add(apePiercing);
-      // piercingLayer.zIndex(8);
+      apeApparelLayer.add(apePiercing);
     };
   }
 
-  console.log("GM: ", state.gmApe === true);
-  if (state.gmApe === true) {
-    // var gmLayer = new Konva.Layer();
-    // stage.add(gmLayer);
+  if (tailorApe.value.glasses !== "None") {
+    var bgGlassesImage = new Image();
+    bgGlassesImage.crossOrigin = "anonymous";
+    bgGlassesImage.src = `/glasses/${stripSpaces(tailorApe.value.glasses)}_${tailorApe.value.skin}.png`;    
+    bgGlassesImage.onload = function () {
+      var apeGlasses = new Konva.Image({
+        x: 0,
+        y: 0,
+        image: bgGlassesImage,
+        width: 380,
+        height: 380,
+      });
+      overlayLayer.add(apeGlasses);
+    };
+  }
 
+  if (tailorApe.value.mouth !== "None") {
+    var bgMouthImage = new Image();
+    bgMouthImage.crossOrigin = "anonymous";
+    bgMouthImage.src = `/mouthes/${stripSpaces(tailorApe.value.mouth)}_${tailorApe.value.skin}.png`;
+    bgMouthImage.onload = function () {
+      var apeMouth = new Konva.Image({
+        x: 0,
+        y: 0,
+        image: bgMouthImage,
+        width: 380,
+        height: 380,
+      });
+      overlayLayer.add(apeMouth);
+    };
+  }
+
+
+  if (state.gmApe === true) {
     var bgGMImage = new Image();
+    bgGMImage.crossOrigin = "anonymous";
     bgGMImage.src = `/gmSkins/${tailorApe.value.skin}-Skin/GM_${tailorApe.value.skin}_${tailorApe.value.body}.png`;
     bgGMImage.onload = function () {
       var apeGM = new Konva.Image({
@@ -1277,16 +1249,13 @@ async function drawApe(download = false) {
         height: 380,
       });
       overlayLayer.add(apeGM);
-      // gmLayer.zIndex(9);
     };
   }
 
-  console.log("Jay: ", state.jayApe === true);
-  if (state.jayApe === true) {
-    // var jayLayer = new Konva.Layer();
-    // stage.add(jayLayer);
 
+  if (state.jayApe === true) {
     var bgJayImage = new Image();
+    bgJayImage.crossOrigin = "anonymous";
     bgJayImage.src = `/jays/${tailorApe.value.skin}-Skin/GM_${tailorApe.value.skin}_${tailorApe.value.body}.png`;
     bgJayImage.onload = function () {
       var apeJay = new Konva.Image({
@@ -1297,11 +1266,10 @@ async function drawApe(download = false) {
         height: 380,
       });
       overlayLayer.add(apeJay);
-      // layer.zIndex(10);
     };
   }
 
-  stage.add(bgLayer, apeBodyLayer, apeFaceLayer, apeLayer, overlayLayer);
+  stage.add(bgLayer, apeBodyLayer, apeFaceLayer, apeApparelLayer, overlayLayer);
 
   bgLayer.draw();
   bgLayer.zIndex(0);
@@ -1309,14 +1277,16 @@ async function drawApe(download = false) {
   apeBodyLayer.zIndex(1);
   apeFaceLayer.draw();
   apeFaceLayer.zIndex(2);
-  apeLayer.draw();
-  apeLayer.zIndex(3);
+  apeApparelLayer.draw();
+  apeApparelLayer.zIndex(3);
   overlayLayer.draw();
   overlayLayer.zIndex(4);
-  
+    
+
   if(download) {
     let MIME_TYPE = "image/png";
-    let dataURL = stage.toDataURL({ mimeType: MIME_TYPE, pixelRatio: 2 });
+    let dataURL = stage.toDataURL({ mimeType: MIME_TYPE, pixelRatio: 2, quality: 1 });
+    console.log("dataURL", dataURL);
     
     let dlLink = document.createElement("a");
     dlLink.download = `ApeWear-Ape-${tailorApe.value.id}`;
@@ -1327,11 +1297,12 @@ async function drawApe(download = false) {
     dlLink.click();
     document.body.removeChild(dlLink);
   }
+
   // store.setLoading(false);
 }
 
 async function searchApe(apeId: string) {
-  // console.log('Search Ape', apeId);
+
   let ape = await fetch(`/apescriptions/${apeId}.json`)
     .then((res) => {
       if (!res.ok) {
@@ -1436,6 +1407,7 @@ async function resetApe() {
 }
 
 async function setDefaultApe() {
+
   var stage = new Konva.Stage({
     container: "apeTailor",
     width: 380,
@@ -1461,7 +1433,7 @@ async function setDefaultApe() {
 
 async function setDefaultAttributes() {
   store.setApeAttributes({
-    id: "1",
+    id: "0",
     body: "",
     skin: "Light",
     clothes: "Bone_Necklace",
