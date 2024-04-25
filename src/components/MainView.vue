@@ -68,18 +68,18 @@
             >
               <button
                 class="icon-button-left"
-                @click="previousApeAttr('glasses', apeAttributes.glasses)"
+                @click="previousApeAttr('glasses', stripSpaces(apeAttributes.glasses))"
               >
                 <IconLeft />
               </button>
               <img
-                :src="`/glasses/${apeAttributes.glasses}_${apeAttributes.skin}.png`"
+                :src="`/glasses/${stripSpaces(apeAttributes.glasses)}_${apeAttributes.skin}.png`"
                 alt="ApeX"
-                @click="nextApeAttr('glasses', apeAttributes.glasses)"
+                @click="nextApeAttr('glasses', stripSpaces(apeAttributes.glasses))"
               />
               <button
                 class="icon-button-right"
-                @click="nextApeAttr('glasses', apeAttributes.glasses)"
+                @click="nextApeAttr('glasses', stripSpaces(apeAttributes.glasses))"
               >
                 <IconRight />
               </button>
@@ -90,18 +90,18 @@
             >
               <button
                 class="icon-button-left"
-                @click="previousApeAttr('glasses', tailorApe.glasses)"
+                @click="previousApeAttr('glasses', stripSpaces(tailorApe.glasses))"
               >
                 <IconLeft />
               </button>
               <img
-                :src="`/glasses/${tailorApe.glasses}_${tailorApe.skin}.png`"
+                :src="`/glasses/${stripSpaces(tailorApe.glasses)}_${tailorApe.skin}.png`"
                 alt="ApeX"
-                @click="nextApeAttr('glasses', tailorApe.glasses)"
+                @click="nextApeAttr('glasses', stripSpaces(tailorApe.glasses))"
               />
               <button
                 class="icon-button-right"
-                @click="nextApeAttr('glasses', tailorApe.glasses)"
+                @click="nextApeAttr('glasses', stripSpaces(tailorApe.glasses))"
               >
                 <IconRight />
               </button>
@@ -192,7 +192,7 @@
               <IconLeft />
             </button>
             <div
-              style="width: 380px; height: 380px; overflow: hidden"
+              style="width: 380px; height: 380px;"
               id="apeTailor"
             ></div>
             <button
@@ -237,18 +237,18 @@
             <div v-if="tailorApe.body && tailorApe.eyes === 'None'" class="attribute-box">
               <button
                 class="icon-button-left"
-                @click="previousApeAttr('eyes', apeAttributes.eyes)"
+                @click="previousApeAttr('eyes', stripSpaces(apeAttributes.eyes))"
               >
                 <IconLeft />
               </button>
               <img
                 :src="`/eyes/${stripSpaces(apeAttributes.eyes)}_${apeAttributes.skin}.png`"
                 alt="ApeX"
-                @click="nextApeAttr('eyes', apeAttributes.eyes)"
+                @click="nextApeAttr('eyes', stripSpaces(apeAttributes.eyes))"
               />
               <button
                 class="icon-button-right"
-                @click="nextApeAttr('eyes', apeAttributes.eyes)"
+                @click="nextApeAttr('eyes', stripSpaces(apeAttributes.eyes))"
               >
                 <IconRight />
               </button>
@@ -259,18 +259,18 @@
             >
               <button
                 class="icon-button-left"
-                @click="previousApeAttr('eyes', tailorApe.eyes)"
+                @click="previousApeAttr('eyes', stripSpaces(tailorApe.eyes))"
               >
                 <IconLeft />
               </button>
               <img
                 :src="`/eyes/${stripSpaces(tailorApe.eyes)}_${tailorApe.skin}.png`"
                 alt="ApeX"
-                @click="nextApeAttr('eyes', tailorApe.eyes)"
+                @click="nextApeAttr('eyes', stripSpaces(tailorApe.eyes))"
               />
               <button
                 class="icon-button-right"
-                @click="nextApeAttr('eyes', tailorApe.eyes)"
+                @click="nextApeAttr('eyes', stripSpaces(tailorApe.eyes))"
               >
                 <IconRight />
               </button>
@@ -430,7 +430,7 @@
                   @click="nextApeAttr('hats', stripSpaces(tailorApe.hat))"
                 />
                 <img
-                  v-else-if="tailorApe.body === 'Robot' && tailorApe.hat === 'MFPURR_Charcoal' || tailorApe.hat === 'MFPURR_Cream'"
+                  v-else-if="tailorApe.body === 'Robot' && stripSpaces(tailorApe.hat) === 'MFPURR_Charcoal' || stripSpaces(tailorApe.hat) === 'MFPURR_Cream'"
                   :src="`/hats/${stripSpaces(tailorApe.hat)}_Robot.png`"
                   alt="ApeX"
                   @click="nextApeAttr('hats', stripSpaces(tailorApe.hat))"
@@ -459,18 +459,18 @@
               >
                 <button
                   class="icon-button-left"
-                  @click="previousApeAttr('glasses', apeAttributes.glasses)"
+                  @click="previousApeAttr('glasses', stripSpaces(apeAttributes.glasses))"
                 >
                   <IconLeft />
                 </button>
                 <img
-                  :src="`/glasses/${apeAttributes.glasses}_${apeAttributes.skin}.png`"
+                  :src="`/glasses/${stripSpaces(apeAttributes.glasses)}_${apeAttributes.skin}.png`"
                   alt="ApeX"
-                  @click="nextApeAttr('glasses', apeAttributes.glasses)"
+                  @click="nextApeAttr('glasses', stripSpaces(apeAttributes.glasses))"
                 />
                 <button
                   class="icon-button-right"
-                  @click="nextApeAttr('glasses', apeAttributes.glasses)"
+                  @click="nextApeAttr('glasses', stripSpaces(apeAttributes.glasses))"
                 >
                   <IconRight />
                 </button>
@@ -481,18 +481,18 @@
               >
                 <button
                   class="icon-button-left"
-                  @click="previousApeAttr('glasses', tailorApe.glasses)"
+                  @click="previousApeAttr('glasses', stripSpaces(tailorApe.glasses))"
                 >
                   <IconLeft />
                 </button>
                 <img
-                  :src="`/glasses/${tailorApe.glasses}_${tailorApe.skin}.png`"
+                  :src="`/glasses/${stripSpaces(tailorApe.glasses)}_${tailorApe.skin}.png`"
                   alt="ApeX"
-                  @click="nextApeAttr('glasses', tailorApe.glasses)"
+                  @click="nextApeAttr('glasses', stripSpaces(tailorApe.glasses))"
                 />
                 <button
                   class="icon-button-right"
-                  @click="nextApeAttr('glasses', tailorApe.glasses)"
+                  @click="nextApeAttr('glasses', stripSpaces(tailorApe.glasses))"
                 >
                   <IconRight />
                 </button>
@@ -558,18 +558,18 @@
               <div v-if="tailorApe.body && tailorApe.eyes === 'None'" class="attribute-box">
                 <button
                   class="icon-button-left"
-                  @click="previousApeAttr('eyes', apeAttributes.eyes)"
+                  @click="previousApeAttr('eyes', stripSpaces(apeAttributes.eyes))"
                 >
                   <IconLeft />
                 </button>
                 <img
-                  :src="`/eyes/${apeAttributes.eyes}_${apeAttributes.skin}.png`"
+                  :src="`/eyes/${stripSpaces(apeAttributes.eyes)}_${apeAttributes.skin}.png`"
                   alt="ApeX"
-                  @click="nextApeAttr('eyes', apeAttributes.eyes)"
+                  @click="nextApeAttr('eyes', stripSpaces(apeAttributes.eyes))"
                 />
                 <button
                   class="icon-button-right"
-                  @click="nextApeAttr('eyes', apeAttributes.eyes)"
+                  @click="nextApeAttr('eyes', stripSpaces(apeAttributes.eyes))"
                 >
                   <IconRight />
                 </button>
@@ -580,18 +580,18 @@
               >
                 <button
                   class="icon-button-left"
-                  @click="previousApeAttr('eyes', tailorApe.eyes)"
+                  @click="previousApeAttr('eyes', stripSpaces(tailorApe.eyes))"
                 >
                   <IconLeft />
                 </button>
                 <img
-                  :src="`/eyes/${tailorApe.eyes}_${tailorApe.skin}.png`"
+                  :src="`/eyes/${stripSpaces(tailorApe.eyes)}_${tailorApe.skin}.png`"
                   alt="ApeX"
-                  @click="nextApeAttr('eyes', tailorApe.eyes)"
+                  @click="nextApeAttr('eyes', stripSpaces(tailorApe.eyes))"
                 />
                 <button
                   class="icon-button-right"
-                  @click="nextApeAttr('eyes', tailorApe.eyes)"
+                  @click="nextApeAttr('eyes', stripSpaces(tailorApe.eyes))"
                 >
                   <IconRight />
                 </button>
@@ -1095,39 +1095,47 @@ async function drawApe(download = false) {
   
   if (tailorApe.value.image) {
     var bgImage = new Image();
-    bgImage.crossOrigin = "anonymous";
+    bgImage.crossOrigin = "Anonymous";
     bgImage.src = `/bgs/${tailorApe.value.image}.png`;
     bgImage.onload = function () {
       var apeBg = new Konva.Image({
         x: 0,
         y: 0,
+        scaleX: 1,
+        scaleY: 1,
         image: bgImage,
         width: 380,
         height: 380,
       });
       bgLayer.add(apeBg);      
-    };    
+      
+      console.log("bgLayer", bgLayer.toDataURL());
+    };
   }
 
   if (tailorApe.value.body) {
     var bgBodyImage = new Image();
-    bgBodyImage.crossOrigin = "anonymous";
+    bgBodyImage.crossOrigin = "Anonymous";
     bgBodyImage.src = `/body/${stripSpaces(tailorApe.value.body)}_${tailorApe.value.skin}.png`;
     bgBodyImage.onload = function () {
       var apeBody = new Konva.Image({
         x: 0,
         y: 0,
+        scaleX: 1,
+        scaleY: 1,
         image: bgBodyImage,
         width: 380,
         height: 380,
       });
       apeBodyLayer.add(apeBody);
+
+      console.log("apeBodyLayer", apeBodyLayer.toDataURL());
     };
   }
 
   if (tailorApe.value.eyes !== "None") {
     var bgEyesImage = new Image();
-    bgEyesImage.crossOrigin = "anonymous";
+    bgEyesImage.crossOrigin = "Anonymous";
     if(tailorApe.value.eyes === 'Crazy') {
       store.setTailorApeGlasses("Crazy");
       store.setApeAttributesGlasses("Crazy");
@@ -1137,17 +1145,21 @@ async function drawApe(download = false) {
       var apeEyes = new Konva.Image({
         x: 0,
         y: 0,
+        scaleX: 1,
+        scaleY: 1,
         image: bgEyesImage,
         width: 380,
         height: 380,
       });
       apeFaceLayer.add(apeEyes);
+
+      console.log("apeFaceLayer", apeFaceLayer.toDataURL());
     };
   }
 
   if (tailorApe.value.hat !== "None") {
     var bgHatImage = new Image();
-    bgHatImage.crossOrigin = "anonymous";
+    bgHatImage.crossOrigin = "Anonymous";
     if (tailorApe.value.clothes === "Hoodie") {
       bgHatImage.src = `/hats/Hood.png`;
     } else {
@@ -1157,17 +1169,21 @@ async function drawApe(download = false) {
       var apeHat = new Konva.Image({
         x: 0,
         y: 0,
+        scaleX: 1,
+        scaleY: 1,
         image: bgHatImage,
         width: 380,
         height: 380,
       });
       apeApparelLayer.add(apeHat);
+
+      console.log("apeApparelLayer", apeApparelLayer.toDataURL());
     };
   }
 
   if (tailorApe.value.clothes !== "None") {
     var bgClothesImage = new Image();
-    bgClothesImage.crossOrigin = "anonymous";
+    bgClothesImage.crossOrigin = "Anonymous";
 
     if ((tailorApe.value.body === "Robot" && tailorApe.value.clothes === "Hoodie") || tailorApe.value.clothes === "Leather_Jacket") {
       bgClothesImage.src = `/clothes/${stripSpaces(tailorApe.value.clothes)}_Robot.png`;
@@ -1179,88 +1195,110 @@ async function drawApe(download = false) {
       var apeClothes = new Konva.Image({
         x: 0,
         y: 0,
+        scaleX: 1,
+        scaleY: 1,
         image: bgClothesImage,
         width: 380,
         height: 380,
       });
       apeApparelLayer.add(apeClothes);
+
+      console.log("apeApparelLayer", apeApparelLayer.toDataURL());
     };
   }
 
   if (tailorApe.value.piercing !== "None") {
     var bgPiercingImage = new Image();
-    bgPiercingImage.crossOrigin = "anonymous";
+    bgPiercingImage.crossOrigin = "Anonymous";
     bgPiercingImage.src = `/piercings/${stripSpaces(tailorApe.value.piercing)}.png`;
     bgPiercingImage.onload = function () {
       var apePiercing = new Konva.Image({
         x: 0,
         y: 0,
+        scaleX: 1,
+        scaleY: 1,
         image: bgPiercingImage,
         width: 380,
         height: 380,
       });
       apeApparelLayer.add(apePiercing);
+
+      console.log("apeApparelLayer", apeApparelLayer.toDataURL());
     };
   }
 
   if (tailorApe.value.glasses !== "None") {
     var bgGlassesImage = new Image();
-    bgGlassesImage.crossOrigin = "anonymous";
+    bgGlassesImage.crossOrigin = "Anonymous";
     bgGlassesImage.src = `/glasses/${stripSpaces(tailorApe.value.glasses)}_${tailorApe.value.skin}.png`;    
     bgGlassesImage.onload = function () {
       var apeGlasses = new Konva.Image({
         x: 0,
         y: 0,
+        scaleX: 1,
+        scaleY: 1,
         image: bgGlassesImage,
         width: 380,
         height: 380,
       });
       overlayLayer.add(apeGlasses);
+
+      console.log("overlayLayer", overlayLayer.toDataURL());
     };
   }
 
   if (tailorApe.value.mouth !== "None") {
     var bgMouthImage = new Image();
-    bgMouthImage.crossOrigin = "anonymous";
+    bgMouthImage.crossOrigin = "Anonymous";
     bgMouthImage.src = `/mouthes/${stripSpaces(tailorApe.value.mouth)}_${tailorApe.value.skin}.png`;
     bgMouthImage.onload = function () {
       var apeMouth = new Konva.Image({
         x: 0,
         y: 0,
+        scaleX: 1,
+        scaleY: 1,
         image: bgMouthImage,
         width: 380,
         height: 380,
       });
       overlayLayer.add(apeMouth);
+
+      console.log("overlayLayer", overlayLayer.toDataURL());
     };
   }
 
 
   if (state.gmApe === true) {
     var bgGMImage = new Image();
-    bgGMImage.crossOrigin = "anonymous";
+    bgGMImage.crossOrigin = "Anonymous";
     bgGMImage.src = `/gmSkins/${tailorApe.value.skin}-Skin/GM_${tailorApe.value.skin}_${tailorApe.value.body}.png`;
     bgGMImage.onload = function () {
       var apeGM = new Konva.Image({
         x: 0,
         y: 0,
+        scaleX: 1,
+        scaleY: 1,
         image: bgGMImage,
         width: 380,
         height: 380,
       });
       overlayLayer.add(apeGM);
+
+      console.log("GM overlayLayer", overlayLayer.toDataURL());
     };
   }
 
 
   if (state.jayApe === true) {
     var bgJayImage = new Image();
-    bgJayImage.crossOrigin = "anonymous";
+    bgJayImage.crossOrigin = "Anonymous";
     bgJayImage.src = `/jays/${tailorApe.value.skin}-Skin/GM_${tailorApe.value.skin}_${tailorApe.value.body}.png`;
     bgJayImage.onload = function () {
       var apeJay = new Konva.Image({
         x: 0,
         y: 0,
+        scaleX: 1,
+        scaleY: 1,
         image: bgJayImage,
         width: 380,
         height: 380,
@@ -1285,7 +1323,7 @@ async function drawApe(download = false) {
 
   if(download) {
     let MIME_TYPE = "image/png";
-    let dataURL = stage.toDataURL({ mimeType: MIME_TYPE, pixelRatio: 2, quality: 1 });
+    let dataURL = stage.toDataURL({ mimeType: MIME_TYPE, pixelRatio: 2 });
     console.log("dataURL", dataURL);
     
     let dlLink = document.createElement("a");
